@@ -662,14 +662,13 @@ def render_substack(meta, brief, data):
     attrs = json.dumps({"url": link, "text": "Read the full issue", "action": None, "class": None}).replace("'", "&#39;")
     button = (f'<p class="button-wrapper" data-attrs=\'{attrs}\' data-component-name="ButtonCreateButton">'
               f'<a class="button primary" href="{link}"><span>Read the full issue</span></a></p>')
-    # The button comes first so readers can click through straight away, and again after the picture.
-    body = (button
-            + f'<ul>{bullets}</ul>'
+    # One button only, after the picture (the owner's choice, 16 November 2026).
+    body = (f'<ul>{bullets}</ul>'
             + f'<p><img src="{SITE_URL}/issues/{date}-card.png" width="440" alt="{html.escape(alt, quote=True)}"></p>'
             + button
             + f'<p><em>The full issue explains why prices moved, the other news that mattered and what to expect next week, '
               f'with every source listed. For education and information only, not investment advice.</em></p>')
-    nodes = "button,bulletList,captionedImage,button,paragraph"
+    nodes = "bulletList,captionedImage,button,paragraph"
     title = html.escape(meta["headline"].replace(" | ", " ").replace("|", " "))
     summary = html.escape(meta["summary"])
     return f"""<!DOCTYPE html>
@@ -689,7 +688,7 @@ button{{font:700 14px/1 Helvetica,Arial,sans-serif;background:#E2A82B;color:#1B1
 </style></head><body><div class="page">
 <div class="how"><strong>Email version of issue {int(meta["issue"])}.</strong> This page is a helper and is not sent to anyone.
 <ol><li>In Substack, start a new post.</li><li>Copy the title and subtitle into their boxes.</li>
-<li>Press “Copy the post” and paste into the body of the Substack post.</li><li>Check the button is at the top and the picture appears, then send.</li></ol></div>
+<li>Press “Copy the post” and paste into the body of the Substack post.</li><li>Check the picture and the button appear, then send.</li></ol></div>
 <div class="field"><small>Title</small><div id="title">{title}</div><button data-copy="title">Copy the title</button></div>
 <div class="field"><small>Subtitle</small><div id="subtitle">{summary}</div><button data-copy="subtitle">Copy the subtitle</button></div>
 <button data-copy="body">Copy the post</button>
