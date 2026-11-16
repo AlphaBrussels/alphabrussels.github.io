@@ -673,7 +673,7 @@ def render_substack(meta, brief, data):
     title = html.escape(meta["headline"].replace(" | ", " ").replace("|", " "))
     summary = html.escape(meta["summary"])
     return f"""<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
 <title>Email version, issue {int(meta["issue"])}</title>
 <style>
 body{{margin:0;background:#E6EDF5;color:#1B1F27;font:17px/1.6 Georgia,serif}}

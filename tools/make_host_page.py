@@ -4,15 +4,16 @@
 Usage: python3 make_host_page.py <artifact_index.html> <output_index.html>
 
 The two pages are the same design. The live one differs in four ways: it has a proper
-page title, description and icon for browsers and search engines, the real Substack
-subscribe box replaces the preview placeholder, the preview-only tag is removed, and
-a link ending in ?issue=<date>#newsletter opens that issue.
+page title, description, icon and sharing preview (social-card.png) for browsers, search
+engines and chat apps, the real Substack subscribe box replaces the preview placeholder,
+the preview-only tag is removed, and a link ending in ?issue=<date>#newsletter opens that issue.
 Run this again whenever the design of the preview page changes.
 """
 import re
 import sys
 from urllib.parse import quote
 
+SITE = "https://alphabrussels.github.io"
 SUBSTACK = "https://alphabrussels.substack.com/embed"
 TITLE = "Alpha Brussels – Finance & Economics Club"
 DESCRIPTION = ("Alpha Brussels is a student finance and economics club in Brussels: talks, workshops, "
@@ -38,9 +39,18 @@ def main(src, dst):
     esc = TITLE.replace("&", "&amp;")
     head = (f'<title>{esc}</title><meta name="description" content="{DESCRIPTION}">'
             f'<meta property="og:title" content="{esc}"><meta property="og:description" content="{DESCRIPTION}">'
-            f'<meta property="og:type" content="website">'
+            f'<meta property="og:type" content="website"><meta property="og:site_name" content="Alpha Brussels">'
+            f'<meta property="og:url" content="{SITE}/"><link rel="canonical" href="{SITE}/">'
+            f'<meta property="og:image" content="{SITE}/social-card.png"><meta property="og:image:width" content="1200">'
+            f'<meta property="og:image:height" content="630"><meta property="og:image:alt" content="Alpha Brussels, Finance &amp; Economics Club, Brussels">'
+            f'<meta name="twitter:card" content="summary_large_image">'
             f'<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,{quote(ICON)}">')
     assert "</head>" in page
+    # The preview page repeats the charset and viewport tags the page skeleton already has.
+    for tag in (r"<meta charset=utf8>\s*", r"<meta name=viewport [^>]*>\s*"):
+        first = re.search(tag, page)
+        if first:
+            page = page[:first.end()] + re.sub(tag, "", page[first.end():])
     page = page.replace("</head>", head + "</head>", 1).replace("<html>", '<html lang="en">', 1)
     open(dst, "w", encoding="utf-8").write(page)
     print(f"Wrote {dst}: {n} subscribe box(es) replaced.")
