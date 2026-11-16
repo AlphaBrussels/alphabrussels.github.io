@@ -1,0 +1,37 @@
+[
+  {
+    "file": "2026-11-14.html",
+    "issue": 1,
+    "date": "2026-11-14",
+    "week": "9–13 November 2026",
+    "title": "Stocks rallied. Nvidia didn’t.",
+    "summary": "US stocks had their best week since August and Europe hit record highs, even as Nvidia lost its founder-CEO and bitcoin broke below $70,000.",
+    "board": [
+      [
+        "S&P 500",
+        "7,561.67",
+        "+2.5%"
+      ],
+      [
+        "STOXX Europe 600",
+        "664.14",
+        "+2.4%"
+      ],
+      [
+        "BEL 20",
+        "6,119.66",
+        "+2.1%"
+      ],
+      [
+        "Nvidia",
+        "$162.85",
+        "−12.7%"
+      ],
+      [
+        "Bitcoin",
+        "$68,249",
+        "−9.9%"
+      ]
+    ]
+  }
+]
