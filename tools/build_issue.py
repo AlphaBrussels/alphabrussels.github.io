@@ -662,23 +662,18 @@ def render_substack(meta, brief, data):
     attrs = json.dumps({"url": link, "text": "Read the full issue", "action": None, "class": None}).replace("'", "&#39;")
     button = (f'<p class="button-wrapper" data-attrs=\'{attrs}\' data-component-name="ButtonCreateButton">'
               f'<a class="button primary" href="{link}"><span>Read the full issue</span></a></p>')
-    # Substack's own subscribe box (a caption, an email field and a button). In the email it becomes a
-    # Subscribe button; on the web post it is the sign-up form.
+    # Substack's own subscribe box (a caption, an email field and a button) closes the email. Pasted HTML
+    # cannot create it with its caption (the editor reads the caption as an ordinary paragraph), so the
+    # caption travels in data-subscribe and the box is inserted through the editor after the paste.
     sub_caption = "Was this forwarded to you? Subscribe to get the week in markets in your inbox every week. It’s free."
-    sub_attrs = html.escape(json.dumps({"url": "%%checkout_url%%", "text": "Subscribe", "language": "en"}, separators=(",", ":")), quote=True)
-    subscribe = (f'<div class="subscription-widget-wrap-editor" data-attrs="{sub_attrs}" data-component-name="SubscribeWidgetToDOM">'
-                 f'<div class="subscription-widget show-subscribe"><div class="preamble"><p class="cta-caption">{html.escape(sub_caption)}</p></div>'
-                 f'<form class="subscription-widget-subscribe"><input type="email" class="email-input" name="email" placeholder="Type your email…" tabindex="-1">'
-                 f'<input type="submit" class="button primary" value="Subscribe"><div class="fake-input-wrapper"><div class="fake-input"></div>'
-                 f'<div class="fake-button"></div></div></form></div></div>')
     # One "Read the full issue" button only, after the picture (the owner's choice, 16 November 2026),
-    # then the closing line, then the subscribe box at the very end.
+    # then the closing line. The subscribe box comes last.
     body = (f'<ul>{bullets}</ul>'
             + f'<p><img src="{SITE_URL}/issues/{date}-card.png" width="440" alt="{html.escape(alt, quote=True)}"></p>'
             + button
             + f'<p><em>The full issue explains why prices moved, the other news that mattered and what to expect next week, '
-              f'with every source listed. For education and information only, not investment advice.</em></p>'
-            + subscribe)
+              f'with every source listed. For education and information only, not investment advice.</em></p>')
+    sub_attr = html.escape(sub_caption, quote=True)
     nodes = "bulletList,captionedImage,button,paragraph,subscribeWidget"
     title = html.escape(meta["headline"].replace(" | ", " ").replace("|", " "))
     summary = html.escape(meta["summary"])
@@ -696,19 +691,15 @@ button{{font:700 14px/1 Helvetica,Arial,sans-serif;background:#E2A82B;color:#1B1
 #body{{background:#fff;border:1px solid #C2CEDF;padding:8px 24px 24px;margin-top:14px}}
 #body img{{max-width:100%;height:auto}}
 #body .button{{display:inline-block;background:#1F3A5F;color:#fff;padding:12px 20px;border-radius:6px;text-decoration:none;font:700 15px/1 Helvetica,Arial,sans-serif}}
-#body .subscription-widget{{text-align:center;margin-top:18px}}
-#body .cta-caption{{font:15px/1.5 Helvetica,Arial,sans-serif;margin:0 0 10px}}
-#body .email-input{{font:15px/1 Helvetica,Arial,sans-serif;padding:11px 12px;border:1px solid #E2A82B;border-radius:6px 0 0 6px;width:55%;max-width:240px}}
-#body input.button{{background:#E2A82B;color:#1B1F27;border:0;border-radius:0 6px 6px 0;padding:12px 16px}}
-#body .fake-input-wrapper{{display:none}}
 </style></head><body><div class="page">
 <div class="how"><strong>Email version of issue {int(meta["issue"])}.</strong> This page is a helper and is not sent to anyone.
 <ol><li>In Substack, start a new post.</li><li>Copy the title and subtitle into their boxes.</li>
-<li>Press “Copy the post” and paste into the body of the Substack post.</li><li>Check the picture, the button and the subscribe box appear, then send.</li></ol></div>
+<li>Press “Copy the post” and paste into the body of the Substack post.</li><li>Add the subscribe box at the end (see below).</li><li>Check the picture, the button and the subscribe box appear, then send.</li></ol></div>
 <div class="field"><small>Title</small><div id="title">{title}</div><button data-copy="title">Copy the title</button></div>
 <div class="field"><small>Subtitle</small><div id="subtitle">{summary}</div><button data-copy="subtitle">Copy the subtitle</button></div>
 <button data-copy="body">Copy the post</button>
-<div id="body" data-nodes="{nodes}">{body}</div>
+<div id="body" data-nodes="{nodes}" data-subscribe="{sub_attr}">{body}</div>
+<div class="field"><small>Subscribe box (goes last; not copied with the post)</small><div id="subscribe">{sub_attr}</div>In Substack choose Button, then “Subscribe with caption”, and paste this caption into it.<br><button data-copy="subscribe">Copy the caption</button></div>
 </div>
 <script>
 document.addEventListener('click', function (e) {{
