@@ -583,13 +583,15 @@ def sub_inline(text, cites, sources):
     out = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", out)
 
     def run(m):
-        links = []
+        # Plain numbers, no links: a link on every citation makes the email long enough
+        # for mail apps to cut it off. The links are in the source list at the end.
+        marks = []
         for k in CITE.findall(m.group(1)):
             if k in sources:
-                link = f'<a href="{html.escape(sources[k]["url"], quote=True)}">[{cites.number(k)}]</a>'
-                if link not in links:
-                    links.append(link)
-        return " " + "".join(links) + (" " if m.group(1).endswith(" ") else "")
+                mark = f"[{cites.number(k)}]"
+                if mark not in marks:
+                    marks.append(mark)
+        return " " + "".join(marks) + (" " if m.group(1).endswith(" ") else "")
     return CITE_RUN.sub(run, out)
 
 
