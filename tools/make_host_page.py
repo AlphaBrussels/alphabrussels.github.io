@@ -3,9 +3,10 @@
 
 Usage: python3 make_host_page.py <artifact_index.html> <output_index.html>
 
-The two pages are the same design. The live one differs in three ways: it has a proper
+The two pages are the same design. The live one differs in four ways: it has a proper
 page title, description and icon for browsers and search engines, the real Substack
-subscribe box replaces the preview placeholder, and the preview-only tag is removed.
+subscribe box replaces the preview placeholder, the preview-only tag is removed, and
+a link ending in ?issue=<date>#newsletter opens that issue.
 Run this again whenever the design of the preview page changes.
 """
 import re
@@ -30,6 +31,10 @@ def main(src, dst):
     box = (f'<iframe src="{SUBSTACK}" title="Subscribe to the Alpha Brussels newsletter" loading="lazy" scrolling="no"></iframe>')
     page, n = re.subn(r'<div class="mock">.*?</small></div>', box, page, flags=re.S)
     assert n >= 1, "no subscribe placeholder found"
+    # Let a link such as /?issue=2026-11-14#newsletter open that issue (the emails link this way).
+    old = "if (!PREVIEW) { try { want = new URLSearchParams(location.search).get('issue'); } catch (err) {} }"
+    assert old in page, "issue-link code not found; the site script changed"
+    page = page.replace(old, "try { want = new URLSearchParams(location.search).get('issue'); } catch (err) {}")
     esc = TITLE.replace("&", "&amp;")
     head = (f'<title>{esc}</title><meta name="description" content="{DESCRIPTION}">'
             f'<meta property="og:title" content="{esc}"><meta property="og:description" content="{DESCRIPTION}">'

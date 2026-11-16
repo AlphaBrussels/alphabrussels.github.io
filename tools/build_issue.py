@@ -11,9 +11,11 @@ Reads   <issues_dir>/<date>.md          the text of the issue (edit this freely)
         <issues_dir>/<date>.data.json   prices and the list of sources
 Writes  <issues_dir>/<date>.html        the finished issue, in the site design
         <issues_dir>/issues.json        the list the website reads (newest first)
-        <issues_dir>/<date>.substack.html   the same issue as plain rich text, ready
-                                        to paste into Substack (run render_images.py
-                                        afterwards to make its two pictures)
+        <issues_dir>/<date>.substack.html   the short email version for Substack: the
+                                        "## Email brief" bullets, a picture of the
+                                        week's changes and a button to the full issue
+        <issues_dir>/<date>.card.html       that picture as a page (run render_images.py
+                                        afterwards to turn it into <date>-card.png)
 With --draft it writes none of these. It puts a self-contained preview, plus copies of
 the two source files, in a "drafts" folder next to <issues_dir>. The website does
 not read that folder, so nothing changes for visitors until a normal build.
@@ -22,7 +24,8 @@ What it guarantees before it writes anything:
   * every weekly change is calculated here from two closing prices, never typed in
   * every price has a primary source and a second, independent source that agrees
   * this week's "previous close" matches the close published in last week's issue
-  * every paragraph, bullet and calendar line ends with a citation
+  * every paragraph, bullet and calendar line ends with a citation (the email
+    brief too: its facts are checked like the rest, the email just hides the numbers)
   * every citation points at a source that exists, from an approved outlet
   * every number in the text appears in a quote stored from the source it cites
   * citations are numbered in reading order and the source list is rebuilt, so
@@ -577,86 +580,100 @@ def render(meta, sections, data, cites):
 '''
 
 
-# ---------------------------------------------------------------- Substack version
-def sub_inline(text, cites, sources):
-    out = html.escape(text, quote=False)
-    out = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", out)
-
-    def run(m):
-        # Plain numbers, no links: a link on every citation makes the email long enough
-        # for mail apps to cut it off. The links are in the source list at the end.
-        marks = []
-        for k in CITE.findall(m.group(1)):
-            if k in sources:
-                mark = f"[{cites.number(k)}]"
-                if mark not in marks:
-                    marks.append(mark)
-        return " " + "".join(marks) + (" " if m.group(1).endswith(" ") else "")
-    return CITE_RUN.sub(run, out)
+# ---------------------------------------------------------------- email (Substack) version
+def issue_link(date):
+    return f"{SITE_URL}/?issue={date}#newsletter"
 
 
-def sub_blocks(blocks, data, cites, date):
-    S, out = data["sources"], []
-    for b in blocks:
-        t = b["type"]
-        if t == "table":
-            out.append(f'<p><img src="{SITE_URL}/issues/{date}-table.png" width="640" alt="Weekly closes and changes for stock indices, crypto and selected stocks"></p>')
-        elif t == "macro":
-            out.append(f'<p><img src="{SITE_URL}/issues/{date}-macro.png" width="640" alt="Oil, gold, the US 10-year yield and the VIX this week"></p>')
-        elif t == "plain":
-            continue                      # the intro describes the bars, which the picture already shows
-        elif t == "note":
-            out.append(f'<p><em>{sub_inline(b["text"], cites, S)}</em></p>')
-        elif t == "para":
-            out.append(f'<p>{sub_inline(b["text"], cites, S)}</p>')
-        elif t == "callout":
-            out.append(f'<blockquote><p>{sub_inline(b["text"], cites, S)}</p></blockquote>')
-        elif t == "bullets":
-            out.append("<ul>" + "".join(f"<li>{sub_inline(i, cites, S)}</li>" for i in b["items"]) + "</ul>")
-        elif t == "rows":
-            items = []
-            for r in b["rows"]:
-                label = html.escape(r[0].rstrip("!"))
-                if len(r) >= 3:
-                    label += f' ({html.escape(r[1].replace("-", "−"))})'
-                items.append(f"<li><strong>{label}</strong> {sub_inline(r[-1], cites, S)}</li>")
-            out.append("<ul>" + "".join(items) + "</ul>")
-        elif t == "spotlight":
-            out.append(f'<h3>{html.escape(b["title"])}</h3>' + sub_blocks(b["blocks"], data, cites, date))
-    return "".join(out)
+def brief_items(brief):
+    return [i for b in brief["blocks"] if b["type"] == "bullets" for i in b["items"]] if brief else []
 
 
-def render_substack(meta, sections, data):
-    date, S = meta["date"], data["sources"]
-    cites = Cites(S)
-    body = "".join(f'<h2>{html.escape(s["title"])}</h2>' + sub_blocks(s["blocks"], data, cites, date) for s in sections)
-    items = []
-    for k in cites.order:
-        s = S[k]
-        when = ""
-        if s.get("date"):
-            sd = datetime.date.fromisoformat(s["date"])
-            when = f", {sd.day} {sd:%B %Y}"
-        items.append(f'<li>{html.escape(s["publisher"])}, “{html.escape(s["title"])}”{when}: '
-                     f'<a href="{html.escape(s["url"], quote=True)}">{html.escape(host_of(s["url"]))}</a></li>')
-    price_keys = []
-    for r in [r for g in data["groups"] for r in g["rows"]] + data.get("macro", []):
-        for k in r.get("sources", []) + ([r["check"]["source"]] if r.get("check") else []):
-            if k in S and k not in price_keys:
-                price_keys.append(k)
-    prices = ", ".join(f'<a href="{html.escape(S[k]["url"], quote=True)}">{html.escape(S[k]["publisher"])}: {html.escape(S[k]["title"])}</a>' for k in price_keys)
-    body += (f'<hr><h2>Sources</h2><ol>{"".join(items)}</ol>'
-             f'<p><em>Price data: {prices}. Every weekly change is calculated from two Friday closes.</em></p>'
-             f'<p><em>For education and information only, not investment advice.</em></p>'
-             f'<p><a href="{SITE_URL}/#newsletter">Read this issue and past issues on the Alpha Brussels website</a></p>')
+def check_brief(brief, rep):
+    if not brief:
+        rep.strict("The text has no '## Email brief' section (three to five short bullets for the email).")
+        return
+    items = brief_items(brief)
+    if not 3 <= len(items) <= 5 or any(b["type"] != "bullets" for b in brief["blocks"]):
+        rep.error("'## Email brief' must be one list of three to five bullets and nothing else.")
+    for i in items:
+        plain = CITE.sub("", i).replace("**", "").strip()
+        if len(plain) > 230:
+            rep.error(f"Email brief bullet is too long ({len(plain)} characters, limit 230): “{plain[:60]}…”")
+
+
+def render_card(meta, data):
+    """A compact picture of every weekly change, sized to stay readable on a phone."""
+    groups = [(g["name"], [(r.get("short", r["name"]), fpct(r["pct"]), r["pct"] >= 0) for r in g["rows"]]) for g in data["groups"]]
+    macro = []
+    for r in data.get("macro", []):
+        if r.get("mode") == "bp":
+            macro.append((r.get("short", r["name"]), ("+" if r["bp"] >= 0 else "−") + f'{abs(r["bp"])} bp', None))
+        else:
+            macro.append((r.get("short", r["name"]), fpct(r["pct"]), None))
+    if macro:
+        groups.append(("Oil, gold, rates", macro))
+    cols, sizes = [[], []], [0, 0]
+    for g in groups:
+        i = 0 if sizes[0] <= sizes[1] else 1
+        cols[i].append(g)
+        sizes[i] += len(g[1]) + 1.4
+
+    def col(gs):
+        out = []
+        for name, rows in gs:
+            out.append(f'<div class="g">{html.escape(name)}</div>')
+            for label, chg, up in rows:
+                colr = "#1B1F27" if up is None else (UP if up else DOWN)
+                out.append(f'<div class="r"><span>{html.escape(label)}</span><b style="color:{colr}">{chg}</b></div>')
+        return "".join(out)
+    return f"""<!DOCTYPE html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+body{{margin:0;background:#fff}}
+#card{{width:440px;background:#fff;font-family:'Source Sans 3',Helvetica,Arial,sans-serif;color:#1B1F27}}
+.top{{background:{NAVY};border-bottom:4px solid {GOLD};padding:14px 18px 12px}}
+.top h1{{margin:0;font:700 21px/1.2 'Playfair Display',Georgia,serif;color:#EDE9DD}}
+.top p{{margin:3px 0 0;font-size:13px;color:#C9D4E4}}
+.cols{{display:flex;gap:22px;padding:4px 18px 16px}}
+.cols>div{{flex:1;min-width:0}}
+.g{{font-size:12.5px;font-weight:700;color:{NAVY};border-bottom:2px solid {NAVY};padding:12px 0 4px}}
+.r{{display:flex;justify-content:space-between;gap:8px;font-size:14.5px;line-height:1.2;padding:6px 0;border-bottom:1px solid #E3E8EF}}
+.r span{{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.r b{{font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}}
+</style></head><body><div id="card">
+<div class="top"><h1>The week’s moves</h1><p>{html.escape(meta["week"])}. Change since the Friday before.</p></div>
+<div class="cols"><div>{col(cols[0])}</div><div>{col(cols[1])}</div></div>
+</div></body></html>
+"""
+
+
+def render_substack(meta, brief, data):
+    date = meta["date"]
+    link = issue_link(date)
+    rows = {r["name"]: r for g in data["groups"] for r in g["rows"]}
+    alt = "This week’s moves: " + ", ".join(f'{rows[n].get("short", n)} {fpct(rows[n]["pct"])}' for n in data.get("board", []) if n in rows) + ". Full table in the issue on the website."
+
+    def clean(t):
+        t = html.escape(CITE.sub("", t), quote=False)
+        t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
+        return re.sub(r"\s+([.,;:])", r"\1", re.sub(r"\s{2,}", " ", t)).strip()
+    bullets = "".join(f"<li>{clean(i)}</li>" for i in brief_items(brief))
+    attrs = json.dumps({"url": link, "text": "Read the full issue", "action": None, "class": None}).replace("'", "&#39;")
+    body = (f'<ul>{bullets}</ul>'
+            f'<p><img src="{SITE_URL}/issues/{date}-card.png" width="440" alt="{html.escape(alt, quote=True)}"></p>'
+            f'<p class="button-wrapper" data-attrs=\'{attrs}\' data-component-name="ButtonCreateButton">'
+            f'<a class="button primary" href="{link}"><span>Read the full issue</span></a></p>'
+            f'<p><em>The full issue explains why prices moved, the other news that mattered and what to expect next week, '
+            f'with every source listed. For education and information only, not investment advice.</em></p>')
     title = html.escape(meta["headline"].replace(" | ", " ").replace("|", " "))
     summary = html.escape(meta["summary"])
-    return f'''<!DOCTYPE html>
+    return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Substack version, issue {int(meta["issue"])}</title>
+<title>Email version, issue {int(meta["issue"])}</title>
 <style>
 body{{margin:0;background:#E6EDF5;color:#1B1F27;font:17px/1.6 Georgia,serif}}
-.page{{max-width:720px;margin:0 auto;padding:24px 16px 60px}}
+.page{{max-width:640px;margin:0 auto;padding:24px 16px 60px}}
 .how{{background:#1F3A5F;color:#EDE9DD;padding:20px 22px;font:15px/1.5 Helvetica,Arial,sans-serif}}
 .how ol{{margin:8px 0 0;padding-left:20px}}
 .field{{background:#fff;border:1px solid #C2CEDF;padding:14px 16px;margin-top:14px}}
@@ -664,11 +681,11 @@ body{{margin:0;background:#E6EDF5;color:#1B1F27;font:17px/1.6 Georgia,serif}}
 button{{font:700 14px/1 Helvetica,Arial,sans-serif;background:#E2A82B;color:#1B1F27;border:0;border-radius:4px;padding:10px 16px;cursor:pointer;margin-top:10px}}
 #body{{background:#fff;border:1px solid #C2CEDF;padding:8px 24px 24px;margin-top:14px}}
 #body img{{max-width:100%;height:auto}}
-#body blockquote{{margin:16px 0;padding:2px 16px;border-left:4px solid #E2A82B}}
+#body .button{{display:inline-block;background:#1F3A5F;color:#fff;padding:12px 20px;border-radius:6px;text-decoration:none;font:700 15px/1 Helvetica,Arial,sans-serif}}
 </style></head><body><div class="page">
-<div class="how"><strong>Substack version of issue {int(meta["issue"])}.</strong> This page is a helper and is not sent to anyone.
+<div class="how"><strong>Email version of issue {int(meta["issue"])}.</strong> This page is a helper and is not sent to anyone.
 <ol><li>In Substack, start a new post.</li><li>Copy the title and subtitle into their boxes.</li>
-<li>Press “Copy the post” and paste into the body of the Substack post.</li><li>Check the two pictures appear, then send.</li></ol></div>
+<li>Press “Copy the post” and paste into the body of the Substack post.</li><li>Check the picture and the button appear, then send.</li></ol></div>
 <div class="field"><small>Title</small><div id="title">{title}</div><button data-copy="title">Copy the title</button></div>
 <div class="field"><small>Subtitle</small><div id="subtitle">{summary}</div><button data-copy="subtitle">Copy the subtitle</button></div>
 <button data-copy="body">Copy the post</button>
@@ -688,7 +705,7 @@ document.addEventListener('click', function (e) {{
   }} catch (err) {{ fallback(); }}
 }});
 </script></body></html>
-'''
+"""
 
 
 # ---------------------------------------------------------------- main
@@ -715,6 +732,9 @@ def main(argv):
     table_numbers, table_keys = check_prices(data, issue_date, issues_dir, rep)
     check_sources(data, issue_date, rep)
     check_text(sections, data, table_numbers, table_keys, rep)
+    brief = next((s for s in sections if s["title"].strip().lower() == "email brief"), None)
+    check_brief(brief, rep)
+    sections = [s for s in sections if s is not brief]      # the brief is for the email only
     kinds = [b["type"] for s in sections for b in s["blocks"]]
     if "table" not in kinds:
         rep.error("The text never places the price table. Add a line with [[table]].")
@@ -767,7 +787,8 @@ def main(argv):
         return finish(rep, f"Draft preview written to {os.path.join(ddir, date + '.html')} with {len(cites.order)} numbered sources. "
                            f"The website files were not touched.")
     open(base + ".html", "w", encoding="utf-8").write(page)
-    open(base + ".substack.html", "w", encoding="utf-8").write(render_substack(meta, sections, data))
+    open(base + ".substack.html", "w", encoding="utf-8").write(render_substack(meta, brief, data))
+    open(base + ".card.html", "w", encoding="utf-8").write(render_card(meta, data))
     json.dump(listing, open(listing_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     return finish(rep, f"Built {base}.html with {len(cites.order)} numbered sources. issues.json now lists {len(listing)} issue(s); "
                        f"the newest is issue {listing[0]['issue']}.")

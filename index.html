@@ -287,7 +287,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     issues = list.slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
     if (!issues.length) throw new Error('none');
     var want = null;
-    if (!PREVIEW) { try { want = new URLSearchParams(location.search).get('issue'); } catch (err) {} }
+    try { want = new URLSearchParams(location.search).get('issue'); } catch (err) {}
     var first = issues.filter(function (x) { return want && x.file === want + '.html'; })[0] || issues[0];
     board(issues[0]); teaser(issues[0]); showIssue(first, false);
   }).catch(function () {
