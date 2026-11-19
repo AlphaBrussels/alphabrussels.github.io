@@ -62,8 +62,8 @@ NEWS_DOMAINS = [  # established newsrooms
 ]
 WIRES = ["Associated Press", "Reuters", "AFP", "Bloomberg", "Belga"]
 
-NAVY, GOLD, UP, DOWN = "#1F3A5F", "#E2A82B", "#1E8A4C", "#C0392B"   # email picture (render_card) only
-# Website design (19 November 2026): the issue page uses the same colours, type and logo as index.html.
+# Brand (19 November 2026): the issue page, the email picture and the email helper page all use the
+# same colours, type and logo as index.html.
 NIGHT, INK, PAPER, MIST, BLUE = "#12284F", "#0B1626", "#F7F4EE", "#E4EAF2", "#1D3B72"
 SGOLD, GOLD_INK, STONE, RULE, LINE = "#E5B13A", "#8A6410", "#5B667A", "#CBD3DF", "#DDE3EC"
 GAIN, LOSS, GAIN_DARK, LOSS_DARK, SOFT, DIM = "#17804A", "#C2412B", "#7FD9A5", "#FF9E8C", "#C9D4E6", "#9FB1CE"
@@ -642,25 +642,27 @@ def render_card(meta, data):
         for name, rows in gs:
             out.append(f'<div class="g">{html.escape(name)}</div>')
             for label, chg, up in rows:
-                colr = "#1B1F27" if up is None else (UP if up else DOWN)
+                colr = INK if up is None else (GAIN if up else LOSS)
                 out.append(f'<div class="r"><span>{html.escape(label)}</span><b style="color:{colr}">{chg}</b></div>')
         return "".join(out)
     return f"""<!DOCTYPE html><html><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,600;1,6..72,500&family=Inter:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-body{{margin:0;background:#fff}}
-#card{{width:440px;background:#fff;font-family:'Source Sans 3',Helvetica,Arial,sans-serif;color:#1B1F27}}
-.top{{background:{NAVY};border-bottom:4px solid {GOLD};padding:14px 18px 12px}}
-.top h1{{margin:0;font:700 21px/1.2 'Playfair Display',Georgia,serif;color:#EDE9DD}}
-.top p{{margin:3px 0 0;font-size:13px;color:#C9D4E4}}
+body{{margin:0;background:{PAPER}}}
+#card{{width:440px;background:{PAPER};font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif;color:{INK}}}
+.top{{background:{NIGHT};padding:16px 18px 15px;display:flex;align-items:center;gap:14px}}
+.top img{{height:30px;width:auto;display:block;flex:none}}
+.top h1{{margin:0;font:600 23px/1.1 Newsreader,Georgia,serif;letter-spacing:-.02em;color:{PAPER}}}
+.top h1 em{{font-style:italic;font-weight:500;color:{SGOLD}}}
+.top p{{margin:4px 0 0;font:500 10.5px/1.3 'IBM Plex Mono',ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:{DIM}}}
 .cols{{display:flex;gap:22px;padding:4px 18px 16px}}
 .cols>div{{flex:1;min-width:0}}
-.g{{font-size:12.5px;font-weight:700;color:{NAVY};border-bottom:2px solid {NAVY};padding:12px 0 4px}}
-.r{{display:flex;justify-content:space-between;gap:8px;font-size:14.5px;line-height:1.2;padding:6px 0;border-bottom:1px solid #E3E8EF}}
+.g{{font:500 10.5px/1 'IBM Plex Mono',ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:{GOLD_INK};border-bottom:2px solid {NIGHT};padding:14px 0 6px}}
+.r{{display:flex;justify-content:space-between;gap:8px;font-size:14px;line-height:1.2;padding:6px 0;border-bottom:1px solid {LINE}}}
 .r span{{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
 .r b{{font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}}
 </style></head><body><div id="card">
-<div class="top"><h1>The week’s moves</h1><p>{html.escape(meta["week"])}. Change since the Friday before.</p></div>
+<div class="top"><img src="{MARK}" alt=""><div><h1>The week’s <em>moves</em></h1><p>{html.escape(meta["week"])} · change on the week</p></div></div>
 <div class="cols"><div>{col(cols[0])}</div><div>{col(cols[1])}</div></div>
 </div></body></html>
 """
@@ -699,16 +701,16 @@ def render_substack(meta, brief, data):
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
 <title>Email version, issue {int(meta["issue"])}</title>
 <style>
-body{{margin:0;background:#E6EDF5;color:#1B1F27;font:17px/1.6 Georgia,serif}}
+body{{margin:0;background:{MIST};color:{INK};font:17px/1.6 Inter,Helvetica,Arial,sans-serif}}
 .page{{max-width:640px;margin:0 auto;padding:24px 16px 60px}}
-.how{{background:#1F3A5F;color:#EDE9DD;padding:20px 22px;font:15px/1.5 Helvetica,Arial,sans-serif}}
+.how{{background:{NIGHT};color:{PAPER};border-radius:12px;padding:20px 22px;font:15px/1.5 Inter,Helvetica,Arial,sans-serif}}
 .how ol{{margin:8px 0 0;padding-left:20px}}
-.field{{background:#fff;border:1px solid #C2CEDF;padding:14px 16px;margin-top:14px}}
-.field small{{display:block;font:700 12px/1.4 Helvetica,Arial,sans-serif;color:#55627D;margin-bottom:4px}}
-button{{font:700 14px/1 Helvetica,Arial,sans-serif;background:#E2A82B;color:#1B1F27;border:0;border-radius:4px;padding:10px 16px;cursor:pointer;margin-top:10px}}
-#body{{background:#fff;border:1px solid #C2CEDF;padding:8px 24px 24px;margin-top:14px}}
+.field{{background:#fff;border:1px solid {RULE};border-radius:12px;padding:14px 16px;margin-top:14px}}
+.field small{{display:block;font:600 12px/1.4 Inter,Helvetica,Arial,sans-serif;color:{STONE};margin-bottom:4px}}
+button{{font:600 14px/1 Inter,Helvetica,Arial,sans-serif;background:{SGOLD};color:{INK};border:0;border-radius:999px;padding:11px 18px;cursor:pointer;margin-top:10px}}
+#body{{background:#fff;border:1px solid {RULE};border-radius:12px;padding:8px 24px 24px;margin-top:14px;font-family:Georgia,serif}}
 #body img{{max-width:100%;height:auto}}
-#body .button{{display:inline-block;background:#1F3A5F;color:#fff;padding:12px 20px;border-radius:6px;text-decoration:none;font:700 15px/1 Helvetica,Arial,sans-serif}}
+#body .button{{display:inline-block;background:{NIGHT};color:#fff;padding:13px 22px;border-radius:999px;text-decoration:none;font:600 15px/1 Inter,Helvetica,Arial,sans-serif}}
 </style></head><body><div class="page">
 <div class="how"><strong>Email version of issue {int(meta["issue"])}.</strong> This page is a helper and is not sent to anyone.
 <ol><li>In Substack, start a new post.</li><li>Copy the title and subtitle into their boxes.</li>

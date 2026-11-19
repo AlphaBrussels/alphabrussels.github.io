@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Turn the preview page (the Claude artifact's index.html) into the page for the real website.
+"""RETIRED on 19 November 2026: do not run this on the new index.html. The new page already has its
+title, description, icons, sharing tags and the real Substack box. Kept for reference only.
+
+Turn the preview page (the Claude artifact's index.html) into the page for the real website.
 
 Usage: python3 make_host_page.py <artifact_index.html> <output_index.html>
 
