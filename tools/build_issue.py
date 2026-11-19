@@ -62,7 +62,14 @@ NEWS_DOMAINS = [  # established newsrooms
 ]
 WIRES = ["Associated Press", "Reuters", "AFP", "Bloomberg", "Belga"]
 
-NAVY, GOLD, UP, DOWN = "#1F3A5F", "#E2A82B", "#1E8A4C", "#C0392B"
+NAVY, GOLD, UP, DOWN = "#1F3A5F", "#E2A82B", "#1E8A4C", "#C0392B"   # email picture (render_card) only
+# Website design (19 November 2026): the issue page uses the same colours, type and logo as index.html.
+NIGHT, INK, PAPER, MIST, BLUE = "#12284F", "#0B1626", "#F7F4EE", "#E4EAF2", "#1D3B72"
+SGOLD, GOLD_INK, STONE, RULE, LINE = "#E5B13A", "#8A6410", "#5B667A", "#CBD3DF", "#DDE3EC"
+GAIN, LOSS, GAIN_DARK, LOSS_DARK, SOFT, DIM = "#17804A", "#C2412B", "#7FD9A5", "#FF9E8C", "#C9D4E6", "#9FB1CE"
+MARK_SVG = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="34 -569 695 593"><g transform="scale(1 -1)"><path d="M606 95Q606 57 589 26Q570 -11 531.5 -11.0Q493 -11 464 51Q452 74 432 151Q393 75 346.5 32.0Q300 -11 224.0 -11.0Q148 -11 97.5 52.5Q47 116 47 198Q47 304 98 381Q156 469 258 469Q400 469 414 289L479 457H581L449 178Q460 140 487.0 110.5Q514 81 546.0 81.0Q578 81 604 119Q606 105 606 95ZM391 254Q391 313 363 356Q328 406 274 406Q203 406 160 318Q124 246 124 168Q124 20 210 20Q264 20 327.5 114.5Q391 209 391 254Z" fill="#F7F4EE"/>'
+            '<rect x="625.6" y="478.6" width="89.4" height="89.4" fill="#E5B13A"/></g></svg>')
+MARK = "data:image/svg+xml;base64," + base64.b64encode(MARK_SVG.encode()).decode()
 SITE_URL = "https://alphabrussels.github.io"
 MONTHS = ("January|February|March|April|May|June|July|August|September|October|"
           "November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec")
@@ -359,7 +366,7 @@ class Cites:
                 n = self.number(k)
                 if n not in nums:
                     nums.append(n)
-        style = ' style="color:#E2A82B;"' if dark else ""
+        style = f' style="color:{SGOLD};"' if dark else ""
         nums.sort()
         groups = []                      # runs of three or more become "4–9"
         for n in nums:
@@ -376,41 +383,42 @@ class Cites:
 
 def inline(text, cites, dark=False):
     out = html.escape(text, quote=False)
-    strong = "#EDE9DD" if dark else NAVY
+    strong = PAPER if dark else NIGHT
     out = re.sub(r"\*\*(.+?)\*\*", rf'<strong style="color:{strong};">\1</strong>', out)
     out = CITE_RUN.sub(lambda m: cites.sup(CITE.findall(m.group(1)), dark) + (" " if m.group(1).endswith(" ") else ""), out)
     return re.sub(r"\s+(<sup>)", r"\1", out)
 
 
 def heading(title):
-    return (f'<div style="width:44px;height:3px;line-height:3px;font-size:0;background:{GOLD};">&nbsp;</div>'
-            f'<div class="h" style="font-size:29px;line-height:36px;color:{NAVY};font-weight:700;padding:14px 0 14px 0;">{html.escape(title)}</div>')
+    return (f'<div style="width:12px;height:12px;line-height:12px;font-size:0;background:{SGOLD};">&nbsp;</div>'
+            f'<div class="h" style="font-size:34px;line-height:38px;color:{NIGHT};font-weight:600;letter-spacing:-0.02em;padding:12px 0 18px 0;">{html.escape(title)}</div>')
 
 
 def bar(p, scale):
     w = min(100, round(abs(p) / scale * 100))
-    c = UP if p >= 0 else DOWN
-    fill = f'<div style="height:10px;width:{w}px;background:{c};font-size:0;line-height:0;%s">&nbsp;</div>'
+    c = GAIN if p >= 0 else LOSS
+    rad = "border-radius:0 4px 4px 0;" if p >= 0 else "border-radius:4px 0 0 4px;"
+    fill = f'<div style="height:8px;width:{w}px;background:{c};font-size:0;line-height:0;{rad}%s">&nbsp;</div>'
     neg = fill % "margin-left:auto;" if p < 0 else "&nbsp;"
     pos = fill % "" if p >= 0 else "&nbsp;"
     return ('<table role="presentation" cellpadding="0" cellspacing="0" width="201"><tr>'
             f'<td width="100" align="right" style="font-size:0;line-height:0;">{neg}</td>'
-            f'<td width="100" style="font-size:0;line-height:0;border-left:1px solid #8794A8;padding:5px 0;">{pos}</td></tr></table>')
+            f'<td width="100" style="font-size:0;line-height:0;border-left:1px solid {RULE};padding:6px 0;">{pos}</td></tr></table>')
 
 
 def render_table(data, cites):
     rows_all = [r for g in data["groups"] for r in g["rows"]]
     top = max(abs(r["pct"]) for r in rows_all)
     scale = max(10, 5 * -(-top // 5))
-    line = "border-top:1px solid #E3E8EF;"
-    out = ['<div id="x-table" style="background:#FFFFFF;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="b" style="font-size:16px;line-height:22px;color:#1B1F27;">']
+    line = f"border-top:1px solid {LINE};"
+    out = [f'<div id="x-table"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="b" style="font-size:16px;line-height:22px;color:{INK};font-variant-numeric:tabular-nums;">']
     for gi, g in enumerate(data["groups"]):
-        out.append(f'<tr><td colspan="4" style="padding:{"0" if gi == 0 else "22px"} 0 7px 0;font-size:14px;font-weight:700;color:{NAVY};border-bottom:2px solid {NAVY};">{html.escape(g["name"])}</td></tr>')
+        out.append(f'<tr><td colspan="4" class="m" style="padding:{"0" if gi == 0 else "26px"} 0 8px 0;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;color:{GOLD_INK};border-bottom:2px solid {NIGHT};">{html.escape(g["name"])}</td></tr>')
         for r in g["rows"]:
-            col = UP if r["pct"] >= 0 else DOWN
+            col = GAIN if r["pct"] >= 0 else LOSS
             out.append(
                 f'<tr><td style="padding:9px 0;{line}font-weight:600;">{html.escape(r["name"])}{html.escape(r.get("mark", ""))}</td>'
-                f'<td align="right" style="padding:9px 14px 9px 0;{line}color:#4B5563;">{fnum(r["close"], r.get("decimals", 2), r.get("prefix", ""))}</td>'
+                f'<td align="right" style="padding:9px 14px 9px 0;{line}color:{STONE};">{fnum(r["close"], r.get("decimals", 2), r.get("prefix", ""))}</td>'
                 f'<td class="bar" width="201" style="padding:0;{line}">{bar(r["pct"], scale)}</td>'
                 f'<td align="right" width="66" style="padding:9px 0;{line}font-weight:700;color:{col};">{fpct(r["pct"])}</td></tr>')
     out.append("</table></div>")
@@ -425,7 +433,7 @@ def render_table(data, cites):
             f' Each weekly change is calculated from those two closes.')
     if second:
         note += f' Closes were checked against a second source.{cites.sup(second)}'
-    out.append(f'<div class="b" style="font-size:13px;line-height:20px;color:#4B5563;padding-top:12px;">{note}</div>')
+    out.append(f'<div class="b" style="font-size:13px;line-height:20px;color:{STONE};padding-top:12px;">{note}</div>')
     return "".join(out)
 
 
@@ -443,26 +451,26 @@ def render_macro(data, cites):
             keys.append(r["check"]["source"])
         cells.append(
             f'<td width="25%" class="stack" valign="top" style="padding:14px 12px 14px {"0" if i == 0 else "14px"};'
-            f'{"" if i == 0 else "border-left:1px solid #D4DCE8;"}"><div style="font-size:13px;color:#4B5563;">{html.escape(r.get("label", r["name"]))}</div>'
-            f'<div style="font-size:23px;line-height:30px;font-weight:700;color:{NAVY};">{val}</div>'
-            f'<div style="font-size:13px;color:#1B1F27;font-weight:600;">{chg}</div></td>')
+            f'{"" if i == 0 else f"border-left:1px solid {RULE};"}"><div style="font-size:13px;color:{STONE};">{html.escape(r.get("label", r["name"]))}</div>'
+            f'<div class="h" style="font-size:28px;line-height:34px;font-weight:600;color:{NIGHT};font-variant-numeric:tabular-nums;">{val}</div>'
+            f'<div style="font-size:13px;color:{INK};font-weight:600;">{chg}</div></td>')
     if not cells:
         return ""
-    return (f'<div id="x-macro" style="margin-top:28px;background:#FFFFFF;border-top:2px solid {NAVY};border-bottom:1px solid #D4DCE8;">'
+    return (f'<div id="x-macro" style="margin-top:28px;border-top:2px solid {NIGHT};border-bottom:1px solid {RULE};">'
             f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="b"><tr>{"".join(cells)}</tr></table></div>'
-            f'<div class="b" style="font-size:13px;line-height:20px;color:#4B5563;padding-top:10px;">Friday closes and the change since the Friday before.{cites.sup(keys)}</div>')
+            f'<div class="b" style="font-size:13px;line-height:20px;color:{STONE};padding-top:10px;">Friday closes and the change since the Friday before.{cites.sup(keys)}</div>')
 
 
 def pct_cell(txt, dark):
     neg = txt.strip().startswith(("-", "−"))
-    col = ("#FF9C8F" if neg else "#7ED87A") if dark else (DOWN if neg else UP)
+    col = (LOSS_DARK if neg else GAIN_DARK) if dark else (LOSS if neg else GAIN)
     return html.escape(txt.replace("-", "−")), col
 
 
 def render_blocks(blocks, data, cites, dark=False):
     out = []
-    ink = "#DCE4F0" if dark else "#1B1F27"
-    rule = "#35527A" if dark else "#D4DCE8"
+    ink = "#DCE4F0" if dark else INK
+    rule = "#35527A" if dark else RULE
     for b in blocks:
         t = b["type"]
         if t == "table":
@@ -470,24 +478,24 @@ def render_blocks(blocks, data, cites, dark=False):
         elif t == "macro":
             out.append(render_macro(data, cites))
         elif t == "plain":
-            out.append(f'<div class="b" style="font-size:15px;line-height:22px;color:#4B5563;padding-bottom:20px;">{inline(b["text"], cites)}</div>')
+            out.append(f'<div class="b" style="font-size:15px;line-height:22px;color:{STONE};padding-bottom:20px;">{inline(b["text"], cites)}</div>')
         elif t == "note":
-            out.append(f'<div class="b" style="font-size:13px;line-height:20px;color:#4B5563;padding-top:8px;">{inline(b["text"], cites)}</div>')
+            out.append(f'<div class="b" style="font-size:13px;line-height:20px;color:{STONE};padding-top:8px;">{inline(b["text"], cites)}</div>')
         elif t == "para":
             size = "15px;line-height:23px" if dark else "17px;line-height:27px"
             out.append(f'<p class="b" style="margin:0 0 16px 0;font-size:{size};color:{ink};">{inline(b["text"], cites, dark)}</p>')
         elif t == "callout":
-            out.append(f'<div class="b" style="background:#EEF2F7;border-left:4px solid {GOLD};margin:8px 0 16px 0;padding:18px 22px;font-size:16px;line-height:24px;color:#1B1F27;">{inline(b["text"], cites)}</div>')
+            out.append(f'<div class="b" style="background:#FFFFFF;border:1px solid {RULE};border-left:4px solid {SGOLD};border-radius:0 12px 12px 0;margin:8px 0 16px 0;padding:18px 22px;font-size:16px;line-height:24px;color:{INK};">{inline(b["text"], cites)}</div>')
         elif t == "bullets":
-            rows = "".join(f'<tr><td width="22" valign="top" style="color:{GOLD};font-size:20px;">■</td><td style="padding-bottom:12px;">{inline(i, cites, dark)}</td></tr>' for i in b["items"])
+            rows = "".join(f'<tr><td width="22" valign="top" style="padding-top:9px;"><div style="width:8px;height:8px;line-height:8px;font-size:0;background:{SGOLD};">&nbsp;</div></td><td style="padding-bottom:12px;">{inline(i, cites, dark)}</td></tr>' for i in b["items"])
             out.append(f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="b" style="font-size:17px;line-height:26px;color:{ink};">{rows}</table>')
         elif t == "rows":
             trs = []
             for r in b["rows"]:
                 label, hot = r[0].rstrip("!"), r[0].endswith("!")
                 cell = f"padding:10px 0;border-top:1px solid {rule};"
-                bg = "background:#FBF6E9;" if hot and not dark else ""
-                lab = f'<td width="66" valign="top" style="{cell}font-weight:700;color:{GOLD if dark else NAVY};">{html.escape(label)}</td>'
+                bg = "background:#FBF1D9;" if hot and not dark else ""
+                lab = f'<td width="66" valign="top" class="m" style="{cell}font-size:13px;letter-spacing:0.08em;font-weight:500;color:{SGOLD if dark else (GOLD_INK if hot else NIGHT)};">{html.escape(label)}</td>'
                 if len(r) >= 3:
                     txt, col = pct_cell(r[1], dark)
                     trs.append(f'<tr>{lab}<td valign="top" style="{cell}padding-right:12px;{bg}">{inline(r[2], cites, dark)}</td>'
@@ -498,15 +506,15 @@ def render_blocks(blocks, data, cites, dark=False):
             out.append(f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="b" style="font-size:{size};color:{ink};border-bottom:1px solid {rule};margin-bottom:16px;">{"".join(trs)}</table>')
         elif t == "spotlight":
             inner = render_blocks(b["blocks"], data, cites, dark=True)
-            out.append(f'<div style="background:{NAVY};margin:34px 0 8px 0;padding:28px 28px 12px 28px;" class="b">'
-                       f'<div class="h" style="font-size:26px;line-height:32px;color:#EDE9DD;font-weight:700;padding-bottom:12px;">{html.escape(b["title"])}</div>{inner}</div>')
+            out.append(f'<div style="background:{NIGHT};border-radius:16px;margin:34px 0 8px 0;padding:28px 28px 12px 28px;" class="b">'
+                       f'<div class="m" style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:{SGOLD};padding-bottom:8px;">Spotlight</div>'
+                       f'<div class="h" style="font-size:28px;line-height:32px;color:{PAPER};font-weight:600;letter-spacing:-0.02em;padding-bottom:14px;">{html.escape(b["title"])}</div>{inner}</div>')
     return "".join(out)
 
 
 def render(meta, sections, data, cites):
     d = datetime.date.fromisoformat(meta["date"])
     nice = f"{d.day} {d:%B %Y}"
-    headline = "<br>".join(html.escape(p.strip()) for p in meta["headline"].split("|"))
     body = []
     for i, s in enumerate(sections):
         body.append(f'<tr><td class="pad" style="padding:{44 if i == 0 else 36}px 40px 8px 40px;">{heading(s["title"])}{render_blocks(s["blocks"], data, cites)}</td></tr>')
@@ -520,57 +528,67 @@ def render(meta, sections, data, cites):
         via = f' ({html.escape(s["wire"])})' if s.get("wire") and s["wire"] != s["publisher"] else ""
         srcs.append(f'<li id="s{n}">{html.escape(s["publisher"])}{via}, “{html.escape(s["title"])}”{when} – '
                     f'<a href="{html.escape(s["url"], quote=True)}">{html.escape(host_of(s["url"]))}</a></li>')
+    parts = [html.escape(p.strip()) for p in meta["headline"].split("|")]
+    headline = parts[0] + "".join(f'<br><em style="font-style:italic;font-weight:500;color:{SGOLD};">{p}</em>' for p in parts[1:])
+    brand = (f'<table role="presentation" cellpadding="0" cellspacing="0"><tr>'
+             f'<td valign="middle" style="padding-right:12px;"><img src="{MARK}" height="36" alt="" style="display:block;border:0;height:36px;width:auto;"></td>'
+             f'<td valign="middle"><div class="h" style="font-size:24px;line-height:24px;font-weight:600;color:{PAPER};letter-spacing:-0.01em;">Alpha</div>'
+             f'<div class="b" style="font-size:9px;line-height:9px;font-weight:600;letter-spacing:0.44em;color:{SGOLD};padding-top:5px;">BRUSSELS</div></td></tr></table>')
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alpha Brussels – Weekly Finance Newsletter, {html.escape(meta["week"])}</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,600;1,6..72,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-  body{{margin:0;padding:0;background:#E6EDF5;}}
-  a{{color:#1F3A5F;}}
+  body{{margin:0;padding:0;background:{MIST};-webkit-font-smoothing:antialiased;}}
+  a{{color:{BLUE};text-underline-offset:3px;}}
   sup{{line-height:0;}}
-  sup a{{color:#B8861B;text-decoration:none;font-weight:700;font-size:11px;}}
-  .h{{font-family:'Playfair Display',Georgia,'Times New Roman',serif;}}
-  .b{{font-family:'Source Sans 3',Helvetica,Arial,sans-serif;}}
+  sup a{{color:{GOLD_INK};text-decoration:none;font-weight:700;font-size:11px;}}
+  .h{{font-family:Newsreader,Georgia,'Times New Roman',serif;}}
+  .b{{font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif;}}
+  .m{{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;}}
+  .wrap{{border-radius:16px;overflow:hidden;}}
   @media (max-width:620px){{
-    .wrap{{width:100%!important;}}
+    .wrap{{width:100%!important;border-radius:12px;}}
     .pad{{padding-left:20px!important;padding-right:20px!important;}}
     .stack{{display:block!important;width:auto!important;border-left:0!important;padding-left:0!important;}}
     .bar{{display:none!important;}}
-    .hero{{font-size:38px!important;line-height:42px!important;}}
+    .hero{{font-size:40px!important;line-height:42px!important;}}
+    .meta{{display:none!important;}}
   }}
 </style>
 </head>
-<body class="b" style="margin:0;padding:0;background:#E6EDF5;">
-<div style="display:none;max-height:0;overflow:hidden;color:#E6EDF5;">{html.escape(meta["summary"])}</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#E6EDF5;">
+<body class="b" style="margin:0;padding:0;background:{MIST};">
+<div style="display:none;max-height:0;overflow:hidden;color:{MIST};">{html.escape(meta["summary"])}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:{MIST};">
 <tr><td align="center" style="padding:24px 12px;">
-<table role="presentation" class="wrap" width="640" cellpadding="0" cellspacing="0" style="width:640px;max-width:100%;background:#FFFFFF;">
-<tr><td class="pad" style="background:{NAVY};padding:30px 40px 46px 40px;border-bottom:6px solid {GOLD};">
+<table role="presentation" class="wrap" width="640" cellpadding="0" cellspacing="0" style="width:640px;max-width:100%;background:{PAPER};">
+<tr><td class="pad" id="masthead" style="background:{NIGHT};padding:28px 40px 44px 40px;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
-    <td valign="middle"><img src="alpha-logo-reversed.png" width="96" alt="Alpha Brussels" style="display:block;border:0;"></td>
-    <td valign="middle" align="right" class="b" style="font-size:14px;color:#C9D4E4;line-height:21px;">Weekly finance newsletter<br>Issue {int(meta["issue"])}, {nice}</td>
+    <td valign="middle">{brand}</td>
+    <td valign="middle" align="right" class="m meta" style="font-size:12px;line-height:19px;letter-spacing:0.1em;text-transform:uppercase;color:{DIM};">The Alpha Weekly<br>Issue Nº {int(meta["issue"]):02d} · {nice}</td>
   </tr></table>
-  <div class="b" style="font-size:15px;color:{GOLD};font-weight:700;padding-top:44px;">Week of {html.escape(meta["week"])}</div>
-  <div class="h hero" style="font-size:54px;line-height:58px;color:#EDE9DD;font-weight:800;padding-top:8px;letter-spacing:-0.5px;">{headline}</div>
-  <div class="b" style="font-size:18px;line-height:28px;color:#C9D4E4;padding-top:18px;max-width:500px;">{html.escape(meta["summary"])}</div>
+  <div class="m" style="font-size:13px;line-height:18px;letter-spacing:0.14em;text-transform:uppercase;color:{SGOLD};font-weight:500;padding-top:48px;">Week of {html.escape(meta["week"])}</div>
+  <div class="h hero" style="font-size:56px;line-height:56px;color:{PAPER};font-weight:600;padding-top:14px;letter-spacing:-0.03em;">{headline}</div>
+  <div class="b" style="font-size:18px;line-height:28px;color:{SOFT};padding-top:20px;max-width:500px;">{html.escape(meta["summary"])}</div>
 </td></tr>
 {"".join(body)}
-<tr><td class="pad" style="padding:20px 40px 40px 40px;">
-  <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background:#7ED87A;border-radius:6px;"><a class="b" href="#" style="display:block;padding:14px 28px;font-size:15px;letter-spacing:2px;font-weight:700;color:#1B1F27;text-decoration:none;">READ PAST ISSUES</a></td></tr></table>
+<tr><td class="pad" style="padding:22px 40px 44px 40px;">
+  <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background:{SGOLD};border-radius:999px;"><a class="b" href="#" style="display:block;padding:16px 26px;font-size:16px;font-weight:600;color:{INK};text-decoration:none;">Read past issues →</a></td></tr></table>
 </td></tr>
-<tr><td class="pad" style="background:#F4F2ED;padding:28px 40px;">
-  <div class="b" style="font-size:15px;color:{NAVY};font-weight:700;padding-bottom:10px;">Sources</div>
-  <ol class="b" style="margin:0;padding-left:20px;font-size:12px;line-height:19px;color:#4B5563;">
+<tr><td class="pad" style="background:{MIST};padding:30px 40px;border-top:1px solid {RULE};">
+  <div class="m" style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:{GOLD_INK};font-weight:500;padding-bottom:12px;">Sources</div>
+  <ol class="b" style="margin:0;padding-left:20px;font-size:12.5px;line-height:19px;color:{STONE};">
     {"".join(srcs)}
   </ol>
 </td></tr>
-<tr><td class="pad" align="center" style="background:{NAVY};padding:28px 40px;">
-  <div class="b" style="font-size:13px;letter-spacing:3px;color:#EDE9DD;font-weight:700;">ALPHA <span style="color:{GOLD};">BRUSSELS</span></div>
-  <div class="b" style="font-size:11px;letter-spacing:2px;color:#C9D4E4;padding-top:4px;">FINANCE &amp; ECONOMICS CLUB</div>
-  <div class="b" style="font-size:12px;line-height:18px;color:#9FB0C8;padding-top:16px;">For education and information only, not investment advice. Prices are Friday closes; every weekly change is calculated from the two closes shown in the sources.</div>
+<tr><td class="pad" align="center" style="background:{INK};padding:30px 40px;">
+  <table role="presentation" cellpadding="0" cellspacing="0" align="center"><tr><td>{brand}</td></tr></table>
+  <div class="m" style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:{SOFT};padding-top:14px;">Finance &amp; Economics Club · Brussels</div>
+  <div class="b" style="font-size:12px;line-height:18px;color:{DIM};padding-top:14px;">For education and information only, not investment advice. Prices are Friday closes; every weekly change is calculated from the two closes shown in the sources.</div>
 </td></tr>
 </table>
 </td></tr>
@@ -784,13 +802,9 @@ def main(argv):
     if draft:
         ddir = os.path.join(os.path.dirname(os.path.abspath(issues_dir)), "drafts")
         os.makedirs(ddir, exist_ok=True)
-        logo = os.path.join(issues_dir, "alpha-logo-reversed.png")
-        if os.path.exists(logo):
-            b64 = base64.b64encode(open(logo, "rb").read()).decode()
-            page = page.replace('src="alpha-logo-reversed.png"', f'src="data:image/png;base64,{b64}"')
-        banner = (f'<tr><td class="b" align="center" style="background:{GOLD};color:#1B1F27;font-size:14px;font-weight:700;'
-                  f'padding:10px 16px;">Draft for approval. Not on the website yet.</td></tr>\n<tr><td class="pad" style="background:{NAVY};padding:30px')
-        page = page.replace(f'<tr><td class="pad" style="background:{NAVY};padding:30px', banner, 1)
+        banner = (f'<tr><td class="b" align="center" style="background:{SGOLD};color:{INK};font-size:14px;font-weight:700;'
+                  f'padding:10px 16px;">Draft for approval. Not on the website yet.</td></tr>\n<tr><td class="pad" id="masthead"')
+        page = page.replace('<tr><td class="pad" id="masthead"', banner, 1)
         open(os.path.join(ddir, date + ".html"), "w", encoding="utf-8").write(page)
         for ext in (".md", ".data.json"):
             open(os.path.join(ddir, date + ext), "w", encoding="utf-8").write(open(base + ext, encoding="utf-8").read())

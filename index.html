@@ -1,260 +1,630 @@
-<!doctype html><html lang="en"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Alpha Brussels – Finance &amp; Economics Club</title><meta name="description" content="Alpha Brussels is a student finance and economics club in Brussels: talks, workshops, competitions and a free weekly newsletter on the week in markets."><meta property="og:title" content="Alpha Brussels – Finance &amp; Economics Club"><meta property="og:description" content="Alpha Brussels is a student finance and economics club in Brussels: talks, workshops, competitions and a free weekly newsletter on the week in markets."><meta property="og:type" content="website"><meta property="og:site_name" content="Alpha Brussels"><meta property="og:url" content="https://alphabrussels.github.io/"><link rel="canonical" href="https://alphabrussels.github.io/"><meta property="og:image" content="https://alphabrussels.github.io/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Alpha Brussels, Finance &amp; Economics Club, Brussels"><meta name="twitter:card" content="summary_large_image"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22-48%20-48%2096%2096%22%3E%3Crect%20x%3D%22-48%22%20y%3D%22-48%22%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2220%22%20fill%3D%22%23fff%22/%3E%3Cpolyline%20points%3D%22-30%2C35%200%2C-35%2030%2C35%22%20fill%3D%22none%22%20stroke%3D%22%231F3A5F%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3Cpolyline%20points%3D%22-22%2C21%20-6%2C7%204%2C15%2022%2C-7%22%20fill%3D%22none%22%20stroke%3D%22%23E2A82B%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3Cpolyline%20points%3D%2213%2C-7%2023%2C-8%2022%2C2%22%20fill%3D%22none%22%20stroke%3D%22%23E2A82B%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E"></head><body>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alpha Brussels – Finance &amp; Economics Club</title>
+<meta name="description" content="Alpha Brussels is the finance and economics club that teaches how markets and the economy really work. Free weekly markets newsletter, workshops and talks. Based in Brussels, open to every student.">
+<link rel="canonical" href="https://alphabrussels.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Alpha Brussels">
+<meta property="og:url" content="https://alphabrussels.github.io/">
+<meta property="og:title" content="Alpha Brussels – Finance &amp; Economics Club">
+<meta property="og:description" content="Markets move fast. We make them make sense. A free weekly markets newsletter, workshops and talks. Based in Brussels.">
+<meta property="og:image" content="https://alphabrussels.github.io/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Alpha Brussels, Finance &amp; Economics Club, based in Brussels">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#12284F">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,500;1,6..72,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: navy masthead and chart-paper hero that carries this week's market board; light blue-grey page below, ruled lists instead of boxed cards. */
 :root{
-  --navy:#2A3F68;--navy-deep:#1E2E4F;--ink:#1B2740;--bg:#E7EEF5;--band:#DAE3EF;--panel:#F5F8FB;
-  --line:#C2CEDF;--muted:#55627D;--cream:#EDE9DD;--gold:#E2A82B;--gold-ink:#8A6208;
-  --up:#1E8A4C;--down:#C0392B;--up-navy:#7FDCA4;--down-navy:#FF9D8E;
-  --display:"DM Serif Display",Georgia,"Times New Roman",serif;
-  --body:"Source Sans 3","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --ink:#0B1626;--night:#12284F;--blue:#1D3B72;--gold:#E5B13A;--gold-ink:#8A6410;--gold-dark:#C8941F;
+  --mist:#E4EAF2;--paper:#F7F4EE;--rule:#CBD3DF;--stone:#5B667A;--soft:#C9D4E6;--dim:#9FB1CE;
+  --gain:#17804A;--loss:#C2412B;--gain-dark:#7FD9A5;--loss-dark:#FF9E8C;
+  --serif:Newsreader,Georgia,"Times New Roman",serif;--sans:Inter,"Helvetica Neue",Helvetica,Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --wrap:1400px;--pad:32px;
   color-scheme:light;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--night);color:var(--paper);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%}
-a{color:var(--navy)}
-p{margin:0}
-h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance}
+a{color:inherit}
+button{font:inherit}
+h1,h2,h3,p{margin:0}
 :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-.wrap{max-width:1120px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(var(--pad),env(safe-area-inset-left,0px));padding-right:max(var(--pad),env(safe-area-inset-right,0px))}
+.kicker{font:500 13px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.kicker--ink{color:var(--gold-ink)}
+.display{font:600 clamp(2.6rem,5vw,4.6rem)/1.0 var(--serif);letter-spacing:-.025em}
+.display em,.h2 em{font-style:italic;font-weight:500;color:var(--gold)}
+.on-paper .display em,.on-paper .h2 em{color:var(--blue)}
+.h2{font:600 clamp(2.2rem,4.4vw,4rem)/1.0 var(--serif);letter-spacing:-.025em}
+.lead{font-size:19px;line-height:1.55;color:var(--soft);max-width:34em}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;text-decoration:none;font:600 17px/1 var(--sans);padding:18px 28px;border-radius:999px}
+.btn--gold{background:var(--gold);color:var(--ink)}
+.btn--gold:hover{background:#EDBE52}
+.btn--ghost{background:transparent;color:var(--paper);border:1px solid rgba(247,244,238,.5);padding:17px 27px}
+.btn--ghost:hover{border-color:var(--paper);background:rgba(247,244,238,.06)}
+.btn--night{background:var(--night);color:var(--paper)}
+.btn--night:hover{background:var(--blue)}
+.btn--sm{font-size:15px;padding:14px 20px}
+.btns{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.grid-bg{background-image:linear-gradient(rgba(247,244,238,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(247,244,238,.045) 1px,transparent 1px);background-size:64px 64px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* masthead */
-.top{position:sticky;top:0;z-index:20;background:var(--navy);border-bottom:1px solid rgba(237,233,221,.16)}
-.top .wrap{display:flex;align-items:center;gap:28px;min-height:68px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--cream);font-weight:600;letter-spacing:.2em;font-size:15px;white-space:nowrap}
-.brand i{display:flex;background:#fff;border-radius:8px;padding:6px}
-.menu{display:flex;gap:30px;margin-left:auto}
-.menu a{color:var(--cream);text-decoration:none;font-size:14px;letter-spacing:.14em;text-transform:uppercase;padding-block:8px;border-bottom:2px solid transparent;white-space:nowrap}
-.menu a:hover,.menu a[aria-current="page"]{border-bottom-color:var(--gold)}
+/* ticker */
+.tape{display:flex;align-items:stretch;background:var(--ink);border-bottom:1px solid rgba(229,177,58,.35);min-height:46px}
+.tape__live{flex:none;display:flex;align-items:center;gap:8px;padding:0 16px;background:var(--gold);color:var(--ink);font:600 12px/1 var(--mono);letter-spacing:.1em}
+.dot{width:7px;height:7px;background:currentColor;display:inline-block;animation:pulse 1.8s ease-in-out infinite}
+.tape__body{flex:1;min-width:0;overflow:hidden;position:relative}
+.tape__fallback{display:flex;width:max-content;white-space:nowrap;font:500 13px/46px var(--mono);color:var(--soft);animation:tape 38s linear infinite}
+.tape__fallback span{padding:0 26px;border-right:1px solid rgba(247,244,238,.1)}
+.tape .tradingview-widget-container{position:absolute;inset:0}
+@keyframes tape{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-/* buttons */
-.btn{display:inline-block;font:600 14px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:15px 24px;border-radius:4px;border:1.5px solid var(--navy);background:var(--navy);color:var(--cream);cursor:pointer}
-.btn:hover{background:var(--navy-deep);border-color:var(--navy-deep)}
-.btn--gold{background:var(--gold);border-color:var(--gold);color:var(--ink)}
-.btn--gold:hover{background:#EDB844;border-color:#EDB844}
-.btn--cream{background:var(--cream);border-color:var(--cream);color:var(--navy)}
-.btn--cream:hover{background:#fff;border-color:#fff}
-.btn--ghost{background:transparent;border-color:rgba(237,233,221,.7);color:var(--cream)}
-.btn--ghost:hover{background:rgba(237,233,221,.12);border-color:var(--cream)}
-.btn--line{background:transparent;color:var(--navy)}
-.btn--line:hover{background:rgba(42,63,104,.08);border-color:var(--navy)}
-.btn--sm{padding:11px 18px;font-size:13px}
-.btns{display:flex;gap:12px;flex-wrap:wrap}
+/* header */
+.top{border-bottom:1px solid rgba(247,244,238,.12);background:var(--night);position:sticky;top:0;z-index:20}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 32px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--paper)}
+.brand img{height:38px;width:auto;display:block}
+.brand__name{display:flex;flex-direction:column;line-height:1}
+.brand__name b{font:600 25px/1 var(--serif);letter-spacing:-.01em}
+.brand__name small{font:600 9px/1 var(--sans);letter-spacing:.44em;color:var(--gold);margin-top:4px}
+.menu{display:flex;flex-wrap:wrap;gap:2px 26px;margin-left:auto}
+.menu a{color:var(--dim);text-decoration:none;font:500 15px/44px var(--sans);border-bottom:2px solid transparent}
+.menu a:hover{color:var(--paper)}
+.menu a[aria-current="page"]{color:var(--paper);border-bottom-color:var(--gold)}
 
-.kicker{display:flex;align-items:center;gap:12px;font:600 13px/1.3 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-ink)}
-.kicker::before{content:"";flex:none;width:28px;height:2px;background:var(--gold)}
+/* pages */
+.page{animation:fade .45s ease-out both}
+.page[hidden]{display:none!important}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-/* navy surfaces share the chart-paper grid */
-.navy{background-color:var(--navy);background-image:linear-gradient(rgba(237,233,221,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(237,233,221,.06) 1px,transparent 1px);background-size:56px 56px;color:var(--cream)}
-.navy .kicker{color:var(--gold)}
-.navy h1,.navy h2{color:var(--cream)}
-.navy .lead{color:#CBD5E6}
+/* home hero */
+.hero{position:relative;overflow:hidden;min-height:calc(100vh - 140px);display:flex}
+.hero__mark{position:absolute;right:-4%;top:-6%;width:min(760px,62vw);opacity:.05;pointer-events:none}
+.hero__line{position:absolute;left:0;right:0;bottom:0;width:100%;height:200px;display:block}
+.hero__line polyline{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 2.4s ease-out both}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.hero .wrap{position:relative;width:100%;padding-top:48px;padding-bottom:150px;display:flex;flex-wrap:wrap;gap:48px;align-items:center}
+.hero__text{flex:999 1 600px;min-width:0}
+.pill{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;cursor:pointer;text-decoration:none;background:rgba(229,177,58,.12);color:var(--paper);border:1px solid rgba(229,177,58,.5);border-radius:999px;padding:8px 8px 8px 14px;font:500 14px/1.3 var(--sans);margin-bottom:26px}
+.pill .dot{color:var(--gold)}
+.pill b{background:var(--gold);color:var(--ink);border-radius:999px;padding:6px 10px;font:600 12px/1 var(--sans)}
+.hero h1{font:600 clamp(2.8rem,6.4vw,6rem)/.95 var(--serif);letter-spacing:-.03em;margin-bottom:24px}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+.hero .lead{margin-bottom:32px}
+.weekcard{flex:1 1 360px;min-width:0;background:var(--paper);color:var(--ink);border-radius:16px;padding:24px 24px 20px;box-shadow:0 30px 60px -24px rgba(0,0,0,.55);transform:rotate(1.2deg)}
+.weekcard__head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-bottom:12px;border-bottom:2px solid var(--night)}
+.weekcard__head b{font:600 21px/1 var(--serif)}
+.weekcard__head span{font:500 11px/1 var(--mono);color:var(--gold-ink);text-transform:uppercase;white-space:nowrap}
+.wrow{display:grid;grid-template-columns:minmax(0,1fr) 64px 84px;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #DDE3EC;font-variant-numeric:tabular-nums}
+.wrow__name{display:flex;flex-direction:column}
+.wrow__name b{font-weight:600;font-size:16px}
+.wrow__name small{font-size:13px;color:var(--stone)}
+.wrow__bar{height:8px;background:var(--mist);border-radius:4px;display:flex;overflow:hidden}
+.wrow__bar i{height:8px;border-radius:4px;display:block}
+.wrow__chg{text-align:right;font:700 16px/1 var(--sans)}
+.weekcard a{display:inline-block;margin-top:14px;font:600 15px/1 var(--sans);color:var(--blue);text-underline-offset:4px}
 
-/* hero */
-.hero{position:relative;overflow:hidden}
-.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center;padding-block:72px 128px}
-.hero h1{font-size:clamp(40px,5.6vw,72px);line-height:1.04;margin-block:18px 20px}
-.lead{font-size:20px;line-height:1.5;max-width:30em}
-.hero .btns{margin-top:30px}
-.trend{position:absolute;left:0;right:0;bottom:0;width:100%;height:104px;display:block}
-.trend polyline{fill:none;stroke:var(--gold);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
-.trend path{fill:var(--bg)}
+/* paper sections */
+.on-paper{background:var(--paper);color:var(--ink)}
+.sec{padding:96px 0}
+.sechead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px;margin-bottom:40px}
+.sechead p{max-width:26em;color:var(--stone)}
+.reasons{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.reason{border-radius:16px;padding:28px;min-height:270px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;border:1px solid var(--rule);background:#fff;transition:transform .25s ease,box-shadow .25s ease}
+.reason:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(11,22,38,.35)}
+.reason__n{font:600 56px/.8 var(--serif);color:var(--blue)}
+.reason h3{font:600 26px/1.15 var(--serif);margin-bottom:8px}
+.reason p{font-size:16px;line-height:1.55;color:#3E4A60}
+.reason--night{background:var(--night);border-color:var(--night);color:var(--paper)}
+.reason--night .reason__n{color:var(--gold)}
+.reason--night p{color:var(--soft)}
+.reason--gold{background:var(--gold);border-color:var(--gold)}
+.reason--gold .reason__n{color:var(--night)}
+.reason--gold p{color:#2B2208}
+.about{display:flex;flex-wrap:wrap;gap:40px 80px;align-items:center;border-top:2px solid var(--night);padding-top:64px}
+.about__text{flex:999 1 600px;min-width:0}
+.about__text p.body{font-size:19px;line-height:1.6;color:#3E4A60;max-width:36em;margin-bottom:16px}
+.about__seal{flex:1 1 280px;display:flex;justify-content:center}
+.about__seal img{width:min(300px,80%);filter:drop-shadow(0 24px 30px rgba(11,22,38,.25))}
 
-/* market board */
-.board{background:var(--navy-deep);border:1px solid rgba(237,233,221,.18);border-top:3px solid var(--gold);padding:22px 24px 20px}
-.board-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
-.board-head b{color:var(--gold);font-weight:600}
-.board-head span{color:#B9C5DA}
-.board ul{list-style:none;margin:14px 0 0;padding:0}
-.board li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:14px;align-items:baseline;padding-block:11px;border-top:1px solid rgba(237,233,221,.14);font-variant-numeric:tabular-nums}
-.b-name{font-weight:600;color:var(--cream)}
-.b-close{color:#B9C5DA;font-size:16px}
-.b-chg{text-align:right;font-weight:700;white-space:nowrap;min-width:88px}
-.b-chg.up{color:var(--up-navy)}
-.b-chg.down{color:var(--down-navy)}
-.board-foot{margin-top:14px;padding-top:14px;border-top:1px solid rgba(237,233,221,.14);font-size:16px}
-.board-foot a{color:var(--cream);font-weight:600;text-underline-offset:4px;text-decoration-color:var(--gold)}
-
-/* page heads on inner pages */
-.pagehead .wrap{padding-block:56px 64px}
-.pagehead h1{font-size:clamp(38px,5vw,60px);line-height:1.06;margin-block:16px 14px}
-
-/* sections */
-.sec{padding-block:84px}
-.sec--band{background:var(--band)}
-.sec-head{display:grid;gap:14px;margin-bottom:40px}
-.sec-head h2,.split h2{font-size:clamp(30px,3.6vw,44px);line-height:1.12}
-.sec-head p{color:var(--muted);max-width:36em}
-
-.ruled{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
-.ruled > div{border-top:2px solid var(--navy);padding-top:18px}
-.ruled h3{font-size:26px;line-height:1.15;margin-bottom:8px}
-.ruled p{color:var(--muted);font-size:17px}
-
-.split{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:56px;align-items:start}
-.meta{font:600 13px/1.4 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink)}
-.teaser h3{font-size:clamp(34px,4.4vw,54px);line-height:1.05;margin-block:12px 14px}
-.teaser p{color:var(--muted);max-width:32em;margin-bottom:26px}
-
-.signup{background:var(--panel);border:1px solid var(--line);padding:24px}
-.signup h3{font-size:26px;margin-bottom:4px}
-.signup > p{color:var(--muted);font-size:16px;margin-bottom:16px}
-.signup iframe{display:block;width:100%;max-width:480px;height:320px;border:0;background:#fff}
-.signup .fine{margin:12px 0 0;font-size:14px}
-.mock{background:#fff;border:1px solid var(--line);padding:18px}
-.mock div{display:flex;gap:8px}
-.mock input{flex:1;min-width:0;padding:12px;border:1px solid var(--line);font:inherit;font-size:16px}
-.mock small{display:block;margin-top:10px;color:var(--muted);font-size:14px}
-
-.soon{border:1.5px dashed var(--gold);background:var(--panel);padding:36px 30px}
-.soon h3{font-size:30px;margin-bottom:6px}
-.soon p{color:var(--muted)}
+/* board */
+.inner{padding-top:64px;padding-bottom:88px}
+.board-intro{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;margin-bottom:44px}
+.board-intro div:last-child{flex:1 1 460px;max-width:560px;color:var(--soft)}
+.board-intro div:last-child p+p{margin-top:12px}
+.board-intro a{color:var(--gold);white-space:nowrap}
+.members{display:flex;flex-direction:column;gap:18px}
+.member{background:var(--paper);color:var(--ink);border-radius:18px;overflow:hidden;display:flex;flex-wrap:wrap}
+.member__photo{flex:0 0 240px;max-width:100%;min-height:240px;background:var(--mist);border-right:4px solid var(--gold);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.member__photo img{width:100%;height:100%;object-fit:cover;display:block}
+.member__photo img.ph{width:110px;height:auto;opacity:.9;object-fit:contain}
+.member__body{flex:1 1 420px;min-width:0;padding:28px 32px;display:flex;flex-direction:column;gap:8px}
+.member__role{font:500 12px/1.4 var(--mono);letter-spacing:.12em;color:var(--gold-ink);text-transform:uppercase}
+.member__name{font:600 32px/1.1 var(--serif)}
+.member__name.tba{color:var(--stone);font-style:italic;font-weight:500}
+.member__what{color:#3E4A60;max-width:46em}
+.member__bio{color:var(--stone);max-width:46em;font-style:italic;font-size:16px}
+.member__links{margin-top:auto;padding-top:14px;display:flex;flex-wrap:wrap;gap:8px 22px}
+.member__links a{display:inline-flex;align-items:center;gap:6px;color:var(--blue);font:600 14px/1 var(--sans);text-decoration:none}
+.member__links a:hover{text-decoration:underline}
+.member__links svg{width:16px;height:16px}
 
 /* events */
-.events{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--line)}
-.events li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:28px;padding-block:24px;border-top:1px solid var(--line)}
-.ev-date{font-family:var(--display);font-size:48px;line-height:1;color:var(--navy)}
-.ev-date small{display:block;font:600 13px/1.4 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);margin-top:6px}
-.events h3{font-size:28px;line-height:1.15;margin-block:4px 6px}
-.ev-facts{font-size:16px;color:var(--muted);font-variant-numeric:tabular-nums}
-.ev-desc{margin-top:8px;max-width:38em}
-.sub-h{font-size:26px;margin-block:56px 18px}
+.events{position:relative;text-align:center;padding-top:88px;padding-bottom:96px;overflow:hidden}
+.events__mark{position:absolute;left:50%;top:40px;transform:translateX(-50%);width:min(620px,80vw);opacity:.05;pointer-events:none}
+.events h1{max-width:14em;margin:0 auto 24px;font:600 clamp(2.8rem,6vw,5.6rem)/.98 var(--serif);letter-spacing:-.03em}
+.events h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+.events .lead{margin:0 auto 36px}
+.events .btns{justify-content:center;margin-bottom:64px}
+.tba-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:1px solid rgba(247,244,238,.18);border-bottom:1px solid rgba(247,244,238,.18)}
+.tba-row div{padding:34px 20px}
+.tba-row div+div{border-left:1px solid rgba(247,244,238,.18)}
+.tba-row b{display:block;font:600 clamp(2rem,3.4vw,3rem)/1 var(--serif);margin-bottom:10px}
+.tba-row span{font:500 12px/1 var(--mono);letter-spacing:.12em;color:var(--gold)}
 
-/* newsletter */
-.nl{display:grid;grid-template-columns:minmax(0,680px) minmax(0,1fr);gap:48px;align-items:start}
-.issue-bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
-#issue{border:1px solid var(--line);background:#E6EDF5;min-height:160px;min-width:0;overflow-x:auto}
-#issue .state{padding:36px 28px;color:var(--muted)}
-.side{display:grid;gap:28px;position:sticky;top:92px;min-width:0}
-.archive h2{font-size:28px;margin-bottom:6px}
-.archive ol{list-style:none;margin:0;padding:0}
-.archive li{border-top:1px solid var(--line);padding-block:14px}
-.archive a{font-family:var(--display);font-size:21px;line-height:1.2;text-decoration:none;color:var(--ink);display:block}
-.archive a:hover{color:var(--navy);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
-.archive small{display:block;font:600 12px/1.6 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink)}
-.archive .note{color:var(--muted);font-size:16px;padding-top:14px;border-top:1px solid var(--line)}
-
-/* about */
-.prose{display:grid;gap:16px;max-width:40em;font-size:19px}
-.people{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
-.photo{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--navy);color:var(--cream);font:400 64px/1 var(--display);border-bottom:4px solid var(--gold);margin-bottom:16px}
-.people h3{font-size:24px;line-height:1.2}
-.role{font:600 13px/1.4 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-block:6px 8px}
-.people p:last-child{color:var(--muted);font-size:17px}
+/* news */
+.newstop{display:flex;flex-wrap:wrap;gap:48px 72px;align-items:flex-start;padding-top:64px;padding-bottom:88px}
+.newstop__left{flex:999 1 560px;min-width:0}
+.subscribe{background:var(--paper);border-radius:16px;padding:10px;max-width:560px;margin:26px 0 30px}
+.subscribe iframe{display:block;width:100%;height:150px;border:0;background:var(--paper);border-radius:10px}
+.subscribe p{color:var(--stone);font-size:13px;padding:6px 8px 2px}
+.subscribe a{color:var(--blue)}
+.issues{border-top:1px solid rgba(247,244,238,.18);max-width:640px;margin-top:12px}
+.issue-link{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(247,244,238,.18);text-decoration:none;color:var(--paper)}
+.issue-link:hover b{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+.issue-link span:first-child{font:600 26px/1 var(--serif);color:var(--gold)}
+.issue-link b{display:block;font:600 19px/1.2 var(--serif)}
+.issue-link small{font:500 12px/1.6 var(--mono);color:var(--dim);text-transform:uppercase}
+.issue-link em{font-style:normal;color:var(--gold);white-space:nowrap}
+.today{flex:1 1 440px;min-width:0;background:var(--paper);color:var(--ink);border-radius:18px;padding:28px;box-shadow:0 30px 60px -24px rgba(0,0,0,.55)}
+.today__head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-bottom:16px;border-bottom:2px solid var(--night)}
+.today__head h2{font:600 30px/1.1 var(--serif)}
+.live-tag{display:inline-flex;align-items:center;gap:6px;font:600 11px/1 var(--mono);letter-spacing:.1em;color:var(--gain);border:1px solid var(--gain);border-radius:999px;padding:6px 9px;white-space:nowrap}
+.live-tag .dot{width:6px;height:6px}
+.pick{margin:18px 0;background:var(--night);color:var(--paper);border-radius:14px;padding:18px 20px;border-left:6px solid var(--gold)}
+.pick__label{font:500 11px/1.3 var(--mono);letter-spacing:.12em;color:var(--gold);margin-bottom:8px}
+.pick__title{font:600 22px/1.2 var(--serif);margin-bottom:8px}
+.pick__note{font-size:14px;line-height:1.5;color:var(--soft)}
+.pick__note a{color:var(--gold)}
+.today__sub{font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--stone);margin:0 0 6px;text-transform:uppercase}
+.calendar{min-height:420px}
+.today__foot{margin-top:12px;color:var(--stone);font-size:12px}
+.markets{background:var(--ink);padding:72px 0 88px;border-top:1px solid rgba(229,177,58,.25)}
+.minis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin-bottom:14px}
+@media (max-width:1200px){.minis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.minis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.panel{background:var(--night);border:1px solid rgba(247,244,238,.12);border-radius:14px;overflow:hidden}
+.mini{height:200px}
+.panels{display:flex;flex-wrap:wrap;gap:14px}
+.panel--wide{flex:999 1 620px;min-width:0}
+.panel--side{flex:1 1 360px;min-width:0}
+.panel__head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:18px 20px 10px}
+.panel__head b{font:600 22px/1 var(--serif)}
+.panel__head span{font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--dim)}
+.heatmap{height:520px}
+.stories{height:520px}
+.widget-note{margin-top:18px;font-size:12px;color:#6F7E97}
+.reader{background:var(--mist);padding:40px 0 88px;scroll-margin-top:72px}
+.reader[hidden]{display:none}
+.reader__bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;color:var(--ink)}
+.reader__bar button{background:none;border:0;cursor:pointer;color:var(--blue);font:600 15px/1 var(--sans);padding:8px 0}
+.reader__bar span{font:500 12px/1 var(--mono);letter-spacing:.12em;color:var(--stone);text-transform:uppercase}
+#issue{max-width:720px;margin:0 auto;background:transparent;min-height:200px;overflow-x:auto}
+#issue .state{padding:36px 28px;color:var(--stone)}
 
 /* join */
-.steps{list-style:none;counter-reset:s;margin:0 0 32px;padding:0;max-width:44em}
-.steps li{counter-increment:s;display:grid;grid-template-columns:56px minmax(0,1fr);gap:8px;padding-block:20px;border-top:1px solid var(--line)}
-.steps li::before{content:counter(s);font:400 40px/1 var(--display);color:var(--navy)}
-.steps strong{display:block;font-size:20px}
-.steps span{color:var(--muted)}
-.fine{font-size:15px;color:var(--muted);max-width:40em}
+.join{display:flex;flex-wrap:wrap;gap:40px 80px;align-items:center;padding-top:64px;padding-bottom:88px;min-height:calc(100vh - 140px - 330px)}
+.join__text{flex:999 1 520px;min-width:0}
+.join h1{font:600 clamp(2.8rem,5.6vw,5rem)/.98 var(--serif);letter-spacing:-.03em;margin-bottom:22px}
+.join h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+.join .lead{margin-bottom:30px}
+.steps{flex:1 1 380px;min-width:0;list-style:none;margin:0;padding:0;border-top:1px solid rgba(247,244,238,.18)}
+.steps li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:8px;padding:18px 0;border-bottom:1px solid rgba(247,244,238,.18)}
+.steps li>span{font:600 36px/1 var(--serif);color:var(--gold)}
+.steps strong{display:block;font-size:18px}
+.steps small{color:var(--dim);font-size:15px}
+.fine{margin-top:22px;font-size:14px;color:var(--dim);max-width:38em}
 
-.cta .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center;padding-block:76px}
-.cta h2{font-size:clamp(34px,4.4vw,54px);line-height:1.06}
-.cta p{color:#CBD5E6;font-size:20px;margin-bottom:24px}
+/* footer */
+.foot{background:var(--ink);color:var(--dim);font-size:15px}
+.foot .wrap{padding-top:56px;padding-bottom:28px}
+.foot__cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:36px 40px;padding-bottom:40px;border-bottom:1px solid rgba(247,244,238,.12)}
+.foot__cols nav,.foot__cols>div{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.foot__label{font:500 12px/1 var(--mono);letter-spacing:.12em;color:var(--gold);margin-bottom:6px}
+.foot a{color:var(--soft);text-decoration:none}
+.foot a:hover{color:var(--paper);text-decoration:underline}
+.foot .mail{color:var(--paper);white-space:nowrap}
+.foot__about{max-width:260px;line-height:1.55}
+.foot .brand img{height:42px}
+.foot .brand__name b{font-size:28px}
+.foot__legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 32px;padding-top:22px;font-size:13px;color:#6F7E97}
+.foot__legal a{color:var(--dim);text-decoration:underline}
 
-footer{background:var(--navy-deep);color:#B9C5DA;font-size:15px}
-footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-block:32px}
-footer strong{color:var(--cream);letter-spacing:.2em;font-weight:600}
-footer a{color:var(--cream)}
-
-@media (prefers-reduced-motion:no-preference){
-  .trend polyline{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 1.8s ease-out both}
-  @keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
-}
-@media (max-width:900px){
-  .hero .wrap,.split,.nl,.cta .wrap{grid-template-columns:minmax(0,1fr);gap:36px}
-  .ruled,.people{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .side{position:static}
-}
 @media (max-width:820px){
-  .top .wrap{flex-wrap:wrap;gap:0 16px;padding-top:10px}
-  .top .btn{margin-left:auto}
-  .menu{order:3;width:100%;margin-left:0;gap:22px;overflow-x:auto;padding-block:6px 4px}
-  .hero .wrap{padding-block:44px 104px}
-  .sec{padding-block:56px}
-  .pagehead .wrap{padding-block:40px 46px}
-  .cta .wrap{padding-block:54px}
+  :root{--pad:20px}
+  .top{position:static}
+  .menu{order:3;width:100%;margin-left:0;gap:2px 20px;overflow-x:auto}
+  .hero{min-height:0}
+  .hero .wrap{padding-bottom:130px}
+  .weekcard{transform:none}
+  .sec{padding:64px 0}
+  .member__photo{flex-basis:100%;min-height:220px;border-right:0;border-bottom:4px solid var(--gold)}
+  .tba-row div+div{border-left:0;border-top:1px solid rgba(247,244,238,.18)}
+  .heatmap,.stories{height:440px}
 }
-@media (max-width:520px){
-  body{font-size:17px}
-  .ruled,.people{grid-template-columns:minmax(0,1fr)}
-  .brand span{display:none}
-  .events li{grid-template-columns:68px minmax(0,1fr);gap:16px}
-  .ev-date{font-size:38px}
-  .board li{gap:10px}
-  .b-chg{min-width:80px}
-}
-
-.top{top:env(safe-area-inset-top,0px)}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--navy)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
-<header class="top"><div class="wrap"><a class="brand" href="#home" aria-label="Alpha Brussels home"><i><svg width="28" height="28" viewBox="-36 -42 72 84" aria-hidden="true"><polyline points="-30,35 0,-35 30,35" fill="none" stroke="#1F3A5F" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><polyline points="-22,21 -6,7 4,15 22,-7" fill="none" stroke="#E2A82B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="13,-7 23,-8 22,2" fill="none" stroke="#E2A82B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>ALPHA BRUSSELS</span></a><nav class="menu" aria-label="Main"><a href="#home" aria-current="page">Home</a><a href="#events">Events</a><a href="#newsletter">Newsletter</a><a href="#about">About</a></nav><a class="btn btn--cream btn--sm" href="#join">Join the club</a></div></header>
-<main>
-<div class="page" id="p-home"><section class="hero navy"><div class="wrap"><div><p class="kicker">Finance &amp; Economics Club · Brussels</p><h1>Where finance meets economics in Brussels.</h1><p class="lead">Talks, workshops and competitions for students who want to understand markets, policy and careers in finance. Plus a free newsletter on the week in markets.</p><div class="btns"><a class="btn btn--gold" href="#join">Become a member</a><a class="btn btn--ghost" href="#newsletter">Read the newsletter</a></div></div><aside class="board" id="board" aria-label="This week in markets"><div class="board-head"><b>The week in markets</b><span>9–13 November 2026</span></div><ul><li><span class="b-name">S&amp;P 500</span><span class="b-close">7,561.67</span><span class="b-chg up">▲ +2.5%</span></li><li><span class="b-name">STOXX Europe 600</span><span class="b-close">664.14</span><span class="b-chg up">▲ +2.4%</span></li><li><span class="b-name">BEL 20</span><span class="b-close">6,119.66</span><span class="b-chg up">▲ +2.1%</span></li><li><span class="b-name">Nvidia</span><span class="b-close">$162.85</span><span class="b-chg down">▼ −12.7%</span></li><li><span class="b-name">Bitcoin</span><span class="b-close">$68,249</span><span class="b-chg down">▼ −9.9%</span></li></ul><p class="board-foot"><a href="#newsletter">Read issue Nº 01</a></p></aside></div><svg class="trend" viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0,88 L140,70 230,80 380,52 470,64 640,36 730,48 900,22 990,30 1200,6 L1200,100 L0,100 Z"/><polyline pathLength="1" points="0,88 140,70 230,80 380,52 470,64 640,36 730,48 900,22 990,30 1200,6"/></svg></section>
-<section class="sec"><div class="wrap"><div class="sec-head"><p class="kicker">What we do</p><h2>Events, competitions and a weekly newsletter</h2></div><div class="ruled"><div><h3>Guest talks</h3><p>Hear from professionals in banking, asset management, consulting and EU institutions.</p></div><div><h3>Skills workshops</h3><p>Hands-on sessions on Excel, valuation, financial modelling and reading the news.</p></div><div><h3>Competitions</h3><p>Build an investment thesis with a team and pitch it to a panel.</p></div><div><h3>Weekly newsletter</h3><p>The week in markets: what moved, why, and what to watch next.</p></div></div></div></section>
-<section class="sec sec--band"><div class="wrap split"><div><p class="kicker">This week’s issue</p><div class="teaser" id="teaser"><p class="meta">Issue Nº 01 · 14 November 2026</p><h3>The week in markets</h3><p>US stocks had their best week since August and Europe hit record highs, even as Nvidia lost its founder-CEO and bitcoin broke below $70,000.</p><a class="btn" href="#newsletter">Read this week’s issue</a></div></div><div class="signup"><h3>Get it in your inbox</h3><p>Free, every week. Enter your email to subscribe.</p><iframe src="https://alphabrussels.substack.com/embed" title="Subscribe to the Alpha Brussels newsletter" loading="lazy" scrolling="no"></iframe></div></div></section>
-<section class="sec"><div class="wrap split"><div class="sec-head"><p class="kicker">Events</p><h2>What’s on</h2><p>Talks, workshops and competitions through the year.</p><div><a class="btn btn--line" href="#events">See all events</a></div></div><div id="next-event"><div class="soon"><h3>Coming soon</h3><p>We’re planning our first events. They’ll be announced here and in the newsletter.</p></div></div></div></section>
-<section class="cta navy"><div class="wrap"><h2>Join Alpha Brussels.</h2><div><p>Membership is open to all students. Tell us a bit about yourself and why you’d like to join.</p><a class="btn btn--gold" href="#join">Apply to join</a></div></div></section></div>
-<div class="page" id="p-events" hidden><section class="pagehead navy"><div class="wrap"><p class="kicker">Events</p><h1>Events and competitions</h1><p class="lead">Everything we run, in one place.</p></div></section><section class="sec"><div class="wrap" id="events-list"><div class="soon"><h3>Coming soon</h3><p>We’re planning our first events. They’ll be announced here and in the newsletter.</p></div></div></section></div>
-<div class="page" id="p-newsletter" hidden><section class="pagehead navy"><div class="wrap"><p class="kicker">Newsletter</p><h1>The Alpha weekly</h1><p class="lead">The week in markets, every week. The issue below is the same one we send by email.</p></div></section><section class="sec"><div class="wrap nl"><div><div class="issue-bar"><p class="meta" id="issue-meta">Latest issue</p></div><div id="issue"><p class="state">Loading the latest issue…</p></div></div><div class="side"><div class="signup"><h3>Get it in your inbox</h3><p>Free, every week. Enter your email to subscribe.</p><iframe src="https://alphabrussels.substack.com/embed" title="Subscribe to the Alpha Brussels newsletter" loading="lazy" scrolling="no"></iframe></div><div class="archive" id="archive"><p class="kicker">Archive</p><h2>Past issues</h2><ol id="archive-list"></ol></div></div></div></section></div>
-<div class="page" id="p-about" hidden><section class="pagehead navy"><div class="wrap"><p class="kicker">About</p><h1>Who we are</h1><p class="lead">A student club for finance and economics in Brussels.</p></div></section><section class="sec"><div class="wrap"><div class="prose"><p>Alpha Brussels is a student finance and economics club. We run guest talks, skills workshops and competitions, and we publish a newsletter on the week in markets. Our events are also where members, alumni and employers meet.</p><p>Membership is open to all students, whatever you study.</p></div></div></section>
-<section class="sec sec--band"><div class="wrap"><div class="sec-head"><p class="kicker">The board</p><h2>The people who run the club</h2></div><div class="people">
-<!-- To add a photo: put the file in the images folder and replace the photo div with <img class="photo" src="images/name.jpg" alt="Full name"> -->
-<div><div class="photo">A</div><h3>Name Surname</h3><p class="role">President</p><p>Leads the club, sets the programme and represents us to the university and partners.</p></div>
-<div><div class="photo">B</div><h3>Name Surname</h3><p class="role">Vice president</p><p>Supports the president and coordinates the board and its projects.</p></div>
-<div><div class="photo">C</div><h3>Name Surname</h3><p class="role">Treasurer</p><p>Looks after the budget, sponsorships and membership.</p></div>
-<div><div class="photo">D</div><h3>Name Surname</h3><p class="role">Events &amp; communications</p><p>Plans talks and competitions and runs the newsletter and social media.</p></div>
-</div></div></section></div>
-<div class="page" id="p-join" hidden><section class="pagehead navy"><div class="wrap"><p class="kicker">Join</p><h1>Join Alpha Brussels</h1><p class="lead">Membership is open to all students.</p></div></section><section class="sec"><div class="wrap"><ol class="steps"><li><div><strong>Fill in the application form</strong><span>We ask for your name, school, year of study, your CV and why you want to join.</span></div></li><li><div><strong>The board reviews it</strong><span>We’ll get back to you by email.</span></div></li><li><div><strong>Welcome to the club</strong><span>You’ll hear about events first and get the weekly newsletter.</span></div></li></ol><a class="btn btn--gold" href="https://docs.google.com/forms/d/e/1FAIpQLSd0Q7y8fV-YgB2bqtjG5F73oFVszdUAfiVojvBKEq7Qiu8PgQ/viewform" target="_blank" rel="noopener">Open the application form</a><p class="fine" style="margin-top:24px">Uploading a CV requires signing in with a Google account. Your application is only seen by the board and is used to process your membership. To have it deleted, email contact.alphabrussels@gmail.com.</p></div></section></div>
+</head>
+<body>
+
+<div class="tape" aria-label="Live market prices">
+  <span class="tape__live"><span class="dot"></span>LIVE</span>
+  <div class="tape__body">
+    <div class="tape__fallback" id="tape-fallback" aria-hidden="true"></div>
+    <div class="tradingview-widget-container" id="tv-tape"><div class="tradingview-widget-container__widget"></div></div>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="Alpha Brussels home">
+      <img src="assets/alpha-mark-light.svg" alt="">
+      <span class="brand__name"><b>Alpha</b><small>BRUSSELS</small></span>
+    </a>
+    <nav class="menu" aria-label="Main">
+      <a href="#home" data-tab="home">Home</a>
+      <a href="#about" data-tab="about">About</a>
+      <a href="#events" data-tab="events">Events</a>
+      <a href="#newsletter" data-tab="newsletter">News</a>
+    </nav>
+    <a class="btn btn--gold btn--sm" href="#join">Join the club</a>
+  </div>
+</header>
+
+<main class="grid-bg">
+
+  <!-- HOME -->
+  <div class="page" data-page="home">
+    <section class="hero">
+      <img class="hero__mark" src="assets/alpha-mark-light.svg" alt="">
+      <svg class="hero__line" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,260 L90,235 170,248 260,205 330,222 430,170 510,190 600,140 690,158 780,108 860,126 960,70 1040,86 1130,40 1200,30 L1200,300 L0,300 Z" fill="rgba(229,177,58,0.08)"/>
+        <polyline pathLength="1" points="0,260 90,235 170,248 260,205 330,222 430,170 510,190 600,140 690,158 780,108 860,126 960,70 1040,86 1130,40 1200,30" fill="none" stroke="#E5B13A" stroke-width="2.5" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+      </svg>
+      <div class="wrap">
+        <div class="hero__text">
+          <a class="pill" href="#events"><span class="dot"></span>Workshops and talks start next semester. Events announced soon <b>See events →</b></a>
+          <h1>Markets move fast.<br><em>We make them make sense.</em></h1>
+          <p class="lead">Alpha Brussels is the finance and economics club that teaches how markets and the economy really work. Start with our free weekly newsletter: what moved, why it moved and what to watch next, in plain English.</p>
+          <div class="btns">
+            <a class="btn btn--gold" href="#newsletter" data-focus="subscribe">Get the newsletter, free</a>
+            <a class="btn btn--ghost" href="#join">Join the club →</a>
+          </div>
+        </div>
+        <aside class="weekcard" aria-label="This week in markets">
+          <div class="weekcard__head"><b>The week in markets</b><span id="week-label"></span></div>
+          <div id="week-rows"></div>
+          <a id="week-link" href="#newsletter">Why prices moved: read the latest issue →</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="on-paper sec" style="padding-bottom:40px">
+      <div class="wrap">
+        <div class="sechead">
+          <div>
+            <p class="kicker kicker--ink" style="margin-bottom:16px">Why join</p>
+            <h2 class="h2">Four reasons to <em>join Alpha.</em></h2>
+          </div>
+          <p>No finance background needed. Just curiosity about how money, markets and the economy work.</p>
+        </div>
+        <div class="reasons">
+          <div class="reason reason--night"><span class="reason__n">01</span><div><h3>Understand the markets</h3><p>Learn how markets and the economy really work, from interest rates to stock prices, explained in plain English.</p></div></div>
+          <div class="reason"><span class="reason__n">02</span><div><h3>Meet people in finance</h3><p>Hear from professionals and academics who work in finance, and ask them the questions you can’t ask in class.</p></div></div>
+          <div class="reason"><span class="reason__n">03</span><div><h3>Build your CV</h3><p>Practical skills you can talk about in an interview, and a club you can help run.</p></div></div>
+          <div class="reason reason--gold"><span class="reason__n">04</span><div><h3>Stay ahead every week</h3><p>Our free newsletter lands every week, so you always know what moved the markets and why.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="on-paper" style="padding:64px 0 96px">
+      <div class="wrap">
+        <div class="about">
+          <div class="about__text">
+            <p class="kicker kicker--ink" style="margin-bottom:18px">About us</p>
+            <h2 class="h2" style="margin-bottom:24px">A finance club that <em>builds the skills first.</em></h2>
+            <p class="body">Alpha Brussels is a student association focused on finance, economics and investing. We want every student, wherever they study, to understand how financial markets work in practice, and to meet the professionals and academics who work in them.</p>
+            <p class="body" style="margin-bottom:26px">Central banking, investing, behavioural finance, financial crises: we take the big topics in finance and make them clear, with help from people who work with them.</p>
+            <a class="btn btn--night" href="#about" style="font-size:16px;padding:16px 24px">Meet the board →</a>
+          </div>
+          <div class="about__seal"><img src="assets/alpha-seal.svg" alt="Alpha Brussels club seal"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ABOUT / BOARD -->
+  <div class="page" data-page="about" hidden>
+    <div class="wrap inner">
+      <div class="board-intro">
+        <div>
+          <p class="kicker" style="margin-bottom:16px">About · The board</p>
+          <h1 class="display">Meet <em>the board.</em></h1>
+        </div>
+        <div>
+          <p>Alpha Brussels is run by five students. Each of us leads one part of the club, from the programme and the team to our partners and the newsletter.</p>
+          <p>Have an idea, a question or want to help out? Write to any of us directly, or reach the whole board at <a href="mailto:contact.alphabrussels@gmail.com">contact.alphabrussels@gmail.com</a>.</p>
+        </div>
+      </div>
+      <div class="members" id="members"></div>
+    </div>
+  </div>
+
+  <!-- EVENTS -->
+  <div class="page" data-page="events" hidden>
+    <div class="wrap events">
+      <img class="events__mark" src="assets/alpha-mark-light.svg" alt="">
+      <p class="kicker" style="position:relative;margin-bottom:22px">Events</p>
+      <h1 style="position:relative">Our events start <em>next semester.</em></h1>
+      <p class="lead" style="position:relative">Workshops, talks and competitions with people from finance and economics. Dates, topics and speakers will be announced here and in the newsletter.</p>
+      <div class="btns" style="position:relative">
+        <a class="btn btn--gold" href="#newsletter" data-focus="subscribe">Get notified in the newsletter</a>
+        <a class="btn btn--ghost" href="#join">Join the club →</a>
+      </div>
+      <div class="tba-row" style="position:relative">
+        <div><b>Workshops</b><span>TO BE ANNOUNCED</span></div>
+        <div><b><i>Talks</i></b><span>TO BE ANNOUNCED</span></div>
+        <div><b>Competitions</b><span>TO BE ANNOUNCED</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWS -->
+  <div class="page" data-page="newsletter" hidden>
+    <div class="wrap newstop">
+      <div class="newstop__left">
+        <p class="kicker" style="margin-bottom:16px">The Alpha weekly</p>
+        <h1 class="display" style="margin-bottom:18px">The week in markets, <em>in your inbox.</em></h1>
+        <p class="lead" style="color:var(--soft)">What moved, why it moved and what to watch next, in plain English. Every number is checked against two sources, and every source is listed.</p>
+        <div class="subscribe" id="subscribe">
+          <iframe src="https://alphabrussels.substack.com/embed" title="Subscribe to the Alpha Brussels newsletter" loading="lazy" scrolling="no"></iframe>
+          <p>Box not showing? <a href="https://alphabrussels.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a>.</p>
+        </div>
+        <p class="kicker" style="margin-bottom:12px">Issues</p>
+        <div class="issues" id="issues"></div>
+      </div>
+
+      <aside class="today" aria-label="What to watch today">
+        <div class="today__head">
+          <div>
+            <p class="kicker kicker--ink" style="margin-bottom:6px" id="today-short">Today</p>
+            <h2>What to watch today</h2>
+          </div>
+          <span class="live-tag"><span class="dot"></span>LIVE</span>
+        </div>
+        <div class="pick" id="pick">
+          <p class="pick__label" id="pick-label">★ From the latest issue</p>
+          <p class="pick__title" id="pick-title">Loading…</p>
+          <p class="pick__note" id="pick-note"></p>
+        </div>
+        <p class="today__sub" id="today-long">Full calendar for today</p>
+        <div class="calendar tradingview-widget-container" id="tv-calendar"><div class="tradingview-widget-container__widget"></div></div>
+        <p class="today__foot">★ Our pick comes from the “What to expect next week” calendar in the latest issue. The full list is TradingView’s economic calendar and updates on its own.</p>
+      </aside>
+    </div>
+
+    <section class="reader" id="reader" hidden>
+      <div class="wrap">
+        <div class="reader__bar"><button type="button" id="reader-close">← Back to all issues</button><span id="reader-meta"></span></div>
+        <div id="issue"><p class="state">Loading the issue…</p></div>
+      </div>
+    </section>
+
+    <section class="markets" aria-label="Markets right now">
+      <div class="wrap">
+        <div class="sechead" style="margin-bottom:32px">
+          <div>
+            <p class="kicker" style="margin-bottom:14px">Live markets</p>
+            <h2 class="h2">Markets <em>right now.</em></h2>
+          </div>
+          <p style="color:var(--dim);font-size:15px;max-width:30em">Live charts and prices from TradingView, updating on their own. The newsletter explains the week; these show the moment.</p>
+        </div>
+        <div class="minis" id="minis"></div>
+        <div class="panels">
+          <div class="panel panel--wide">
+            <div class="panel__head"><b>Who’s up, who’s down</b><span>S&amp;P 500 HEATMAP · TODAY</span></div>
+            <div class="heatmap tradingview-widget-container" id="tv-heatmap"><div class="tradingview-widget-container__widget"></div></div>
+          </div>
+          <div class="panel panel--side">
+            <div class="panel__head"><b>Top stories</b><span>LIVE HEADLINES</span></div>
+            <div class="stories tradingview-widget-container" id="tv-stories"><div class="tradingview-widget-container__widget"></div></div>
+          </div>
+        </div>
+        <p class="widget-note">Live widgets by TradingView. Prices may be delayed. Headlines come from TradingView’s news feed, not from Alpha Brussels. Not investment advice.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- JOIN -->
+  <div class="page" data-page="join" hidden>
+    <div class="wrap join">
+      <div class="join__text">
+        <p class="kicker" style="margin-bottom:18px">Join</p>
+        <h1>Join Alpha <em>Brussels.</em></h1>
+        <p class="lead">Open to every student, wherever you study. Join now and you’ll be the first to hear when our events are announced.</p>
+        <a class="btn btn--gold" id="apply" href="https://docs.google.com/forms/d/e/1FAIpQLSd0Q7y8fV-YgB2bqtjG5F73oFVszdUAfiVojvBKEq7Qiu8PgQ/viewform" target="_blank" rel="noopener">Open the application form →</a>
+        <p class="fine">Uploading a CV requires signing in with a Google account. Your application is only seen by the board and is used to process your membership. To have it deleted, email contact.alphabrussels@gmail.com.</p>
+      </div>
+      <ol class="steps">
+        <li><span>1</span><div><strong>Fill in the form</strong><small>Your name, school, year of study, your CV and why you want to join.</small></div></li>
+        <li><span>2</span><div><strong>The board reviews it</strong><small>We read every application and get back to you by email.</small></div></li>
+        <li><span>3</span><div><strong>Welcome to the club</strong><small>You hear about events first and get the weekly newsletter.</small></div></li>
+      </ol>
+    </div>
+  </div>
 </main>
-<footer><div class="wrap"><div><strong>ALPHA BRUSSELS</strong><br>Finance &amp; Economics Club · Brussels, Belgium</div><div>Contact: <a href="mailto:contact.alphabrussels@gmail.com">contact.alphabrussels@gmail.com</a>
-<!-- SOCIALS: when your accounts exist, remove these comment markers and fill in the links
-<br><a href="https://instagram.com/YOURNAME">Instagram</a> · <a href="https://linkedin.com/company/YOURNAME">LinkedIn</a> · <a href="https://facebook.com/YOURNAME">Facebook</a> · <a href="https://tiktok.com/@YOURNAME">TikTok</a>
--->
-</div></div></footer>
-<script>window.AB_PREVIEW=true;</script>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__cols">
+      <div>
+        <a class="brand" href="#home" aria-label="Alpha Brussels home"><img src="assets/alpha-mark-light.svg" alt=""><span class="brand__name"><b>Alpha</b><small>BRUSSELS</small></span></a>
+        <p class="foot__about">The finance and economics club that teaches how markets really work. Based in Brussels.</p>
+      </div>
+      <nav aria-label="Club">
+        <span class="foot__label">CLUB</span>
+        <a href="#about">Meet the board</a>
+        <a href="#events">Events</a>
+        <a href="#join">Join the club</a>
+      </nav>
+      <nav aria-label="Newsletter">
+        <span class="foot__label">NEWSLETTER</span>
+        <a href="#newsletter">This week’s issue</a>
+        <a href="#newsletter" data-focus="issues">Past issues</a>
+        <a href="https://alphabrussels.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a>
+      </nav>
+      <div>
+        <span class="foot__label">CONTACT</span>
+        <a class="mail" href="mailto:contact.alphabrussels@gmail.com">contact.alphabrussels@gmail.com</a>
+        <span>Brussels, Belgium</span>
+      </div>
+    </div>
+    <div class="foot__legal">
+      <span>© <span id="year">2026</span> Alpha Brussels · Finance &amp; Economics Club, based in Brussels</span>
+      <span>Live prices by <a href="https://www.tradingview.com/" target="_blank" rel="noopener">TradingView</a>, may be delayed · Not investment advice</span>
+    </div>
+  </div>
+</footer>
+
 <script>
-/* Alpha Brussels site script. Reads issues/issues.json and events.json and fills the pages. */
+/* ============ Settings: edit these ============ */
+// Board members. Leave name, bio, email, linkedin or photo empty until you have them; the card shows "To be announced" and hides empty links.
+var BOARD = [
+  { role: 'President', what: 'Leads the club and the board, sets the programme and represents Alpha Brussels to universities and partners.', name: '', bio: '', email: '', linkedin: '', photo: '' },
+  { role: 'HR', what: 'Looks after members and the team: welcomes new members, recruits volunteers and keeps everyone working together.', name: '', bio: '', email: '', linkedin: '', photo: '' },
+  { role: 'Operations', what: 'Makes events happen: rooms, planning, logistics and everything on the day.', name: '', bio: '', email: '', linkedin: '', photo: '' },
+  { role: 'Marketing', what: 'Runs our brand, social media, website and the weekly newsletter, so students hear about us.', name: '', bio: '', email: '', linkedin: '', photo: '' },
+  { role: 'Corporate relations', what: 'Builds our links with companies, banks and institutions, and brings in speakers and partners.', name: '', bio: '', email: '', linkedin: '', photo: '' }
+];
+// TradingView symbols. If one shows no data in the live preview, swap it for another listing of the same market.
+var TAPE = [
+  ['FOREXCOM:SPXUSD', 'S&P 500'], ['FOREXCOM:DJI', 'Dow Jones'], ['FOREXCOM:NSXUSD', 'Nasdaq 100'],
+  ['STOXX:SXXP', 'STOXX 600'], ['XETR:DAX', 'DAX'], ['EURONEXT:PX1', 'CAC 40'], ['FOREXCOM:UKXGBP', 'FTSE 100'], ['EURONEXT:BEL20', 'BEL 20'],
+  ['FOREXCOM:JP225', 'Nikkei 225'], ['FOREXCOM:HKXHKD', 'Hang Seng'], ['BITSTAMP:BTCUSD', 'Bitcoin'], ['BITSTAMP:ETHUSD', 'Ether'],
+  ['TVC:USOIL', 'WTI oil'], ['TVC:GOLD', 'Gold'], ['FRED:DGS10', 'US 10-yr yield'], ['FX:EURUSD', 'EUR/USD']
+];
+var MINIS = [['FOREXCOM:SPXUSD', 'S&P 500'], ['STOXX:SXXP', 'STOXX 600'], ['EURONEXT:BEL20', 'BEL 20'], ['FOREXCOM:JP225', 'Nikkei 225'], ['BITSTAMP:BTCUSD', 'Bitcoin'], ['TVC:GOLD', 'Gold']];
+// Economic calendar: countries (ISO codes, lower case) and importance (-1 low, 0 medium, 1 high).
+var CAL_COUNTRIES = 'us,eu,gb,be,de,fr,jp,cn';
+var CAL_IMPORTANCE = '0,1';
+
+/* ============ Site script ============ */
 (function () {
-  var PREVIEW = !!window.AB_PREVIEW;
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function day(s) { var p = String(s).split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function iso(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
   function longDate(s) { return day(s).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }); }
   function num(n) { return 'Nº ' + (n < 10 ? '0' + n : n); }
   function getJSON(url) { return fetch(url, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(url); return r.json(); }); }
-  function link(page) { return PREVIEW ? '#' + page : (page === 'home' ? 'index' : page) + '.html'; }
+  $('year').textContent = new Date().getFullYear();
 
-  /* ---------- newsletter ---------- */
-  var issues = [], current = null;
+  /* --- TradingView widgets: loaded in the visitor's browser only, nothing runs on a server --- */
+  var mounted = {};
+  function mount(id, script, config) {
+    if (mounted[id]) return; mounted[id] = true;
+    var host = $(id); if (!host) return;
+    var s = document.createElement('script');
+    s.src = 'https://s3.tradingview.com/external-embedding/' + script; s.async = true;
+    s.text = JSON.stringify(config);
+    host.appendChild(s);
+  }
+  mount('tv-tape', 'embed-widget-ticker-tape.js', {
+    symbols: TAPE.map(function (t) { return { proName: t[0], title: t[1] }; }),
+    showSymbolLogo: false, isTransparent: true, displayMode: 'compact', colorTheme: 'dark', locale: 'en'
+  });
+  // Hide the stand-in strip once TradingView's ticker has drawn itself.
+  var tapeCheck = setInterval(function () {
+    if (document.querySelector('#tv-tape iframe')) { $('tape-fallback').style.visibility = 'hidden'; clearInterval(tapeCheck); }
+  }, 1000);
+  setTimeout(function () { clearInterval(tapeCheck); }, 20000);
 
-  function board(i) {
-    var el = $('board'); if (!el || !i.board) return;
-    el.innerHTML = '<div class="board-head"><b>The week in markets</b><span>' + esc(i.week || longDate(i.date)) + '</span></div><ul>' +
-      i.board.map(function (r) {
-        var up = /^\+/.test(r[2]);
-        return '<li><span class="b-name">' + esc(r[0]) + '</span><span class="b-close">' + esc(r[1]) + '</span><span class="b-chg ' + (up ? 'up' : 'down') + '">' + (up ? '▲ ' : '▼ ') + esc(r[2]) + '</span></li>';
-      }).join('') + '</ul><p class="board-foot"><a href="' + link('newsletter') + '">Read issue ' + num(i.issue) + '</a></p>';
+  function mountNews() {
+    mount('tv-calendar', 'embed-widget-events.js', {
+      colorTheme: 'light', isTransparent: true, width: '100%', height: 420, locale: 'en',
+      importanceFilter: CAL_IMPORTANCE, countryFilter: CAL_COUNTRIES
+    });
+    var minis = $('minis');
+    if (!minis.children.length) {
+      MINIS.forEach(function (m, i) {
+        var box = document.createElement('div'); box.className = 'panel mini tradingview-widget-container'; box.id = 'tv-mini-' + i;
+        box.innerHTML = '<div class="tradingview-widget-container__widget"></div>';
+        minis.appendChild(box);
+        mount(box.id, 'embed-widget-mini-symbol-overview.js', { symbol: m[0], width: '100%', height: 200, locale: 'en', dateRange: '1D', colorTheme: 'dark', isTransparent: true, autosize: false, largeChartUrl: '' });
+      });
+    }
+    mount('tv-heatmap', 'embed-widget-stock-heatmap.js', {
+      dataSource: 'SPX500', blockSize: 'market_cap_basic', blockColor: 'change', grouping: 'sector', locale: 'en',
+      colorTheme: 'dark', isTransparent: true, hasTopBar: false, isDataSetEnabled: false, isZoomEnabled: true, hasSymbolTooltip: true, width: '100%', height: '100%'
+    });
+    mount('tv-stories', 'embed-widget-timeline.js', { feedMode: 'all_symbols', isTransparent: true, displayMode: 'regular', width: '100%', height: '100%', colorTheme: 'dark', locale: 'en' });
   }
-  function teaser(i) {
-    var el = $('teaser'); if (!el) return;
-    el.innerHTML = '<p class="meta">Issue ' + num(i.issue) + ' · ' + longDate(i.date) + '</p><h3>' + esc(i.title) + '</h3><p>' + esc(i.summary) + '</p><a class="btn" href="' + link('newsletter') + '">Read this week’s issue</a>';
+
+  /* --- Board members --- */
+  var ICON_MAIL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>';
+  var ICON_LINK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>';
+  $('members').innerHTML = BOARD.map(function (b) {
+    var photo = b.photo ? '<img src="' + esc(b.photo) + '" alt="' + esc(b.name || b.role) + '">' : '<img class="ph" src="assets/alpha-seal.svg" alt="">';
+    var links = (b.email ? '<a href="mailto:' + esc(b.email) + '">' + ICON_MAIL + esc(b.email) + '</a>' : '') +
+                (b.linkedin ? '<a href="' + esc(b.linkedin) + '" target="_blank" rel="noopener">' + ICON_LINK + 'LinkedIn</a>' : '');
+    return '<article class="member"><div class="member__photo">' + photo + '</div><div class="member__body">' +
+      '<p class="member__role">' + esc(b.role) + '</p>' +
+      '<h2 class="member__name' + (b.name ? '' : ' tba') + '">' + (b.name ? esc(b.name) : 'To be announced') + '</h2>' +
+      '<p class="member__what">' + esc(b.what) + '</p>' +
+      (b.bio ? '<p class="member__bio">' + esc(b.bio) + '</p>' : '') +
+      (links ? '<div class="member__links">' + links + '</div>' : '') +
+      '</div></article>';
+  }).join('');
+
+  /* --- Issues: the newest entry of issues/issues.json --- */
+  var issues = [], latest = null;
+  function weekCard(i) {
+    $('week-label').textContent = i.week || longDate(i.date);
+    $('week-rows').innerHTML = (i.board || []).map(function (r) {
+      var up = !/^[−-]/.test(r[2]);
+      var size = Math.min(Math.abs(parseFloat(String(r[2]).replace('−', '-').replace(/[^0-9.\-]/g, ''))) || 0, 15) / 15 * 100;
+      var col = up ? 'var(--gain)' : 'var(--loss)';
+      return '<div class="wrow"><span class="wrow__name"><b>' + esc(r[0]) + '</b><small>' + esc(r[1]) + '</small></span>' +
+        '<span class="wrow__bar" style="justify-content:' + (up ? 'flex-start' : 'flex-end') + '"><i style="width:' + size.toFixed(0) + '%;background:' + col + '"></i></span>' +
+        '<span class="wrow__chg" style="color:' + col + '">' + (up ? '▲ ' : '▼ ') + esc(r[2]) + '</span></div>';
+    }).join('');
+    $('week-link').textContent = 'Why prices moved: issue ' + num(i.issue) + ' →';
+    $('week-link').setAttribute('href', '?issue=' + encodeURIComponent(i.file.replace(/\.html$/, '')) + '#newsletter');
+    $('tape-fallback').innerHTML = [0, 1].map(function () {
+      return (i.board || []).map(function (r) { var up = !/^[−-]/.test(r[2]); return '<span>' + esc(r[0]) + ' <span style="color:' + (up ? 'var(--gain-dark)' : 'var(--loss-dark)') + ';padding:0;border:0">' + (up ? '▲ ' : '▼ ') + esc(r[2]) + '</span></span>'; }).join('');
+    }).join('');
   }
-  function archive() {
-    var el = $('archive-list'); if (!el) return;
-    el.innerHTML = issues.map(function (i) {
-      return '<li><small>' + num(i.issue) + ' · ' + longDate(i.date) + (i === current ? ' · reading now' : '') + '</small><a href="newsletter.html?issue=' + encodeURIComponent(i.file.replace(/\.html$/, '')) + '" data-file="' + esc(i.file) + '">' + esc(i.title) + '</a></li>';
-    }).join('') + (issues.length < 2 ? '<li class="note">This is our first issue. Every new one is added here.</li>' : '');
+  function issueList() {
+    $('issues').innerHTML = issues.map(function (i, k) {
+      return '<a class="issue-link" href="?issue=' + encodeURIComponent(i.file.replace(/\.html$/, '')) + '#newsletter" data-file="' + esc(i.file) + '">' +
+        '<span>' + num(i.issue) + '</span><span><b>' + esc(i.title) + '</b><small>' + (k === 0 ? 'Latest · ' : '') + esc(longDate(i.date)) + '</small></span><em>Read →</em></a>';
+    }).join('');
   }
-  function showIssue(i, scroll) {
-    var host = $('issue'); if (!host) return;
-    current = i;
-    if ($('issue-meta')) $('issue-meta').textContent = 'Issue ' + num(i.issue) + ' · ' + longDate(i.date);
-    archive();
+  function openIssue(i, scroll) {
+    var host = $('issue'); $('reader').hidden = false;
+    $('reader-meta').textContent = 'Issue ' + num(i.issue) + ' · ' + longDate(i.date);
     fetch('issues/' + i.file, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(i.file); return r.text(); }).then(function (html) {
       var doc = new DOMParser().parseFromString(html, 'text/html');
       doc.querySelectorAll('script').forEach(function (s) { s.remove(); });
@@ -263,65 +633,84 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
       doc.querySelectorAll('a[href^="http"]').forEach(function (a) { a.target = '_blank'; a.rel = 'noopener'; });
       var root = host.shadowRoot || host.attachShadow({ mode: 'open' });
       root.innerHTML = '<style>:host{display:block}' + css + '</style>' + doc.body.innerHTML;
-      if (!host.abBound) { host.abBound = true; root.addEventListener('click', function (e) {
-        var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
-        e.preventDefault();
-        var id = a.getAttribute('href').slice(1);
-        var t = id ? root.getElementById(id) : $('archive');
-        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }); }
-      if (scroll) host.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!host.abBound) {
+        host.abBound = true;
+        root.addEventListener('click', function (e) {
+          var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+          e.preventDefault();
+          var t = root.getElementById(a.getAttribute('href').slice(1));
+          if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); else $('issues').scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+      if (scroll) $('reader').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }).catch(function () { host.innerHTML = '<p class="state">We couldn’t load this issue. Please try again in a moment.</p>'; });
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('.issue-link, #week-link'); if (!a) return;
+    var file = a.getAttribute('data-file') || (latest && latest.file);
+    var i = issues.filter(function (x) { return x.file === file; })[0]; if (!i) return;
+    e.preventDefault();
+    try { history.replaceState(null, '', '?issue=' + encodeURIComponent(i.file.replace(/\.html$/, '')) + '#newsletter'); } catch (err) {}
+    show('newsletter', false);
+    openIssue(i, true);
+  });
+  $('reader-close').addEventListener('click', function () { $('reader').hidden = true; try { history.replaceState(null, '', location.pathname + '#newsletter'); } catch (err) {} $('issues').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+
+  /* --- Today's pick: issues/<date>.watch.json, written by the weekly build --- */
+  function todayPanel() {
+    var now = new Date();
+    $('today-short').textContent = 'Today · ' + now.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+    $('today-long').textContent = 'Full calendar for ' + now.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+    var setPick = function (label, title, note) { $('pick-label').textContent = label; $('pick-title').textContent = title; $('pick-note').innerHTML = note; };
+    var weekend = now.getDay() === 0 || now.getDay() === 6;
+    if (!latest) { setPick('★ Our pick', 'Our first issue is on its way.', ''); return; }
+    var link = '<a href="?issue=' + encodeURIComponent(latest.file.replace(/\.html$/, '')) + '#newsletter" class="issue-link-inline" data-file="' + esc(latest.file) + '">issue ' + num(latest.issue) + '</a>';
+    getJSON('issues/' + latest.date + '.watch.json').then(function (w) {
+      var pick = (w.days || {})[iso(now)];
+      if (pick) setPick('★ Today’s key event · from issue ' + num(latest.issue), pick, 'Why it matters is in the “What to expect next week” section of ' + link + '.');
+      else if (weekend) setPick('★ From issue ' + num(latest.issue), 'Markets are closed today.', 'Next week’s calendar arrives with Saturday’s issue.');
+      else setPick('★ From issue ' + num(latest.issue), 'No key event picked for today.', 'Each weekday, the newsletter picks the one event that matters most.');
     }).catch(function () {
-      host.innerHTML = '<p class="state">We couldn’t load this issue. Please try again in a moment.</p>';
+      setPick('★ From issue ' + num(latest.issue), weekend ? 'Markets are closed today.' : 'Today’s pick appears with the next issue.', 'Each weekday, the newsletter picks the one event that matters most.');
     });
   }
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('#archive-list a'); if (!a) return;
-    var i = issues.filter(function (x) { return x.file === a.getAttribute('data-file'); })[0]; if (!i) return;
-    e.preventDefault();
-    if (!PREVIEW) { try { history.replaceState(null, '', a.getAttribute('href')); } catch (err) {} }
-    showIssue(i, true);
+    var a = e.target.closest && e.target.closest('.issue-link-inline'); if (!a || !latest) return;
+    e.preventDefault(); show('newsletter', false); openIssue(latest, true);
   });
 
   getJSON('issues/issues.json').then(function (list) {
     issues = list.slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
-    if (!issues.length) throw new Error('none');
-    var want = null;
-    try { want = new URLSearchParams(location.search).get('issue'); } catch (err) {}
-    var first = issues.filter(function (x) { return want && x.file === want + '.html'; })[0] || issues[0];
-    board(issues[0]); teaser(issues[0]); showIssue(first, false);
+    latest = issues[0] || null;
+    if (latest) weekCard(latest);
+    issueList(); todayPanel();
+    var want = null; try { want = new URLSearchParams(location.search).get('issue'); } catch (err) {}
+    var hit = want && issues.filter(function (x) { return x.file === want + '.html'; })[0];
+    if (hit) { show('newsletter', false); openIssue(hit, true); }
   }).catch(function () {
-    if ($('issue')) $('issue').innerHTML = '<p class="state">The first issue is on its way. Subscribe to get it by email.</p>';
-    if ($('archive-list')) $('archive-list').innerHTML = '<li class="note">Issues will be listed here.</li>';
+    $('issues').innerHTML = '<p style="padding:16px 0;color:var(--dim)">Issues will be listed here.</p>';
+    todayPanel();
   });
 
-  /* ---------- events ---------- */
-  function eventItem(e) {
-    var d = day(e.date);
-    var facts = [e.type, d.toLocaleDateString('en-GB', { weekday: 'long' }), e.time, e.place].filter(Boolean).map(esc).join(' · ');
-    return '<li><div class="ev-date">' + d.getDate() + '<small>' + d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }) + '</small></div><div><p class="ev-facts">' + facts + '</p><h3>' + esc(e.title) + '</h3>' +
-      (e.description ? '<p class="ev-desc">' + esc(e.description) + '</p>' : '') +
-      (e.link ? '<p class="ev-desc"><a href="' + esc(e.link) + '" target="_blank" rel="noopener">' + esc(e.linkText || 'Sign up') + '</a></p>' : '') + '</div></li>';
+  /* --- Tabs --- */
+  var PAGES = ['home', 'about', 'events', 'newsletter', 'join'];
+  function show(name, top) {
+    if (PAGES.indexOf(name) < 0) name = 'home';
+    document.querySelectorAll('.page').forEach(function (p) { p.hidden = p.getAttribute('data-page') !== name; });
+    document.querySelectorAll('.menu a').forEach(function (a) { if (a.getAttribute('data-tab') === name) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    if (name === 'newsletter') mountNews();
+    document.title = (name === 'home' ? '' : ({ about: 'Meet the board', events: 'Events', newsletter: 'News', join: 'Join' })[name] + ' · ') + 'Alpha Brussels – Finance & Economics Club';
+    if (top !== false) window.scrollTo(0, 0);
   }
-  var SOON = '<div class="soon"><h3>Coming soon</h3><p>We’re planning our first events. They’ll be announced here and in the newsletter.</p></div>';
-  getJSON('events.json').then(function (list) {
-    var t = new Date(); t.setHours(0, 0, 0, 0);
-    var up = list.filter(function (e) { return day(e.date) >= t; }).sort(function (a, b) { return a.date < b.date ? -1 : 1; });
-    var past = list.filter(function (e) { return day(e.date) < t; }).sort(function (a, b) { return a.date < b.date ? 1 : -1; });
-    if ($('events-list')) $('events-list').innerHTML = (up.length ? '<ul class="events">' + up.map(eventItem).join('') + '</ul>' : SOON) +
-      (past.length ? '<h2 class="sub-h">Past events</h2><ul class="events">' + past.map(eventItem).join('') + '</ul>' : '');
-    if ($('next-event') && up.length) $('next-event').innerHTML = '<ul class="events">' + eventItem(up[0]) + '</ul>';
-  }).catch(function () {});
+  function route() { show((location.hash || '#home').slice(1)); }
+  window.addEventListener('hashchange', route);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-focus]'); if (!a) return;
+    var target = a.getAttribute('data-focus');
+    setTimeout(function () { var el = $(target); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 80);
+  });
+  route();
 })();
-
 </script>
-<script>
-(function(){var ids=['home','events','newsletter','about','join'];
-function show(){var h=(location.hash||'#home').slice(1);if(ids.indexOf(h)<0)h='home';
-ids.forEach(function(i){document.getElementById('p-'+i).hidden=(i!==h)});
-document.querySelectorAll('.menu a').forEach(function(a){if(a.getAttribute('href')==='#'+h)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
-window.scrollTo(0,0)}
-window.addEventListener('hashchange',show);show();})();
-</script>
-
-</body></html>
+</body>
+</html>
