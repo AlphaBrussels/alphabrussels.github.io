@@ -570,8 +570,8 @@ def render(meta, sections, data, cites):
 <meta name="robots" content="noindex">
 <script>/* Issues are read in the Newsletter tab of the website: a direct visit to this file goes there. */
 var f = location.pathname.split("/").pop(); if (location.hostname === "alphabrussels.github.io" && location.pathname.indexOf("/issues/") === 0 && f.length === 15 && f.slice(-5) === ".html") location.replace("/?issue=" + f.slice(0, 10) + "#newsletter");</script>
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,600;1,6..72,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=2">
+<link href="{SITE_URL}/assets/fonts/fonts.css" rel="stylesheet">
 <style>
   body{{margin:0;padding:0;background:{MIST};-webkit-font-smoothing:antialiased;}}
   a{{color:{BLUE};text-underline-offset:3px;}}
@@ -685,7 +685,7 @@ def render_card(meta, data):
                 out.append(f'<div class="r"><span>{html.escape(label)}</span><b style="color:{colr}">{chg}</b></div>')
         return "".join(out)
     return f"""<!DOCTYPE html><html><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,600;1,6..72,500&family=Inter:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="{SITE_URL}/assets/fonts/fonts.css" rel="stylesheet">
 <style>
 body{{margin:0;background:{PAPER}}}
 #card{{width:440px;background:{PAPER};font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif;color:{INK}}}

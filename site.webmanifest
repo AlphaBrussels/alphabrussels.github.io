@@ -1,0 +1,13 @@
+{
+  "name": "Alpha Brussels – Finance & Economics Club",
+  "short_name": "Alpha Brussels",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#12284F",
+  "theme_color": "#12284F",
+  "icons": [
+    { "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
