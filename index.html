@@ -196,13 +196,13 @@ h1,h2,h3,p{margin:0}
 .issue-link{display:grid;grid-template-columns:84px minmax(0,1fr) auto;gap:16px;align-items:center;padding:20px 12px;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);border-radius:0}
 .issue-link:hover{background:#fff}
 .issue-link:hover b{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
-.issue-link span:first-child{font:600 30px/1 var(--serif);color:var(--gold-ink)}
+.issue-link span:first-child{font:600 30px/1 var(--serif);color:var(--gold-ink);white-space:nowrap}
 .issue-link b{display:block;font:600 22px/1.2 var(--serif);color:var(--night)}
 .issue-link small{font:500 12px/1.6 var(--mono);letter-spacing:.06em;color:var(--stone);text-transform:uppercase}
 .issue-link em{font-style:normal;font-weight:600;color:var(--blue);white-space:nowrap}
 .issue-link[aria-current]{background:#fff;box-shadow:inset 4px 0 0 var(--gold)}
 .issue-link[aria-current] em{color:var(--gold-ink)}
-@media (max-width:600px){.issue-link{grid-template-columns:56px minmax(0,1fr);padding:16px 4px}.issue-link em{grid-column:2}.issue-link span:first-child{font-size:24px}}
+@media (max-width:600px){.issue-link{grid-template-columns:62px minmax(0,1fr);gap:12px;padding:16px 4px}.issue-link em{grid-column:2}.issue-link span:first-child{font-size:21px}.issue-link b{font-size:20px}}
 .archive .empty{padding:20px 0;color:var(--stone)}
 
 /* join */
