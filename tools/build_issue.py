@@ -30,6 +30,10 @@ What it guarantees before it writes anything:
   * every number in the text appears in a quote stored from the source it cites
   * citations are numbered in reading order and the source list is rebuilt, so
     editing, moving or deleting text renumbers everything automatically
+  * "explain:" blocks become "In plain words" boxes that teach a general idea (what an
+    index, a yield or an earnings report is). They explain, they do not report, so they
+    may not carry citations or any of the week's figures (market names like "S&P 500"
+    and dates are fine). This week's facts always go in cited text.
 
 An issue marked "legacy": true in its data file (issue 1 only) reports the
 second-source, quote and outlet checks as warnings instead of errors.
@@ -154,7 +158,7 @@ def parse_md(text):
                 target.append({"type": "bullets", "items": items})
         else:
             joined = " ".join(lines)
-            for prefix, kind in (("> ", "callout"), ("note: ", "note"), ("plain: ", "plain")):
+            for prefix, kind in (("> ", "callout"), ("note: ", "note"), ("plain: ", "plain"), ("explain: ", "explain")):
                 if joined.startswith(prefix):
                     target.append({"type": kind, "text": joined[len(prefix):].strip()})
                     break
@@ -344,9 +348,23 @@ def check_text(sections, data, table_numbers, table_keys, rep):
             if missing:
                 shown = ", ".join(f"{n:g}" for n in missing)
                 rep.strict(f"[{where}] {shown} not found in the quotes of {keys}: “{span.strip()[-80:]}”")
-    for b in (b for s in sections for b in s["blocks"] if b["type"] == "plain"):
-        if CITE.search(b["text"]) or NUM.search(b["text"]):
+    def all_blocks(bs):
+        for b in bs:
+            yield b
+            if b["type"] == "spotlight":
+                yield from all_blocks(b["blocks"])
+    for b in (b for s in sections for b in all_blocks(s["blocks"])):
+        if b["type"] == "plain" and (CITE.search(b["text"]) or NUM.search(b["text"])):
             rep.error("A 'plain:' line may not contain numbers or citations. Make it a normal paragraph.")
+        if b["type"] == "explain":
+            # An explainer teaches a general idea (what an index or a yield is). It carries no
+            # facts about this week, so it has no citation and no figures; names like "S&P 500",
+            # "10-year" and dates are allowed.
+            short = b["text"][:60]
+            if CITE.search(b["text"]):
+                rep.error(f"An 'explain:' box may not carry citations (it explains ideas, not this week's facts): “{short}…”")
+            if claim_numbers(b["text"]):
+                rep.error(f"An 'explain:' box may not contain figures. Put this week's numbers in a cited paragraph: “{short}…”")
 
 
 # ---------------------------------------------------------------- rendering
@@ -479,6 +497,10 @@ def render_blocks(blocks, data, cites, dark=False):
             out.append(render_macro(data, cites))
         elif t == "plain":
             out.append(f'<div class="b" style="font-size:15px;line-height:22px;color:{STONE};padding-bottom:20px;">{inline(b["text"], cites)}</div>')
+        elif t == "explain":
+            out.append(f'<div class="b" style="background:#EAF0F7;border-radius:12px;margin:6px 0 20px 0;padding:16px 20px 16px 20px;font-size:15.5px;line-height:24px;color:{INK};">'
+                       f'<div class="m" style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:{GOLD_INK};padding-bottom:6px;">'
+                       f'<span style="display:inline-block;width:8px;height:8px;background:{SGOLD};margin-right:8px;vertical-align:1px;"></span>In plain words</div>{inline(b["text"], cites)}</div>')
         elif t == "note":
             out.append(f'<div class="b" style="font-size:13px;line-height:20px;color:{STONE};padding-top:8px;">{inline(b["text"], cites)}</div>')
         elif t == "para":
