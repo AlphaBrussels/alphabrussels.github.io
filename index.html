@@ -97,9 +97,6 @@ h1,h2,h3,p{margin:0}
 @keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
 .hero .wrap{position:relative;width:100%;padding-top:48px;padding-bottom:150px;display:flex;flex-wrap:wrap;gap:48px;align-items:center}
 .hero__text{flex:999 1 600px;min-width:0}
-.pill{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;cursor:pointer;text-decoration:none;background:rgba(229,177,58,.12);color:var(--paper);border:1px solid rgba(229,177,58,.5);border-radius:999px;padding:8px 8px 8px 14px;font:500 14px/1.3 var(--sans);margin-bottom:26px}
-.pill .dot{color:var(--gold)}
-.pill b{background:var(--gold);color:var(--ink);border-radius:999px;padding:6px 10px;font:600 12px/1 var(--sans)}
 .hero h1{font:600 clamp(2.8rem,6.4vw,6rem)/.95 var(--serif);letter-spacing:-.03em;margin-bottom:24px}
 .hero h1 em{font-style:italic;font-weight:500;color:var(--gold)}
 .hero .lead{margin-bottom:32px}
@@ -175,54 +172,38 @@ h1,h2,h3,p{margin:0}
 .tba-row span{font:500 12px/1 var(--mono);letter-spacing:.12em;color:var(--gold)}
 
 /* news */
-.newstop{display:flex;flex-wrap:wrap;gap:48px 72px;align-items:flex-start;padding-top:64px;padding-bottom:88px}
-.newstop__left{flex:999 1 560px;min-width:0}
-.subscribe{background:var(--paper);border-radius:16px;padding:10px;max-width:560px;margin:26px 0 30px}
+.nlhead{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px 72px;align-items:center;padding-top:64px;padding-bottom:72px}
+@media (max-width:900px){.nlhead{grid-template-columns:minmax(0,1fr);padding-top:48px;padding-bottom:56px}}
+.nlhead__links{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:26px}
+.nlhead__links a{color:var(--gold);font:600 16px/1.3 var(--sans);text-decoration:none}
+.nlhead__links a:hover{text-decoration:underline;text-underline-offset:4px}
+.subscribe{background:var(--paper);border-radius:16px;padding:18px 14px 12px;box-shadow:0 30px 60px -24px rgba(0,0,0,.55)}
+.subscribe__title{font:600 22px/1.2 var(--serif)!important;color:var(--night)!important;padding:0 8px 6px!important}
 .subscribe iframe{display:block;width:100%;height:150px;border:0;background:var(--paper);border-radius:10px}
 .subscribe p{color:var(--stone);font-size:13px;padding:6px 8px 2px}
 .subscribe a{color:var(--blue)}
-.issues{border-top:1px solid rgba(247,244,238,.18);max-width:640px;margin-top:12px}
-.issue-link{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(247,244,238,.18);text-decoration:none;color:var(--paper)}
-.issue-link:hover b{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
-.issue-link span:first-child{font:600 26px/1 var(--serif);color:var(--gold)}
-.issue-link b{display:block;font:600 19px/1.2 var(--serif)}
-.issue-link small{font:500 12px/1.6 var(--mono);color:var(--dim);text-transform:uppercase}
-.issue-link em{font-style:normal;color:var(--gold);white-space:nowrap}
-.today{flex:1 1 440px;min-width:0;background:var(--paper);color:var(--ink);border-radius:18px;padding:28px;box-shadow:0 30px 60px -24px rgba(0,0,0,.55)}
-.today__head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-bottom:16px;border-bottom:2px solid var(--night)}
-.today__head h2{font:600 30px/1.1 var(--serif)}
-.live-tag{display:inline-flex;align-items:center;gap:6px;font:600 11px/1 var(--mono);letter-spacing:.1em;color:var(--gain);border:1px solid var(--gain);border-radius:999px;padding:6px 9px;white-space:nowrap}
-.live-tag .dot{width:6px;height:6px}
-.pick{margin:18px 0;background:var(--night);color:var(--paper);border-radius:14px;padding:18px 20px;border-left:6px solid var(--gold)}
-.pick__label{font:500 11px/1.3 var(--mono);letter-spacing:.12em;color:var(--gold);margin-bottom:8px}
-.pick__title{font:600 22px/1.2 var(--serif);margin-bottom:8px}
-.pick__note{font-size:14px;line-height:1.5;color:var(--soft)}
-.pick__note a{color:var(--gold)}
-.today__sub{font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--stone);margin:0 0 6px;text-transform:uppercase}
-.calendar{min-height:420px}
-.today__foot{margin-top:12px;color:var(--stone);font-size:12px}
-.markets{background:var(--ink);padding:72px 0 88px;border-top:1px solid rgba(229,177,58,.25)}
-.minis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin-bottom:14px}
-@media (max-width:1200px){.minis{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:640px){.minis{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.panel{background:var(--night);border:1px solid rgba(247,244,238,.12);border-radius:14px;overflow:hidden}
-.mini{height:200px}
-.panels{display:flex;flex-wrap:wrap;gap:14px}
-.panel--wide{flex:999 1 620px;min-width:0}
-.panel--side{flex:1 1 360px;min-width:0}
-.panel__head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:18px 20px 10px}
-.panel__head b{font:600 22px/1 var(--serif)}
-.panel__head span{font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--dim)}
-.heatmap{height:520px}
-.stories{height:520px}
-.widget-note{margin-top:18px;font-size:12px;color:#6F7E97}
-.reader{background:var(--mist);padding:40px 0 88px;scroll-margin-top:72px}
-.reader[hidden]{display:none}
-.reader__bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;color:var(--ink)}
-.reader__bar button{background:none;border:0;cursor:pointer;color:var(--blue);font:600 15px/1 var(--sans);padding:8px 0}
+.reader{background:var(--mist);padding:44px 0 72px;scroll-margin-top:72px}
+.reader__bar{max-width:720px;margin:0 auto 14px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:0 12px}
 .reader__bar span{font:500 12px/1 var(--mono);letter-spacing:.12em;color:var(--stone);text-transform:uppercase}
+.reader__tag{background:var(--gold);color:var(--ink)!important;border-radius:999px;padding:7px 12px}
+.reader__tag[hidden]{display:none}
 #issue{max-width:720px;margin:0 auto;background:transparent;min-height:200px;overflow-x:auto}
 #issue .state{padding:36px 28px;color:var(--stone)}
+.archive{background:var(--paper);color:var(--ink);padding:64px 0 96px;scroll-margin-top:72px}
+.archive__head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px;margin-bottom:28px}
+.archive__head p{color:var(--stone);max-width:30em}
+.issues{border-top:2px solid var(--night)}
+.issue-link{display:grid;grid-template-columns:84px minmax(0,1fr) auto;gap:16px;align-items:center;padding:20px 12px;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);border-radius:0}
+.issue-link:hover{background:#fff}
+.issue-link:hover b{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+.issue-link span:first-child{font:600 30px/1 var(--serif);color:var(--gold-ink)}
+.issue-link b{display:block;font:600 22px/1.2 var(--serif);color:var(--night)}
+.issue-link small{font:500 12px/1.6 var(--mono);letter-spacing:.06em;color:var(--stone);text-transform:uppercase}
+.issue-link em{font-style:normal;font-weight:600;color:var(--blue);white-space:nowrap}
+.issue-link[aria-current]{background:#fff;box-shadow:inset 4px 0 0 var(--gold)}
+.issue-link[aria-current] em{color:var(--gold-ink)}
+@media (max-width:600px){.issue-link{grid-template-columns:56px minmax(0,1fr);padding:16px 4px}.issue-link em{grid-column:2}.issue-link span:first-child{font-size:24px}}
+.archive .empty{padding:20px 0;color:var(--stone)}
 
 /* join */
 .join{display:flex;flex-wrap:wrap;gap:40px 80px;align-items:center;padding-top:64px;padding-bottom:88px;min-height:calc(100vh - 140px - 330px)}
@@ -262,7 +243,6 @@ h1,h2,h3,p{margin:0}
   .sec{padding:64px 0}
   .member__photo{flex-basis:100%;min-height:220px;border-right:0;border-bottom:4px solid var(--gold)}
   .tba-row div+div{border-left:0;border-top:1px solid rgba(247,244,238,.18)}
-  .heatmap,.stories{height:440px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
@@ -287,7 +267,7 @@ h1,h2,h3,p{margin:0}
       <a href="#home" data-tab="home">Home</a>
       <a href="#about" data-tab="about">About</a>
       <a href="#events" data-tab="events">Events</a>
-      <a href="#newsletter" data-tab="newsletter">News</a>
+      <a href="#newsletter" data-tab="newsletter">Newsletter</a>
     </nav>
     <a class="btn btn--gold btn--sm" href="#join">Join the club</a>
   </div>
@@ -305,7 +285,6 @@ h1,h2,h3,p{margin:0}
       </svg>
       <div class="wrap">
         <div class="hero__text">
-          <a class="pill" href="#events"><span class="dot"></span>Workshops and talks start next semester. Events announced soon <b>See events →</b></a>
           <h1>Markets move fast.<br><em>We make them make sense.</em></h1>
           <p class="lead">Alpha Brussels is the finance and economics club that teaches how markets and the economy really work. Start with our free weekly newsletter: what moved, why it moved and what to watch next, in plain English.</p>
           <div class="btns">
@@ -391,68 +370,39 @@ h1,h2,h3,p{margin:0}
     </div>
   </div>
 
-  <!-- NEWS -->
+  <!-- NEWSLETTER -->
   <div class="page" data-page="newsletter" hidden>
-    <div class="wrap newstop">
-      <div class="newstop__left">
-        <p class="kicker" style="margin-bottom:16px">The Alpha weekly</p>
+    <section class="wrap nlhead">
+      <div>
+        <p class="kicker" style="margin-bottom:16px">The Alpha Weekly</p>
         <h1 class="display" style="margin-bottom:18px">The week in markets, <em>in your inbox.</em></h1>
         <p class="lead" style="color:var(--soft)">What moved, why it moved and what to watch next, in plain English. Every number is checked against two sources, and every source is listed.</p>
-        <div class="subscribe" id="subscribe">
-          <iframe src="https://alphabrussels.substack.com/embed" title="Subscribe to the Alpha Brussels newsletter" loading="lazy" scrolling="no"></iframe>
-          <p>Box not showing? <a href="https://alphabrussels.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a>.</p>
-        </div>
-        <p class="kicker" style="margin-bottom:12px">Issues</p>
-        <div class="issues" id="issues"></div>
+        <p class="nlhead__links"><a href="#newsletter" data-focus="reader">Read the latest issue ↓</a><a href="#newsletter" data-focus="archive">All past issues ↓</a></p>
       </div>
+      <div class="subscribe" id="subscribe">
+        <p class="subscribe__title">Get it every Saturday, free</p>
+        <iframe src="https://alphabrussels.substack.com/embed" title="Subscribe to the Alpha Brussels newsletter" loading="lazy" scrolling="no"></iframe>
+        <p>Box not showing? <a href="https://alphabrussels.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a>.</p>
+      </div>
+    </section>
 
-      <aside class="today" aria-label="What to watch today">
-        <div class="today__head">
-          <div>
-            <p class="kicker kicker--ink" style="margin-bottom:6px" id="today-short">Today</p>
-            <h2>What to watch today</h2>
-          </div>
-          <span class="live-tag"><span class="dot"></span>LIVE</span>
-        </div>
-        <div class="pick" id="pick">
-          <p class="pick__label" id="pick-label">★ From the latest issue</p>
-          <p class="pick__title" id="pick-title">Loading…</p>
-          <p class="pick__note" id="pick-note"></p>
-        </div>
-        <p class="today__sub" id="today-long">Full calendar for today</p>
-        <div class="calendar tradingview-widget-container" id="tv-calendar"><div class="tradingview-widget-container__widget"></div></div>
-        <p class="today__foot">★ Our pick comes from the “What to expect next week” calendar in the latest issue. The full list is TradingView’s economic calendar and updates on its own.</p>
-      </aside>
-    </div>
-
-    <section class="reader" id="reader" hidden>
+    <section class="reader" id="reader">
       <div class="wrap">
-        <div class="reader__bar"><button type="button" id="reader-close">← Back to all issues</button><span id="reader-meta"></span></div>
+        <div class="reader__bar"><span id="reader-meta">The latest issue</span><span class="reader__tag" id="reader-tag" hidden>Latest issue</span></div>
         <div id="issue"><p class="state">Loading the issue…</p></div>
       </div>
     </section>
 
-    <section class="markets" aria-label="Markets right now">
+    <section class="archive" id="archive" aria-label="Past issues">
       <div class="wrap">
-        <div class="sechead" style="margin-bottom:32px">
+        <div class="archive__head">
           <div>
-            <p class="kicker" style="margin-bottom:14px">Live markets</p>
-            <h2 class="h2">Markets <em>right now.</em></h2>
+            <p class="kicker kicker--ink" style="margin-bottom:14px">Archive</p>
+            <h2 class="h2">Past <em>issues.</em></h2>
           </div>
-          <p style="color:var(--dim);font-size:15px;max-width:30em">Live charts and prices from TradingView, updating on their own. The newsletter explains the week; these show the moment.</p>
+          <p>Every issue we have published, newest first. Click one to read it above.</p>
         </div>
-        <div class="minis" id="minis"></div>
-        <div class="panels">
-          <div class="panel panel--wide">
-            <div class="panel__head"><b>Who’s up, who’s down</b><span>S&amp;P 500 HEATMAP · TODAY</span></div>
-            <div class="heatmap tradingview-widget-container" id="tv-heatmap"><div class="tradingview-widget-container__widget"></div></div>
-          </div>
-          <div class="panel panel--side">
-            <div class="panel__head"><b>Top stories</b><span>LIVE HEADLINES</span></div>
-            <div class="stories tradingview-widget-container" id="tv-stories"><div class="tradingview-widget-container__widget"></div></div>
-          </div>
-        </div>
-        <p class="widget-note">Live widgets by TradingView. Prices may be delayed. Headlines come from TradingView’s news feed, not from Alpha Brussels. Not investment advice.</p>
+        <div class="issues" id="issues"></div>
       </div>
     </section>
   </div>
@@ -491,8 +441,8 @@ h1,h2,h3,p{margin:0}
       </nav>
       <nav aria-label="Newsletter">
         <span class="foot__label">NEWSLETTER</span>
-        <a href="#newsletter">This week’s issue</a>
-        <a href="#newsletter" data-focus="issues">Past issues</a>
+        <a href="#newsletter" data-focus="reader">Latest issue</a>
+        <a href="#newsletter" data-focus="archive">Past issues</a>
         <a href="https://alphabrussels.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a>
       </nav>
       <div>
@@ -525,10 +475,6 @@ var TAPE = [
   ['FOREXCOM:JP225', 'Nikkei 225'], ['FOREXCOM:HKXHKD', 'Hang Seng'], ['BITSTAMP:BTCUSD', 'Bitcoin'], ['BITSTAMP:ETHUSD', 'Ether'],
   ['TVC:USOIL', 'WTI oil'], ['TVC:GOLD', 'Gold'], ['FRED:DGS10', 'US 10-yr yield'], ['FX:EURUSD', 'EUR/USD']
 ];
-var MINIS = [['FOREXCOM:SPXUSD', 'S&P 500'], ['STOXX:SXXP', 'STOXX 600'], ['EURONEXT:BEL20', 'BEL 20'], ['FOREXCOM:JP225', 'Nikkei 225'], ['BITSTAMP:BTCUSD', 'Bitcoin'], ['TVC:GOLD', 'Gold']];
-// Economic calendar: countries (ISO codes, lower case) and importance (-1 low, 0 medium, 1 high).
-var CAL_COUNTRIES = 'us,eu,gb,be,de,fr,jp,cn';
-var CAL_IMPORTANCE = '0,1';
 
 /* ============ Site script ============ */
 (function () {
@@ -560,27 +506,6 @@ var CAL_IMPORTANCE = '0,1';
     if (document.querySelector('#tv-tape iframe')) { $('tape-fallback').style.visibility = 'hidden'; clearInterval(tapeCheck); }
   }, 1000);
   setTimeout(function () { clearInterval(tapeCheck); }, 20000);
-
-  function mountNews() {
-    mount('tv-calendar', 'embed-widget-events.js', {
-      colorTheme: 'light', isTransparent: true, width: '100%', height: 420, locale: 'en',
-      importanceFilter: CAL_IMPORTANCE, countryFilter: CAL_COUNTRIES
-    });
-    var minis = $('minis');
-    if (!minis.children.length) {
-      MINIS.forEach(function (m, i) {
-        var box = document.createElement('div'); box.className = 'panel mini tradingview-widget-container'; box.id = 'tv-mini-' + i;
-        box.innerHTML = '<div class="tradingview-widget-container__widget"></div>';
-        minis.appendChild(box);
-        mount(box.id, 'embed-widget-mini-symbol-overview.js', { symbol: m[0], width: '100%', height: 200, locale: 'en', dateRange: '1D', colorTheme: 'dark', isTransparent: true, autosize: false, largeChartUrl: '' });
-      });
-    }
-    mount('tv-heatmap', 'embed-widget-stock-heatmap.js', {
-      dataSource: 'SPX500', blockSize: 'market_cap_basic', blockColor: 'change', grouping: 'sector', locale: 'en',
-      colorTheme: 'dark', isTransparent: true, hasTopBar: false, isDataSetEnabled: false, isZoomEnabled: true, hasSymbolTooltip: true, width: '100%', height: '100%'
-    });
-    mount('tv-stories', 'embed-widget-timeline.js', { feedMode: 'all_symbols', isTransparent: true, displayMode: 'regular', width: '100%', height: '100%', colorTheme: 'dark', locale: 'en' });
-  }
 
   /* --- Board members --- */
   var ICON_MAIL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>';
@@ -616,15 +541,19 @@ var CAL_IMPORTANCE = '0,1';
       return (i.board || []).map(function (r) { var up = !/^[−-]/.test(r[2]); return '<span>' + esc(r[0]) + ' <span style="color:' + (up ? 'var(--gain-dark)' : 'var(--loss-dark)') + ';padding:0;border:0">' + (up ? '▲ ' : '▼ ') + esc(r[2]) + '</span></span>'; }).join('');
     }).join('');
   }
+  var current = null;
   function issueList() {
+    if (!issues.length) { $('issues').innerHTML = '<p class="empty">Our first issue is on its way. Subscribe above to get it.</p>'; return; }
     $('issues').innerHTML = issues.map(function (i, k) {
-      return '<a class="issue-link" href="?issue=' + encodeURIComponent(i.file.replace(/\.html$/, '')) + '#newsletter" data-file="' + esc(i.file) + '">' +
-        '<span>' + num(i.issue) + '</span><span><b>' + esc(i.title) + '</b><small>' + (k === 0 ? 'Latest · ' : '') + esc(longDate(i.date)) + '</small></span><em>Read →</em></a>';
+      var on = current && current.file === i.file;
+      return '<a class="issue-link" href="?issue=' + encodeURIComponent(i.file.replace(/\.html$/, '')) + '#newsletter" data-file="' + esc(i.file) + '"' + (on ? ' aria-current="true"' : '') + '>' +
+        '<span>' + num(i.issue) + '</span><span><b>' + esc(i.title) + '</b><small>' + (k === 0 ? 'Latest · ' : '') + esc(i.week || longDate(i.date)) + '</small></span><em>' + (on ? 'Reading now' : 'Read →') + '</em></a>';
     }).join('');
   }
   function openIssue(i, scroll) {
-    var host = $('issue'); $('reader').hidden = false;
+    var host = $('issue'); current = i; issueList();
     $('reader-meta').textContent = 'Issue ' + num(i.issue) + ' · ' + longDate(i.date);
+    $('reader-tag').hidden = !(latest && latest.file === i.file);
     fetch('issues/' + i.file, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(i.file); return r.text(); }).then(function (html) {
       var doc = new DOMParser().parseFromString(html, 'text/html');
       doc.querySelectorAll('script').forEach(function (s) { s.remove(); });
@@ -638,12 +567,12 @@ var CAL_IMPORTANCE = '0,1';
         root.addEventListener('click', function (e) {
           var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
           e.preventDefault();
-          var t = root.getElementById(a.getAttribute('href').slice(1));
-          if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); else $('issues').scrollIntoView({ behavior: 'smooth' });
+          var t = a.getAttribute('href').length > 1 && root.getElementById(a.getAttribute('href').slice(1));
+          if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); else $('archive').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
       }
       if (scroll) $('reader').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }).catch(function () { host.innerHTML = '<p class="state">We couldn’t load this issue. Please try again in a moment.</p>'; });
+    }).catch(function () { (host.shadowRoot || host).innerHTML = '<p class="state">We couldn’t load this issue. Please try again in a moment.</p>'; });
   }
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('.issue-link, #week-link'); if (!a) return;
@@ -654,42 +583,19 @@ var CAL_IMPORTANCE = '0,1';
     show('newsletter', false);
     openIssue(i, true);
   });
-  $('reader-close').addEventListener('click', function () { $('reader').hidden = true; try { history.replaceState(null, '', location.pathname + '#newsletter'); } catch (err) {} $('issues').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
-
-  /* --- Today's pick: issues/<date>.watch.json, written by the weekly build --- */
-  function todayPanel() {
-    var now = new Date();
-    $('today-short').textContent = 'Today · ' + now.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
-    $('today-long').textContent = 'Full calendar for ' + now.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
-    var setPick = function (label, title, note) { $('pick-label').textContent = label; $('pick-title').textContent = title; $('pick-note').innerHTML = note; };
-    var weekend = now.getDay() === 0 || now.getDay() === 6;
-    if (!latest) { setPick('★ Our pick', 'Our first issue is on its way.', ''); return; }
-    var link = '<a href="?issue=' + encodeURIComponent(latest.file.replace(/\.html$/, '')) + '#newsletter" class="issue-link-inline" data-file="' + esc(latest.file) + '">issue ' + num(latest.issue) + '</a>';
-    getJSON('issues/' + latest.date + '.watch.json').then(function (w) {
-      var pick = (w.days || {})[iso(now)];
-      if (pick) setPick('★ Today’s key event · from issue ' + num(latest.issue), pick, 'Why it matters is in the “What to expect next week” section of ' + link + '.');
-      else if (weekend) setPick('★ From issue ' + num(latest.issue), 'Markets are closed today.', 'Next week’s calendar arrives with Saturday’s issue.');
-      else setPick('★ From issue ' + num(latest.issue), 'No key event picked for today.', 'Each weekday, the newsletter picks the one event that matters most.');
-    }).catch(function () {
-      setPick('★ From issue ' + num(latest.issue), weekend ? 'Markets are closed today.' : 'Today’s pick appears with the next issue.', 'Each weekday, the newsletter picks the one event that matters most.');
-    });
-  }
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('.issue-link-inline'); if (!a || !latest) return;
-    e.preventDefault(); show('newsletter', false); openIssue(latest, true);
-  });
 
   getJSON('issues/issues.json').then(function (list) {
     issues = list.slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
     latest = issues[0] || null;
     if (latest) weekCard(latest);
-    issueList(); todayPanel();
     var want = null; try { want = new URLSearchParams(location.search).get('issue'); } catch (err) {}
     var hit = want && issues.filter(function (x) { return x.file === want + '.html'; })[0];
     if (hit) { show('newsletter', false); openIssue(hit, true); }
+    else if (latest) openIssue(latest, false);
+    else { issueList(); $('reader').hidden = true; }
   }).catch(function () {
-    $('issues').innerHTML = '<p style="padding:16px 0;color:var(--dim)">Issues will be listed here.</p>';
-    todayPanel();
+    $('issues').innerHTML = '<p class="empty">Past issues will be listed here.</p>';
+    $('reader').hidden = true;
   });
 
   /* --- Tabs --- */
@@ -698,8 +604,7 @@ var CAL_IMPORTANCE = '0,1';
     if (PAGES.indexOf(name) < 0) name = 'home';
     document.querySelectorAll('.page').forEach(function (p) { p.hidden = p.getAttribute('data-page') !== name; });
     document.querySelectorAll('.menu a').forEach(function (a) { if (a.getAttribute('data-tab') === name) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
-    if (name === 'newsletter') mountNews();
-    document.title = (name === 'home' ? '' : ({ about: 'Meet the board', events: 'Events', newsletter: 'News', join: 'Join' })[name] + ' · ') + 'Alpha Brussels – Finance & Economics Club';
+    document.title = (name === 'home' ? '' : ({ about: 'Meet the board', events: 'Events', newsletter: 'Newsletter', join: 'Join' })[name] + ' · ') + 'Alpha Brussels – Finance & Economics Club';
     if (top !== false) window.scrollTo(0, 0);
   }
   function route() { show((location.hash || '#home').slice(1)); }
@@ -707,7 +612,7 @@ var CAL_IMPORTANCE = '0,1';
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[data-focus]'); if (!a) return;
     var target = a.getAttribute('data-focus');
-    setTimeout(function () { var el = $(target); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 80);
+    setTimeout(function () { var el = $(target); if (el) el.scrollIntoView({ behavior: 'smooth', block: target === 'subscribe' ? 'center' : 'start' }); }, 80);
   });
   route();
 })();
