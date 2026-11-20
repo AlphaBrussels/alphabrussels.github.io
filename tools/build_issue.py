@@ -75,6 +75,11 @@ MARK_SVG = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="34 -569 695 593"><
             '<rect x="625.6" y="478.6" width="89.4" height="89.4" fill="#E5B13A"/></g></svg>')
 MARK = "data:image/svg+xml;base64," + base64.b64encode(MARK_SVG.encode()).decode()
 SITE_URL = "https://alphabrussels.github.io"
+# The issue is signed by its author (the owner's choice, 20 November 2026). A header line
+# "author:" or "author_role:" in the .md overrides these for one issue.
+AUTHOR = "Adam Takáč"
+AUTHOR_ROLE = "President of Alpha Brussels and editor of The Alpha Weekly"
+AUTHOR_SHORT_ROLE = "President of Alpha Brussels"
 MONTHS = ("January|February|March|April|May|June|July|August|September|October|"
           "November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec")
 TERMS = ["S&P 500", "S&P 100", "STOXX Europe 600", "STOXX 600", "BEL 20", "CAC 40",
@@ -601,6 +606,15 @@ var f = location.pathname.split("/").pop(); if (location.hostname === "alphabrus
   <div class="b" style="font-size:18px;line-height:28px;color:{SOFT};padding-top:20px;max-width:500px;">{html.escape(meta["summary"])}</div>
 </td></tr>
 {"".join(body)}
+<tr><td class="pad" id="signoff" style="padding:8px 40px 0 40px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:{NIGHT};border-radius:14px;"><tr>
+    <td valign="middle" style="padding:20px 24px;">
+      <div class="m" style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:{SGOLD};">This issue was written by</div>
+      <div class="h" style="font-size:26px;line-height:30px;font-weight:600;color:{PAPER};padding-top:6px;">{html.escape(meta.get("author") or AUTHOR)}</div>
+      <div class="b" style="font-size:14px;line-height:20px;color:{SOFT};">{html.escape(meta.get("author_role") or AUTHOR_ROLE)}</div>
+    </td>
+  </tr></table>
+</td></tr>
 <tr><td class="pad" style="padding:22px 40px 44px 40px;">
   <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="background:{SGOLD};border-radius:999px;"><a class="b" href="#" style="display:block;padding:16px 26px;font-size:16px;font-weight:600;color:{INK};text-decoration:none;">Read past issues →</a></td></tr></table>
 </td></tr>
@@ -712,14 +726,15 @@ def render_substack(meta, brief, data):
     # caption travels in data-subscribe and the box is inserted through the editor after the paste.
     sub_caption = "Was this forwarded to you? Subscribe to get the week in markets in your inbox every week. It’s free."
     # One "Read the full issue" button only, after the picture (the owner's choice, 16 November 2026),
-    # then the closing line. The subscribe box comes last.
+    # then the closing line and the author's sign-off (20 November 2026). The subscribe box comes last.
     body = (f'<ul>{bullets}</ul>'
             + f'<p><img src="{SITE_URL}/issues/{date}-card.png" width="440" alt="{html.escape(alt, quote=True)}"></p>'
             + button
             + f'<p><em>The full issue explains why prices moved, the other news that mattered and what to expect next week, '
-              f'with every source listed. For education and information only, not investment advice.</em></p>')
+              f'with every source listed. For education and information only, not investment advice.</em></p>'
+            + f'<p><em>{html.escape(meta.get("author") or AUTHOR)}, {html.escape(AUTHOR_SHORT_ROLE if not meta.get("author_role") else meta["author_role"])}</em></p>')
     sub_attr = html.escape(sub_caption, quote=True)
-    nodes = "bulletList,captionedImage,button,paragraph,subscribeWidget"
+    nodes = "bulletList,captionedImage,button,paragraph,paragraph,subscribeWidget"
     title = html.escape(meta["headline"].replace(" | ", " ").replace("|", " "))
     summary = html.escape(meta["summary"])
     return f"""<!DOCTYPE html>
