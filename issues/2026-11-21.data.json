@@ -81,10 +81,12 @@
     },
     {
      "name": "DAX",
+     "mark": "*",
      "close": 24802.78,
      "prev": 26749.95,
      "sources": [
-      "yahoo-gdaxi"
+      "yahoo-gdaxi",
+      "stoxx-dax"
      ],
      "check": {
       "close": 24802.78,
