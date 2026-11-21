@@ -1,0 +1,988 @@
+{
+ "close_date": "2026-11-20",
+ "prev_date": "2026-11-13",
+ "board": [
+  "S&P 500",
+  "STOXX Europe 600",
+  "BEL 20",
+  "AMD",
+  "Bitcoin"
+ ],
+ "groups": [
+  {
+   "name": "United States",
+   "rows": [
+    {
+     "name": "S&P 500",
+     "close": 6910.39,
+     "prev": 7561.67,
+     "sources": [
+      "yahoo-gspc"
+     ],
+     "check": {
+      "close": 6910.39,
+      "source": "ap-us-indexes"
+     }
+    },
+    {
+     "name": "Dow Jones",
+     "close": 48147.33,
+     "prev": 52347.55,
+     "sources": [
+      "yahoo-dji"
+     ],
+     "check": {
+      "close": 48147.33,
+      "source": "ap-us-indexes"
+     }
+    },
+    {
+     "name": "Nasdaq Composite",
+     "close": 22617.73,
+     "prev": 25136.27,
+     "sources": [
+      "yahoo-ixic"
+     ],
+     "check": {
+      "close": 22617.73,
+      "source": "ap-us-indexes"
+     },
+     "short": "Nasdaq"
+    },
+    {
+     "name": "Russell 2000",
+     "close": 2581.79,
+     "prev": 2790.49,
+     "sources": [
+      "yahoo-rut"
+     ],
+     "check": {
+      "close": 2581.79,
+      "source": "ap-us-indexes-rut"
+     }
+    }
+   ]
+  },
+  {
+   "name": "Europe",
+   "rows": [
+    {
+     "name": "STOXX Europe 600",
+     "close": 625.65,
+     "prev": 664.14,
+     "sources": [
+      "yahoo-stoxx"
+     ],
+     "check": {
+      "close": 625.65,
+      "source": "reuters-stoxx-close"
+     },
+     "short": "STOXX 600"
+    },
+    {
+     "name": "DAX",
+     "mark": "*",
+     "close": 24802.78,
+     "prev": 26749.95,
+     "sources": [
+      "yahoo-gdaxi",
+      "stoxx-dax"
+     ],
+     "check": {
+      "close": 24802.78,
+      "source": "dpa-dax"
+     }
+    },
+    {
+     "name": "CAC 40",
+     "close": 7927.75,
+     "prev": 8368.91,
+     "sources": [
+      "yahoo-fchi"
+     ],
+     "check": {
+      "close": 7927.75,
+      "source": "investing-cac"
+     }
+    },
+    {
+     "name": "FTSE 100",
+     "close": 10346.34,
+     "prev": 10902.56,
+     "sources": [
+      "investing-ftse"
+     ],
+     "check": {
+      "close": 10346.34,
+      "source": "afp-key-figures"
+     }
+    },
+    {
+     "name": "BEL 20",
+     "close": 5797.75,
+     "prev": 6119.66,
+     "sources": [
+      "yahoo-bfx"
+     ],
+     "check": {
+      "close": 5797.75,
+      "source": "lalibre-bel20"
+     }
+    }
+   ]
+  },
+  {
+   "name": "Asia",
+   "rows": [
+    {
+     "name": "Nikkei 225",
+     "close": 56436.65,
+     "prev": 61142.35,
+     "sources": [
+      "yahoo-n225"
+     ],
+     "check": {
+      "close": 56436.65,
+      "source": "ap-asia"
+     }
+    },
+    {
+     "name": "Taiex (Taiwan)",
+     "close": 36033.29,
+     "prev": 43675.12,
+     "sources": [
+      "yahoo-twii"
+     ],
+     "check": {
+      "close": 36033.29,
+      "source": "investing-taiex"
+     },
+     "short": "Taiex"
+    },
+    {
+     "name": "Kospi (South Korea)",
+     "close": 4869.96,
+     "prev": 5290.53,
+     "sources": [
+      "yahoo-ks11"
+     ],
+     "check": {
+      "close": 4869.96,
+      "source": "ap-asia"
+     },
+     "short": "Kospi"
+    },
+    {
+     "name": "Hang Seng",
+     "close": 22410.8,
+     "prev": 23637.6,
+     "sources": [
+      "yahoo-hsi"
+     ],
+     "check": {
+      "close": 22410.8,
+      "source": "ap-asia"
+     }
+    }
+   ]
+  },
+  {
+   "name": "Crypto",
+   "rows": [
+    {
+     "name": "Bitcoin",
+     "kind": "crypto",
+     "prefix": "$",
+     "decimals": 0,
+     "tolerance_pct": 0.5,
+     "close": 58798.98,
+     "prev": 68249.27,
+     "sources": [
+      "yahoo-btc"
+     ],
+     "check": {
+      "close": 58901.4,
+      "source": "investing-btc"
+     }
+    }
+   ]
+  },
+  {
+   "name": "Stocks in the news",
+   "rows": [
+    {
+     "name": "AMD",
+     "kind": "stock",
+     "prefix": "$",
+     "close": 424.39,
+     "prev": 534.06,
+     "sources": [
+      "yahoo-amd"
+     ],
+     "check": {
+      "close": 424.39,
+      "source": "stockanalysis-amd"
+     }
+    },
+    {
+     "name": "Broadcom",
+     "kind": "stock",
+     "prefix": "$",
+     "close": 304.41,
+     "prev": 347.01,
+     "sources": [
+      "yahoo-avgo"
+     ],
+     "check": {
+      "close": 304.41,
+      "source": "stockanalysis-avgo"
+     }
+    },
+    {
+     "name": "Walmart",
+     "kind": "stock",
+     "prefix": "$",
+     "close": 127.95,
+     "prev": 128.09,
+     "sources": [
+      "yahoo-wmt"
+     ],
+     "check": {
+      "close": 127.95,
+      "source": "investing-wmt"
+     }
+    }
+   ]
+  }
+ ],
+ "macro": [
+  {
+   "name": "WTI crude oil",
+   "prefix": "$",
+   "close": 83.98,
+   "prev": 88.56,
+   "sources": [
+    "yahoo-cl"
+   ],
+   "check": {
+    "close": 83.98,
+    "source": "afp-key-figures"
+   },
+   "short": "WTI oil"
+  },
+  {
+   "name": "Gold",
+   "prefix": "$",
+   "decimals": 0,
+   "close": 3515.4,
+   "prev": 3886.3,
+   "sources": [
+    "yahoo-gc"
+   ],
+   "check": {
+    "close": 3515.4,
+    "source": "investing-gold"
+   }
+  },
+  {
+   "name": "VIX volatility index",
+   "kind": "stock",
+   "close": 35.89,
+   "prev": 19.3,
+   "sources": [
+    "yahoo-vix"
+   ],
+   "check": {
+    "close": 35.89,
+    "source": "cboe-vix"
+   },
+   "short": "VIX"
+  }
+ ],
+ "sources": {
+  "yahoo-gspc": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "S&P 500 (^GSPC) price history",
+   "url": "https://uk.finance.yahoo.com/quote/%5EGSPC/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-dji": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Dow Jones Industrial Average (^DJI) price history",
+   "url": "https://finance.yahoo.com/quote/%5EDJI/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-ixic": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Nasdaq Composite (^IXIC) price history",
+   "url": "https://uk.finance.yahoo.com/quote/%5EIXIC/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-rut": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Russell 2000 (^RUT) price history",
+   "url": "https://finance.yahoo.com/quote/%5ERUT/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-stoxx": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "STOXX Europe 600 (^STOXX) price history",
+   "url": "https://finance.yahoo.com/quote/%5ESTOXX/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-gdaxi": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "DAX P (^GDAXI) price history",
+   "url": "https://finance.yahoo.com/quote/%5EGDAXI/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-fchi": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "CAC 40 (^FCHI) price history",
+   "url": "https://finance.yahoo.com/quote/%5EFCHI/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-bfx": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "BEL 20 (^BFX) price history",
+   "url": "https://finance.yahoo.com/quote/%5EBFX/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-n225": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Nikkei 225 (^N225) price history",
+   "url": "https://finance.yahoo.com/quote/%5EN225/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-twii": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Taiex (^TWII) price history",
+   "url": "https://finance.yahoo.com/quote/%5ETWII/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-ks11": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Kospi (^KS11) price history",
+   "url": "https://finance.yahoo.com/quote/%5EKS11/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-hsi": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Hang Seng (^HSI) price history",
+   "url": "https://finance.yahoo.com/quote/%5EHSI/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-btc": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Bitcoin USD (BTC-USD) price history",
+   "url": "https://uk.finance.yahoo.com/quote/BTC-USD/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-amd": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Advanced Micro Devices (AMD) price history",
+   "url": "https://uk.finance.yahoo.com/quote/AMD/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-avgo": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Broadcom (AVGO) price history",
+   "url": "https://uk.finance.yahoo.com/quote/AVGO/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-wmt": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Walmart (WMT) price history",
+   "url": "https://uk.finance.yahoo.com/quote/WMT/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-cl": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Crude oil futures (CL=F) price history",
+   "url": "https://finance.yahoo.com/quote/CL%3DF/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-gc": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Gold futures (GC=F) price history",
+   "url": "https://finance.yahoo.com/quote/GC%3DF/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-vix": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Cboe Volatility Index (^VIX) price history",
+   "url": "https://uk.finance.yahoo.com/quote/%5EVIX/history/?period1=1794441600&period2=1795478400"
+  },
+  "yahoo-nvda": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "NVIDIA (NVDA) price history",
+   "url": "https://uk.finance.yahoo.com/quote/NVDA/history/?period1=1794441600&period2=1795478400",
+   "quotes": [
+    "13 Nov 2026 | 169.91 | 170.00 | 158.39 | 162.85 | 162.85 | 365,796,600",
+    "16 Nov 2026 | 159.02 | 163.20 | 155.01 | 156.14 | 156.14 | 333,822,100",
+    "19 Nov 2026 | 152.92 | 158.13 | 145.71 | 145.98 | 145.98 | 322,940,100"
+   ],
+   "derived": [
+    "Mon 16 Nov: 156.14 / 162.85 − 1 = −4.1%",
+    "Tue 17 Nov: 155.46 / 156.14 − 1 = −0.4% (17 Nov close 155.46)",
+    "Thu 19 Nov: 145.98 / 150.96 − 1 = −3.3% (18 Nov close 150.96)"
+   ]
+  },
+  "ap-us-indexes": {
+   "wire": "Associated Press",
+   "date": "2026-11-20",
+   "publisher": "myMotherLode.com",
+   "title": "How major US stock indexes fared Friday 11/20/2026",
+   "url": "https://mymotherlode.com/news/national/11327378/how-major-us-stock-indexes-fared-friday-11-20-2026.html",
+   "quotes": [
+    "The S&P 500 fell 265.44 points, or 3.7%, to 6,910.39.",
+    "The Dow Jones Industrial Average fell 949.73 points, or 1.9%, to 48,147.33.",
+    "The Nasdaq composite fell 1,261.47 points, or 5.3%, to 22,617.73."
+   ]
+  },
+  "ap-us-indexes-week": {
+   "wire": "Associated Press",
+   "date": "2026-11-20",
+   "publisher": "myMotherLode.com",
+   "title": "How major US stock indexes fared Friday 11/20/2026",
+   "url": "https://mymotherlode.com/news/national/11327378/how-major-us-stock-indexes-fared-friday-11-20-2026.html",
+   "quotes": [
+    "The S&P 500 is down 651.28 points, or 8.6%.",
+    "The Nasdaq is down 2,518.54 points, or 10%.",
+    "The Nasdaq is down 624.26 points, or 2.7%."
+   ]
+  },
+  "ap-us-indexes-rut": {
+   "wire": "Associated Press",
+   "date": "2026-11-20",
+   "publisher": "myMotherLode.com",
+   "title": "How major US stock indexes fared Friday 11/20/2026",
+   "url": "https://mymotherlode.com/news/national/11327378/how-major-us-stock-indexes-fared-friday-11-20-2026.html",
+   "quotes": [
+    "The Russell 2000 fell 73.32 points, or 2.8%, to 2,581.79."
+   ]
+  },
+  "afp-key-figures": {
+   "wire": "AFP",
+   "date": "2026-11-21",
+   "publisher": "24 News HD",
+   "title": "Share prices sink at New York Stock Exchange",
+   "url": "https://www.24newshd.tv/21-Nov-2026/share-prices-sink-new-york-stock-exchange",
+   "quotes": [
+    "London - FTSE 100: DOWN 1.0 percent at 10,346.34 points (close)",
+    "West Texas Intermediate: UP 0.9 percent at $83.98 per barrel"
+   ]
+  },
+  "investing-gold": {
+   "data": true,
+   "publisher": "Investing.com",
+   "title": "Gold futures historical data",
+   "url": "https://uk.investing.com/commodities/gold-historical-data",
+   "quotes": [
+    "20/11/2026 | 3,515.40 | 3,633.80 | 3,638.10 | 3,502.90 | 323.90K | -4.62%"
+   ]
+  },
+  "cboe-vix": {
+   "data": true,
+   "publisher": "Cboe",
+   "title": "VIX Index (spot price as of 20 November 2026)",
+   "url": "https://www.cboe.com/tradable_products/vix/",
+   "quotes": [
+    "(as of November 20, 2026)",
+    "$35.89"
+   ]
+  },
+  "reuters-stoxx-close": {
+   "wire": "Reuters",
+   "date": "2026-11-20",
+   "publisher": "Investing.com",
+   "title": "European shares post worst week in over a year as AI trade unravels",
+   "url": "https://investing.com/news/stock-market-news/european-shares-head-for-steepest-weekly-drop-since-march-5040936",
+   "quotes": [
+    "The pan-European STOXX 600 closed down 2% to 625.65 points, logging a weekly loss of more than 5.7%",
+    "European shares fell 2% on Friday and marked their steepest weekly decline since late March 2025",
+    "Anthropic’s blockbuster market debut failed to revive confidence in the sector"
+   ]
+  },
+  "dpa-dax": {
+   "date": "2026-11-20",
+   "publisher": "Deutsche Börse (dpa-AFX)",
+   "title": "Aktien Frankfurt Schluss: Dax fällt unter 25.000 Punkte - Schwache Tech-Werte",
+   "url": "https://live.deutsche-boerse.com/nachrichten/Aktien-Frankfurt-Schluss-Dax-faellt-unter-25000-Punkte---Schwache-Tech-Werte-1c6f09e2-9603-4739-813a-cf67f2195de6",
+   "quotes": [
+    "Zum Handelsende notierte der Dax praktisch auf seinem Tagestief 2,60 Prozent im Minus bei 24.802,78 Punkten."
+   ]
+  },
+  "stoxx-dax": {
+   "data": true,
+   "publisher": "STOXX",
+   "title": "DAX index",
+   "url": "https://stoxx.com/index/dax/",
+   "quotes": [
+    "DAX is one of the few major country indices that also takes dividends into account in its most popular version"
+   ]
+  },
+  "investing-cac": {
+   "data": true,
+   "publisher": "Investing.com",
+   "title": "CAC 40 historical data",
+   "url": "https://uk.investing.com/indices/france-40-historical-data",
+   "quotes": [
+    "20/11/2026 | 7,927.75 | 8,020.19 | 8,029.08 | 7,927.75 | 74.08M | -1.89%"
+   ]
+  },
+  "investing-ftse": {
+   "data": true,
+   "publisher": "Investing.com",
+   "title": "FTSE 100 historical data",
+   "url": "https://au.investing.com/indices/uk-100-historical-data",
+   "quotes": [
+    "20/11/2026 | 10,346.34 | 10,452.77 | 10,452.77 | 10,330.04 | 697.96M | -1.02%",
+    "13/11/2026 | 10,902.56 | 10,863.28 | 10,910.59 | 10,836.63 | 541.46M | +0.36%"
+   ]
+  },
+  "lalibre-bel20": {
+   "wire": "Belga",
+   "date": "2026-11-20",
+   "publisher": "La Libre",
+   "title": "Bourse de Bruxelles - Le BEL 20 a perdu 5,26% en cinq séances de baisse cette semaine",
+   "url": "https://www.lalibre.be/dernieres-depeches/2026/11/20/bourse-de-bruxelles-le-bel-20-a-perdu-526-en-cinq-seances-de-baisse-cette-semaine-NTCHQ5RFUFFWBPPVOPP2BERXK4/",
+   "quotes": [
+    "qui terminait à 5.797,75 points à la veille du week-end",
+    "KBC (108,05) chutait également de 3,35%",
+    "AB InBev (73,00) se démarquant seule à la hausse avec un gain de 0,22%"
+   ],
+   "derived": [
+    "French number format: 3,35% = 3.35%; 5.797,75 = 5,797.75"
+   ]
+  },
+  "lalibre-bel20-nov17": {
+   "wire": "Belga",
+   "date": "2026-11-17",
+   "publisher": "La Libre",
+   "title": "Bourse de Bruxelles - Le BEL 20 repasse sous les 6.000 points",
+   "url": "https://www.lalibre.be/dernieres-depeches/2026/11/17/bourse-de-bruxelles-le-bel-20-repasse-sous-les-6000-points-3SPNRLNZWRFE7BPUX2UKJG5I74/",
+   "quotes": [
+    "L'indice BEL 20 a ainsi chuté de plus de 100 points mardi et terminé à 5.986,98 points, en recul de 1,87% sur la veille."
+   ],
+   "derived": [
+    "French number format: 5.986,98 = 5,986.98"
+   ]
+  },
+  "ap-asia": {
+   "wire": "Associated Press",
+   "date": "2026-11-20",
+   "publisher": "DTN/Progressive Farmer",
+   "title": "Global Shares Drop on AI Worries, Echoing Wall Street's Decline Despite the Strong Anthropic Debut",
+   "url": "https://www.dtnpf.com/agriculture/web/ag/news/world-policy/article/2026/11/20/global-shares-drop-ai-worries-wall",
+   "quotes": [
+    "In Asia, Japan's benchmark Nikkei 225 shed more than 3,000 points, or about 5.1%, to finish at 56,436.65.",
+    "South Korea's Kospi shed 5.2% to 4,869.96.",
+    "Hong Kong's Hang Seng fell 1.9% to 22,410.80, while the Shanghai Composite lost 1.2% to 3,533.79."
+   ]
+  },
+  "investing-taiex": {
+   "data": true,
+   "publisher": "Investing.com",
+   "title": "Taiwan Weighted historical data",
+   "url": "https://uk.investing.com/indices/taiwan-weighted-historical-data",
+   "quotes": [
+    "20/11/2026 | 36,033.29 | 37,646.13 | 37,646.13 | 35,738.68 | 4.98B | -6.23%"
+   ]
+  },
+  "investing-btc": {
+   "data": true,
+   "publisher": "Investing.com",
+   "title": "Bitcoin historical data",
+   "url": "https://ca.investing.com/crypto/bitcoin/historical-data",
+   "quotes": [
+    "Nov 20, 2026 | 58,901.4 | 61,962.1 | 62,539.3 | 57,805.3 | 125.84K | -4.94%"
+   ]
+  },
+  "investing-wmt": {
+   "data": true,
+   "publisher": "Investing.com",
+   "title": "Walmart historical data",
+   "url": "https://uk.investing.com/equities/wal-mart-stores-historical-data",
+   "quotes": [
+    "20/11/2026 | 127.95 | 127.26 | 130.52 | 127.18 | 42.65M | +1.52%"
+   ]
+  },
+  "stockanalysis-amd": {
+   "data": true,
+   "publisher": "StockAnalysis",
+   "title": "Advanced Micro Devices (AMD) stock price history",
+   "url": "https://stockanalysis.com/stocks/amd/history/",
+   "quotes": [
+    "Nov 20, 2026 | 471.73 | 474.79 | 418.76 | 424.39 | 424.39 | -13.25% | 70,331,022"
+   ]
+  },
+  "stockanalysis-avgo": {
+   "data": true,
+   "publisher": "StockAnalysis",
+   "title": "Broadcom (AVGO) stock price history",
+   "url": "https://stockanalysis.com/stocks/avgo/history/",
+   "quotes": [
+    "Nov 20, 2026 | 343.01 | 343.01 | 301.02 | 304.41 | 304.41 | -12.19% | 60,119,372"
+   ]
+  },
+  "ap-fri-correction": {
+   "wire": "Associated Press",
+   "date": "2026-11-20",
+   "publisher": "NBC New York",
+   "title": "S&P 500 sinks 3.7%, Nasdaq composite goes negative for the year",
+   "url": "https://www.nbcnewyork.com/news/national-international/november-20-stock-market-updates/6574885/",
+   "quotes": [
+    "The AI trade has been losing steam partly over worries that AI stocks' big market values and heavy spending are unjustified.",
+    "The yield on the 10-year Treasury fell to 4.93% from 5.04% late Thursday.",
+    "fell for the ninth day in the last 10, closing 13.8% lower."
+   ]
+  },
+  "ap-fri-correction-b": {
+   "wire": "Associated Press",
+   "date": "2026-11-20",
+   "publisher": "NBC New York",
+   "title": "S&P 500 sinks 3.7%, Nasdaq composite goes negative for the year (correction)",
+   "url": "https://www.nbcnewyork.com/news/national-international/november-20-stock-market-updates/6574885/",
+   "quotes": [
+    "The benchmark index is now in what professional investors call a “correction,”",
+    "having fallen more than 10%",
+    "from its Oct. 6 all-time high."
+   ]
+  },
+  "reuters-fri-correction": {
+   "wire": "Reuters",
+   "date": "2026-11-20",
+   "publisher": "Yahoo Finance",
+   "title": "Wall St ends sharply lower on AI selloff, S&P 500, Dow in correction",
+   "url": "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-slip-anthropic-104746137.html",
+   "quotes": [
+    "The S&P 500 and the Dow logged their largest weekly percentage losses since April 2025,",
+    "In its second day as a publicly held company, Anthropic's shares fell 9.1%."
+   ]
+  },
+  "ap-wed-fifth-drop": {
+   "wire": "Associated Press",
+   "date": "2026-11-18",
+   "publisher": "The Atlanta Journal-Constitution",
+   "title": "A fifth straight drop for the S&P 500 drags Wall Street to its longest losing streak since June",
+   "url": "https://www.ajc.com/news/2026/11/wall-street-wobbles-as-nvidia-and-other-ai-stocks-keep-swinging-sharply/",
+   "quotes": [
+    "All told, the S&P 500 fell 16.90 points to 7,323.63.",
+    "But the stock quickly erased all its gain and then finished with a loss of 2.9%."
+   ]
+  },
+  "ap-thu-longest-streak": {
+   "wire": "Associated Press",
+   "date": "2026-11-19",
+   "publisher": "The Atlanta Journal-Constitution",
+   "title": "Wall Street tumbles to its longest losing streak since 2024 as the Dow drops 1,100 points",
+   "url": "https://www.ajc.com/news/2026/11/wall-street-tumbles-to-its-longest-losing-streak-since-2024-as-the-dow-drops-1100-points/",
+   "quotes": [
+    "The S&P 500 dropped 2% for a sixth straight loss",
+    "That’s its longest losing streak in two and a half years",
+    "worries that high interest rates would mean less borrowed money to fund the industry’s growth"
+   ]
+  },
+  "fed-fomc-minutes": {
+   "date": "2026-11-18",
+   "publisher": "Federal Reserve Board",
+   "title": "Minutes of the Federal Open Market Committee, October 27–28, 2026",
+   "url": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm",
+   "quotes": [
+    "agreed to maintain the target range for the federal funds rate at 3-3/4 to 4 percent",
+    "further action to raise the target range for the federal funds rate",
+    "A couple of participants noted that an increase of more than 25 basis points could warrant consideration at the next meeting if incoming inflation data were unfavorable."
+   ]
+  },
+  "reuters-retail-sales": {
+   "wire": "Reuters",
+   "date": "2026-11-17",
+   "publisher": "GV Wire",
+   "title": "US Retail Sales Increase Moderately; Import Prices Rise Above Expectations",
+   "url": "https://gvwire.com/2026/11/17/us-retail-sales-increase-moderately-import-prices-rise-above-expectations/",
+   "quotes": [
+    "Retail sales rose 0.2% last month after an unrevised 0.8% surge in September, the Commerce Department’s Census Bureau said.",
+    "The increase was in line with economists’ expectations."
+   ]
+  },
+  "reuters-gold-wed": {
+   "wire": "Reuters",
+   "date": "2026-11-18",
+   "publisher": "New Straits Times",
+   "title": "Gold drops 2pct to over one-year low as hawkish Fed signals boost dollar",
+   "url": "https://www.nst.com.my/amp/business/economy/2026/11/1580594/gold-drops-2pct-over-one-year-low-hawkish-fed-signals-boost-dollar",
+   "quotes": [
+    "It hit US$3,757 earlier in the session, its lowest level since September 2025.",
+    "Higher interest rates raise the opportunity cost of holding non-yielding gold, reducing its appeal to investors."
+   ]
+  },
+  "reuters-oil-week": {
+   "wire": "Reuters",
+   "date": "2026-11-20",
+   "publisher": "RTÉ",
+   "title": "Oil set for third weekly decline on strong Middle East export flows",
+   "url": "https://www.rte.ie/news/business/2026/1120/1599964-world-oil-prices/",
+   "quotes": [
+    "Brent is on track for a near 5% decline for the week and the December WTI contract for a 6.5% weekly drop",
+    "This week we keep having relatively strong export flows out of the Middle East."
+   ]
+  },
+  "reuters-anthropic-ipo": {
+   "wire": "Reuters",
+   "date": "2026-11-18",
+   "publisher": "CTV News",
+   "title": "Anthropic clinches biggest IPO ever with US$81 billion offering",
+   "url": "https://www.ctvnews.ca/business/article/anthropic-clinches-biggest-ipo-ever-with-us81-billion-offering/",
+   "quotes": [
+    "Anthropic has raised US$81.3 billion in the largest stock-market debut on record"
+   ]
+  },
+  "ap-anthropic-ipo": {
+   "wire": "Associated Press",
+   "date": "2026-11-18",
+   "publisher": "PBS NewsHour",
+   "title": "Anthropic prices its IPO at $83 per share, valuing the AI giant at $1.5 trillion",
+   "url": "https://www.pbs.org/newshour/economy/anthropic-prices-its-ipo-at-83-per-share-valuing-the-ai-giant-at-1-5-trillion",
+   "quotes": [
+    "Anthropic priced its initial public offering at $83 per share on Wednesday"
+   ]
+  },
+  "reuters-thu-anthropic-debut": {
+   "wire": "Reuters",
+   "date": "2026-11-19",
+   "publisher": "The Standard (Hong Kong)",
+   "title": "Wall Street ends sharply lower as Anthropic's debut fails to revive AI fervor",
+   "url": "https://www.thestandard.com.hk/finance/article/349077/Wall-Street-ends-sharply-lower-as-Anthropics-debut-fails-to-revive-AI-fervor",
+   "quotes": [
+    "The stock opened at $111.50 shortly before noon."
+   ]
+  },
+  "reuters-nvidia-results": {
+   "wire": "Reuters",
+   "date": "2026-11-17",
+   "publisher": "KFGO",
+   "title": "Nvidia forecasts quarterly revenue above estimates in first report since Huang’s exit as CEO",
+   "url": "https://kfgo.com/2026/11/17/nvidia-forecasts-quarterly-revenue-above-estimates-in-first-report-since-huangs-exit-as-ceo/",
+   "quotes": [
+    "Nvidia’s third-quarter revenue more than doubled to $115.84 billion, beating analysts’ estimate of $109.11 billion.",
+    "above analysts’ average estimate of $125.25 billion",
+    "Shares of the company rose 4% in extended trading, after Nvidia forecast sales ahead of Wall Street targets."
+   ]
+  },
+  "bloomberg-nvidia-outlook": {
+   "wire": "Bloomberg",
+   "date": "2026-11-18",
+   "publisher": "Business Standard",
+   "title": "Nvidia raises sales outlook, says business can thrive without Huang",
+   "url": "https://business-standard.com/amp/world-news/nvidia-raises-sales-outlook-says-business-can-thrive-without-huang-126111801561_1.html",
+   "quotes": [
+    "Sales will be $130 billion in the fiscal fourth quarter, plus or minus 3 per cent.",
+    "Analysts had estimated $125.3 billion on average."
+   ]
+  },
+  "reuters-nvidia-retreats": {
+   "wire": "Reuters",
+   "date": "2026-11-18",
+   "publisher": "Euronext",
+   "title": "Nvidia retreats as strong outlook fails to dispel uncertainty",
+   "url": "https://live.euronext.com/en/financial-news/nvidia-retreats-strong-outlook-fails-dispel-uncertainty",
+   "quotes": [
+    "Nvidia shares closed down 2.9%, increasing its loss to 36% from its October 6 record-high close",
+    "Nvidia's fourth-quarter revenue forecast beat analysts' estimates"
+   ]
+  },
+  "reuters-nvidia-sec": {
+   "wire": "Reuters",
+   "date": "2026-11-20",
+   "publisher": "Euronext",
+   "title": "Nvidia's accounting is a focus of US SEC investigation, sources say",
+   "url": "https://live.euronext.com/en/financial-news/nvidias-accounting-focus-us-sec-investigation-sources-say",
+   "quotes": [
+    "The US Securities and Exchange Commission is probing Nvidia's accounting practices",
+    "They had been down more than 6% before Reuters published its report."
+   ]
+  },
+  "ap-walmart": {
+   "wire": "Associated Press",
+   "date": "2026-11-19",
+   "publisher": "KPRC Click2Houston",
+   "title": "Walmart raises its outlook for the year for the 3rd time after a solid quarter",
+   "url": "https://www.click2houston.com/business/2026/11/19/walmart-raises-its-outlook-for-the-year-for-the-3rd-time-after-a-solid-quarter/",
+   "quotes": [
+    "Adjusted per-share results were 65 cents, higher than the 64 cents Wall Street had expected, according to FactSet.",
+    "Shares fell a little less than 1% in afternoon trading."
+   ]
+  },
+  "reuters-europe-nov17": {
+   "wire": "Reuters",
+   "date": "2026-11-17",
+   "publisher": "MarketScreener",
+   "title": "European stocks mark worst day in eight months on AI jitters, Deutsche Bank slides",
+   "url": "https://www.marketscreener.com/news/european-stocks-mark-worst-day-in-eight-months-on-ai-jitters-deutsche-bank-slides-ce785edcdd8df723",
+   "quotes": [
+    "Deutsche Bank fell 6% after media reports based on leaked documents detailed the bank's dealings"
+   ]
+  },
+  "reuters-europe-week": {
+   "wire": "Reuters",
+   "date": "2026-11-21",
+   "publisher": "Business Recorder",
+   "title": "European shares post worst week in over a year as AI trade unravels",
+   "url": "https://www.brecorder.com/news/40450060/european-shares-post-worst-week-in-over-a-year-as-ai-trade-unravels",
+   "quotes": [
+    "Chip-linked stocks such as ASML and STMicroelectronics shed more than 9 percent,",
+    "dragging the tech sector down 5.4 percent in its steepest one-day fall since October 2025."
+   ]
+  },
+  "ecb-fsr": {
+   "date": "2026-11-18",
+   "publisher": "European Central Bank",
+   "title": "Risks from AI valuations, fiscal imbalances and geoeconomic tensions weigh on financial stability outlook",
+   "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261118~83c5c60158.en.html",
+   "quotes": [
+    "Ambitious earnings expectations for AI firms leave financial markets vulnerable to abrupt adjustments"
+   ]
+  },
+  "reuters-nikkei": {
+   "wire": "Reuters",
+   "date": "2026-11-20",
+   "publisher": "TradingView",
+   "title": "Japan's Nikkei ends 5% lower as Anthropic's IPO fails to restore AI confidence",
+   "url": "https://tradingview.com/news/reuters.com,2026:newsml_L2N47107K:0-japan-s-nikkei-ends-5-lower-as-anthropic-s-ipo-fails-to-restore-ai-confidence",
+   "quotes": [
+    "The Nikkei TVC:NI225 ended 5.06% lower at 56,436.65, its lowest close since April 13."
+   ]
+  },
+  "reuters-taiwan": {
+   "wire": "Reuters",
+   "date": "2026-11-21",
+   "publisher": "TimesLIVE",
+   "title": "Taiwan further tightens short-selling rules after market rout",
+   "url": "https://www.timeslive.co.za/news/world/2026-11-21-taiwan-further-tightens-short-selling-rules-after-market-rout/",
+   "quotes": [
+    "Taiwan stocks tumbled more than 6% on Friday and recorded their worst week in more than three decades",
+    "as investors continued to unwind AI-related bets over concerns about valuations, profitability and rising debt",
+    "from Monday there will be a full ban on short-selling below the previous trading day’s close"
+   ]
+  },
+  "reuters-bitcoin": {
+   "wire": "Reuters",
+   "date": "2026-11-20",
+   "publisher": "Investing.com",
+   "title": "Bitcoin falls below $60,000 level",
+   "url": "https://www.investing.com/news/stock-market-news/bitcoin-falls-below-60000-level-5042271",
+   "quotes": [
+    "weeks of concern about the profitability of massive AI infrastructure spending, rising borrowing costs",
+    "regulatory risks following Democrats’ win in the US midterm elections"
+   ]
+  },
+  "ons-uk-cpi": {
+   "date": "2026-11-18",
+   "publisher": "Office for National Statistics",
+   "title": "Consumer price inflation, UK: October 2026",
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/october2026",
+   "quotes": [
+    "The Consumer Prices Index (CPI) rose by 3.6% in the 12 months to October 2026, up from 3.5% the previous month."
+   ]
+  },
+  "scmp-uk-cpi": {
+   "date": "2026-11-18",
+   "publisher": "South China Morning Post",
+   "title": "UK inflation hits 12-month high of 3.6% on soaring fuel, tobacco costs",
+   "url": "https://www.scmp.com/news/world/europe/article/3374912/uk-inflation-hits-12-month-high-36-soaring-fuel-tobacco-costs",
+   "quotes": [
+    "The reading was in line with predictions from economists"
+   ]
+  },
+  "ap-japan-gdp": {
+   "wire": "Associated Press",
+   "date": "2026-11-15",
+   "publisher": "Spectrum News NY1",
+   "title": "Japan's economy contracts slightly in the latest quarter as oil prices remain high",
+   "url": "https://ny1.com/nyc/all-boroughs/ap-top-news/2026/11/16/japans-economy-contracts-slightly-in-the-latest-quarter-as-oil-prices-remain-high",
+   "quotes": [
+    "contracted at an annualized rate of 0.1% for the July-September quarter",
+    "has been severely hurt by surging oil prices, because of the war in Iran"
+   ]
+  },
+  "nyse-hours": {
+   "data": true,
+   "publisher": "NYSE",
+   "title": "Holidays & Trading Hours",
+   "url": "https://www.nyse.com/markets/hours-calendars",
+   "quotes": [
+    "Thanksgiving Day | Thursday, November 27** | Thursday, November 26** | Thursday, November 25**",
+    "Each market will close early at 1:00 p.m. (1:15 p.m. for eligible options) on Friday, November 28, 2025,",
+    "Friday, November 27, 2026, and Friday, November 26, 2027 (the day after Thanksgiving)."
+   ]
+  },
+  "bea-schedule": {
+   "data": true,
+   "publisher": "U.S. Bureau of Economic Analysis",
+   "title": "Release Schedule",
+   "url": "https://www.bea.gov/news/schedule",
+   "quotes": [
+    "November 25 8:30 AM News GDP (Second Estimate) and Corporate Profits, 3rd Quarter 2026",
+    "November 25 8:30 AM News Personal Income and Outlays, October 2026"
+   ]
+  },
+  "yahoo-dell": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Dell Technologies (DELL) quote",
+   "url": "https://finance.yahoo.com/quote/DELL/",
+   "quotes": [
+    "Earnings Date Nov 24, 2026"
+   ]
+  },
+  "yahoo-wday": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Workday (WDAY) quote",
+   "url": "https://uk.finance.yahoo.com/quote/WDAY/",
+   "quotes": [
+    "Earnings date 24 Nov 2026"
+   ]
+  },
+  "yahoo-bby": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Best Buy (BBY) quote",
+   "url": "https://finance.yahoo.com/quote/BBY/",
+   "quotes": [
+    "Earnings Date Nov 24, 2026"
+   ]
+  },
+  "yahoo-de": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Deere & Company (DE) quote",
+   "url": "https://finance.yahoo.com/quote/DE/",
+   "quotes": [
+    "Earnings Date Nov 25, 2026"
+   ]
+  },
+  "yahoo-zm": {
+   "data": true,
+   "publisher": "Yahoo Finance",
+   "title": "Zoom Communications (ZM) quote",
+   "url": "https://finance.yahoo.com/quote/ZM/",
+   "quotes": [
+    "Earnings Date Nov 23, 2026"
+   ]
+  },
+  "reuters-gold-thu": {
+   "wire": "Reuters",
+   "date": "2026-11-19",
+   "publisher": "Khaleej Times",
+   "title": "Gold holds near 14-month low as Fed hike bets weigh",
+   "url": "https://www.khaleejtimes.com/gold-holds-near-14-month-low-as-fed-hike-bets-weigh",
+   "quotes": [
+    "Markets see a 90% chance of a 25-basis-point US rate hike in December"
+   ]
+  }
+ }
+}

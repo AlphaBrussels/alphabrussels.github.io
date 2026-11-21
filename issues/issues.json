@@ -1,5 +1,40 @@
 [
   {
+    "file": "2026-11-21.html",
+    "issue": 2,
+    "date": "2026-11-21",
+    "week": "16–20 November 2026",
+    "title": "AI worries hit markets worldwide",
+    "summary": "Wall Street had its worst week since April 2025 as worries about AI hit chip stocks around the world, even after Nvidia beat forecasts and Anthropic’s record debut.",
+    "board": [
+      [
+        "S&P 500",
+        "6,910.39",
+        "−8.6%"
+      ],
+      [
+        "STOXX 600",
+        "625.65",
+        "−5.8%"
+      ],
+      [
+        "BEL 20",
+        "5,797.75",
+        "−5.3%"
+      ],
+      [
+        "AMD",
+        "$424.39",
+        "−20.5%"
+      ],
+      [
+        "Bitcoin",
+        "$58,799",
+        "−13.8%"
+      ]
+    ]
+  },
+  {
     "file": "2026-11-14.html",
     "issue": 1,
     "date": "2026-11-14",

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>Email version, issue 2</title>
+<style>
+body{margin:0;background:#E4EAF2;color:#0B1626;font:17px/1.6 Inter,Helvetica,Arial,sans-serif}
+.page{max-width:640px;margin:0 auto;padding:24px 16px 60px}
+.how{background:#12284F;color:#F7F4EE;border-radius:12px;padding:20px 22px;font:15px/1.5 Inter,Helvetica,Arial,sans-serif}
+.how ol{margin:8px 0 0;padding-left:20px}
+.field{background:#fff;border:1px solid #CBD3DF;border-radius:12px;padding:14px 16px;margin-top:14px}
+.field small{display:block;font:600 12px/1.4 Inter,Helvetica,Arial,sans-serif;color:#5B667A;margin-bottom:4px}
+button{font:600 14px/1 Inter,Helvetica,Arial,sans-serif;background:#E5B13A;color:#0B1626;border:0;border-radius:999px;padding:11px 18px;cursor:pointer;margin-top:10px}
+#body{background:#fff;border:1px solid #CBD3DF;border-radius:12px;padding:8px 24px 24px;margin-top:14px;font-family:Georgia,serif}
+#body img{max-width:100%;height:auto}
+#body .button{display:inline-block;background:#12284F;color:#fff;padding:13px 22px;border-radius:999px;text-decoration:none;font:600 15px/1 Inter,Helvetica,Arial,sans-serif}
+</style></head><body><div class="page">
+<div class="how"><strong>Email version of issue 2.</strong> This page is a helper and is not sent to anyone.
+<ol><li>In Substack, start a new post.</li><li>Copy the title and subtitle into their boxes.</li>
+<li>Press “Copy the post” and paste into the body of the Substack post.</li><li>Add the subscribe box at the end (see below).</li><li>Check the picture, the button and the subscribe box appear, then send.</li></ol></div>
+<div class="field"><small>Title</small><div id="title">AI worries hit markets worldwide</div><button data-copy="title">Copy the title</button></div>
+<div class="field"><small>Subtitle</small><div id="subtitle">Wall Street had its worst week since April 2025 as worries about AI hit chip stocks around the world, even after Nvidia beat forecasts and Anthropic’s record debut.</div><button data-copy="subtitle">Copy the subtitle</button></div>
+<button data-copy="body">Copy the post</button>
+<div id="body" data-nodes="bulletList,captionedImage,button,paragraph,paragraph,subscribeWidget" data-subscribe="Was this forwarded to you? Subscribe to get the week in markets in your inbox every week. It’s free."><ul><li><strong>Stocks had a rough week.</strong> The S&amp;P 500 fell 8.6%, its worst week since April 2025, and is now in a “correction”: more than 10% below its record high in October.</li><li><strong>Nvidia beat forecasts but still fell.</strong> Its sales of $115.84 billion topped the $109.11 billion analysts expected, yet its shares dropped on every day of the week.</li><li><strong>The selling went global.</strong> Europe’s STOXX 600 had its worst week since March 2025, and Taiwan’s stock market its worst in more than three decades.</li><li><strong>A record debut did not lift the mood.</strong> The AI company Anthropic raised $81.3 billion, the biggest stock market debut on record, but it failed to bring back confidence in AI shares.</li><li><strong>Next week:</strong> new US figures on economic growth and spending arrive on Wednesday, and US markets close on Thursday for Thanksgiving.</li></ul><p><img src="https://alphabrussels.github.io/issues/2026-11-21-card.png" width="440" alt="This week’s moves: S&amp;P 500 −8.6%, STOXX 600 −5.8%, BEL 20 −5.3%, AMD −20.5%, Bitcoin −13.8%. Full table in the issue on the website."></p><p class="button-wrapper" data-attrs='{"url": "https://alphabrussels.github.io/?issue=2026-11-21#newsletter", "text": "Read the full issue", "action": null, "class": null}' data-component-name="ButtonCreateButton"><a class="button primary" href="https://alphabrussels.github.io/?issue=2026-11-21#newsletter"><span>Read the full issue</span></a></p><p><em>The full issue explains why prices moved, the other news that mattered and what to expect next week, with every source listed. For education and information only, not investment advice.</em></p><p><em>Adam Takáč, President of Alpha Brussels</em></p></div>
+<div class="field"><small>Subscribe box (goes last; not copied with the post)</small><div id="subscribe">Was this forwarded to you? Subscribe to get the week in markets in your inbox every week. It’s free.</div>In Substack choose Button, then “Subscribe with caption”, and paste this caption into it.<br><button data-copy="subscribe">Copy the caption</button></div>
+</div>
+<script>
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('button[data-copy]'); if (!b) return;
+  var el = document.getElementById(b.getAttribute('data-copy'));
+  var done = function () { var t = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = t; }, 1500); };
+  var fallback = function () { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); try { document.execCommand('copy'); done(); } catch (err) {} };
+  try {
+    navigator.clipboard.write([new ClipboardItem({
+      'text/html': new Blob([el.innerHTML], {type: 'text/html'}),
+      'text/plain': new Blob([el.innerText], {type: 'text/plain'})
+    })]).then(done, fallback);
+  } catch (err) { fallback(); }
+});
+</script></body></html>
