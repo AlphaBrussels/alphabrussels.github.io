@@ -452,10 +452,10 @@ def render_table(data, cites):
             second.append(r["check"]["source"])
     d1 = datetime.date.fromisoformat(data["prev_date"])
     d2 = datetime.date.fromisoformat(data["close_date"])
-    note = (f'Closing prices for {d1.day} {d1:%B} and {d2.day} {d2:%B}.{cites.sup(primary)}'
-            f' Each weekly change is calculated from those two closes.')
-    if second:
-        note += f' Closes were checked against a second source.{cites.sup(second)}'
+    # Owner's choice (21 November 2026): one short line, closing prices and the period, nothing else.
+    # The sources stay attached (one superscript) so every figure still links to the source list.
+    note = (f'Closing prices, Friday {d1.day} {d1:%B} to Friday {d2.day} {d2:%B} {d2.year}.'
+            f'{cites.sup(primary + [k for k in second if k not in primary])}')
     out.append(f'<div class="b" style="font-size:13px;line-height:20px;color:{STONE};padding-top:12px;">{note}</div>')
     return "".join(out)
 
@@ -481,7 +481,7 @@ def render_macro(data, cites):
         return ""
     return (f'<div id="x-macro" style="margin-top:28px;border-top:2px solid {NIGHT};border-bottom:1px solid {RULE};">'
             f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="b"><tr>{"".join(cells)}</tr></table></div>'
-            f'<div class="b" style="font-size:13px;line-height:20px;color:{STONE};padding-top:10px;">Friday closes and the change since the Friday before.{cites.sup(keys)}</div>')
+            f'<div class="b" style="font-size:13px;line-height:20px;color:{STONE};padding-top:10px;">Closing prices, Friday {datetime.date.fromisoformat(data["prev_date"]).day} {datetime.date.fromisoformat(data["prev_date"]):%B} to Friday {datetime.date.fromisoformat(data["close_date"]).day} {datetime.date.fromisoformat(data["close_date"]):%B}.{cites.sup(keys)}</div>')
 
 
 def pct_cell(txt, dark):

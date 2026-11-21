@@ -5,7 +5,7 @@
   "S&P 500",
   "STOXX Europe 600",
   "BEL 20",
-  "AMD",
+  "Nvidia",
   "Bitcoin"
  ],
  "groups": [
@@ -81,12 +81,10 @@
     },
     {
      "name": "DAX",
-     "mark": "*",
      "close": 24802.78,
      "prev": 26749.95,
      "sources": [
-      "yahoo-gdaxi",
-      "stoxx-dax"
+      "yahoo-gdaxi"
      ],
      "check": {
       "close": 24802.78,
@@ -211,6 +209,21 @@
    "name": "Stocks in the news",
    "rows": [
     {
+     "name": "Nvidia",
+     "kind": "stock",
+     "prefix": "$",
+     "tolerance_pct": 0.2,
+     "close": 125.53,
+     "prev": 162.85,
+     "sources": [
+      "yahoo-nvda"
+     ],
+     "check": {
+      "close": 125.72,
+      "source": "stockanalysis-nvda"
+     }
+    },
+    {
      "name": "AMD",
      "kind": "stock",
      "prefix": "$",
@@ -236,20 +249,6 @@
      "check": {
       "close": 304.41,
       "source": "stockanalysis-avgo"
-     }
-    },
-    {
-     "name": "Walmart",
-     "kind": "stock",
-     "prefix": "$",
-     "close": 127.95,
-     "prev": 128.09,
-     "sources": [
-      "yahoo-wmt"
-     ],
-     "check": {
-      "close": 127.95,
-      "source": "investing-wmt"
      }
     }
    ]
@@ -608,6 +607,16 @@
    "url": "https://uk.investing.com/equities/wal-mart-stores-historical-data",
    "quotes": [
     "20/11/2026 | 127.95 | 127.26 | 130.52 | 127.18 | 42.65M | +1.52%"
+   ]
+  },
+  "stockanalysis-nvda": {
+   "data": true,
+   "publisher": "StockAnalysis",
+   "title": "NVIDIA (NVDA) stock price history",
+   "url": "https://stockanalysis.com/stocks/nvda/history/",
+   "quotes": [
+    "Nov 20, 2026 | 143.52 | 143.66 | 124.52 | 125.72 | 125.72 | -13.88% | 606,953,833",
+    "At close: Nov 20, 2026, 4:00 PM EST"
    ]
   },
   "stockanalysis-amd": {
